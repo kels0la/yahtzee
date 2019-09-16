@@ -1,0 +1,28 @@
+{
+  "name": "skeleton",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/kels0la/MBSkelly",
+  "author": "kels0la <samelsola@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "10.15.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.6.7",
+    "mongoose-autopopulate": "^0.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1"
+  },
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start"
+  }
+}
