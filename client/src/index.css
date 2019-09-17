@@ -1,0 +1,24 @@
+body {
+  background: #1b1b1b;
+  font-family: 'Montserrat', sans-serif;
+  color: #D8D8D8;
+  /*overflow: hidden; */
+  margin: 0;
+}
+
+/* Need this guy for the outset */
+.hrModals {
+  border-style: outset;
+}
+
+.shadowEffect {
+  box-shadow: 0 0px 14px 0 red;
+}
+
+.shadowEffectSmall {
+  box-shadow: 0 0px 5px 0 red;
+}
+
+input:checked + label img{
+  box-shadow: 0 0px 10px 0 #2BA228;   
+}
