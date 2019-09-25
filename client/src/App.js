@@ -5,9 +5,6 @@ import NoMatch from './pages/NoMatch';
 import MainPageContainer from './pages/Main/MainPageContainer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

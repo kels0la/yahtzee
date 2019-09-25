@@ -4,6 +4,13 @@ import MainPage from './MainPage';
 class MainPageContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      diceValueOne: 1,
+      diceValueTwo: 2,
+      diceValueThree: 3,
+      diceValueFour: 4,
+      diceValueFive: 5,
+    };
     //Capture indications
     // onesTaken = false,
     // twosTaken = false,
@@ -40,8 +47,14 @@ class MainPageContainer extends React.Component {
     // //Gotta be built from the ground up. You need that old code now.
     // turnNumber = 0 //Once it hits three, execute function to indicate selection.
   }
-
   
+  // Need to grab the id for each I think?
+  rollDice() {
+    
+  }
+  // handleDiceChange(event) {
+  //   this.setState({value: event.target.value});
+  // }
 
   // ifOnesTaken () {
   //   if (onesTaken = true) {
@@ -58,9 +71,14 @@ class MainPageContainer extends React.Component {
     // let diceFive = Math.floor((Math.random() * (6-1)) + 1)
 
   render() {
+    
     return (
       <React.Fragment>
-        <MainPage />
+        <MainPage 
+          // {...this.state}
+          // rollDice={this.rollDice}
+          // handleDiceChange={this.handleDiceChange}
+        />
       </React.Fragment>
     )
   }

@@ -19,6 +19,6 @@ body {
   box-shadow: 0 0px 5px 0 red;
 }
 
-input:checked + label img{
+input:checked + label img {
   box-shadow: 0 0px 10px 0 #2BA228;   
 }
