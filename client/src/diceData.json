@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "diceId": "diceOneId"
+  },
+  {
+    "id": 2,
+    "diceId": "diceTwoId"
+  },
+  {
+    "id": 3,
+    "diceId": "diceThreeId"
+  },
+  {
+    "id": 4,
+    "diceId": "diceFourId"
+  },
+  {
+    "id": 5,
+    "diceId": "diceFiveId"
+  }
+]

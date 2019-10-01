@@ -7,9 +7,25 @@ export const TableRow = props => {
   let rowOneClasses, rowTwoClasses, rowThreeClasses, rowThreeDisplay, scoreDisplay, rowThree;
   let bottomBorder = 'border-b-2 border-red pb-1';
 
+  switch (rowType) {
+    case 'labelRow':
+      labelRowFormatting();
+      break;
+    case 'noSelectionRow':
+      formatBottom()
+      noSelectionRowFormatting()
+      break;
+    case 'finalRow':
+      finalRowFormatting()
+      break;
+    default:
+      formatBottom()
+      standardRowFormatting()
+  };
+
   // check to see if it's the bottom row. If so, add the border.
   function formatBottom() {
-    if (bottomFormatting){
+    if (bottomFormatting) {
       rowOneClasses = bottomBorder;
       rowTwoClasses = bottomBorder;
       rowThreeClasses = bottomBorder;
@@ -19,9 +35,8 @@ export const TableRow = props => {
       rowThreeClasses = '';
     };
   };
-
-  // Render depending on the row type prop passed in. Could use Switch Statement, too.
-  if (rowType === 'labelRow') {
+  // Four functions to format each type of row properly and keep the Switch statement clean.
+  function labelRowFormatting() {
     labelText = 'Label';
     scoreDisplay = 'Score';
     rowThreeDisplay = 'Select'
@@ -29,27 +44,22 @@ export const TableRow = props => {
     rowTwoClasses = 'border-b-2 border-red pb-1 text-base text-red';
     rowThreeClasses = 'border-b-2 border-red pb-1 text-base text-red';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
-  } 
-  // The rows that are unselectable and do not include the radio button
-  else if (rowType === 'noSelectionRow') {
-    formatBottom()
+  };
+  function noSelectionRowFormatting() {
     rowThreeDisplay = ''
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
-  } 
-  // The final row in the grid
-  else if (rowType === 'finalRow') {
-    rowThreeDisplay = <Button2 type="submit" text='Finalize Turn'/>
+  };
+  function finalRowFormatting() {
+    rowThreeDisplay = <Button2 type="submit" text='Finalize Turn' />
     rowOneClasses = 'font-bold';
     rowTwoClasses = 'pt-1 font-bold';
     rowThreeClasses = 'pt-1';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
-  } 
-  // The standard row without any extra formatting or variation
-  else {
-    formatBottom()
+  };
+  function standardRowFormatting() {
     rowThreeDisplay = <RadioButton />;
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
-  }
+  };
 
   return (
     <React.Fragment>

@@ -1,0 +1,131 @@
+[
+  {
+    "id": 1,
+    "rowType": "labelRow",
+    "rowTwoId": "onesScore"
+  },
+  {
+    "id": 2,
+    "rowType": "",
+    "rowTwoId": "onesScore",
+    "labelText": "Ones"
+  },
+  {
+    "id": 3,
+    "rowType": "",
+    "rowTwoId": "twosScore",
+    "labelText": "Twos"
+  },
+  {
+    "id": 4,
+    "rowType": "",
+    "rowTwoId": "threesScore",
+    "labelText": "Threes"
+  },
+  {
+    "id": 5,
+    "rowType": "",
+    "rowTwoId": "foursScore",
+    "labelText": "Four"
+  },
+  {
+    "id": 6,
+    "rowType": "",
+    "rowTwoId": "fivesScore",
+    "labelText": "Fives"
+  },
+  {
+    "id": 7,
+    "rowType": "",
+    "rowTwoId": "sixesScore",
+    "labelText": "Sixes",
+    "bottomFormatting": true
+  },
+  {
+    "id": 8,
+    "rowType": "noSelectionRow",
+    "rowTwoId": "runningTopScore",
+    "labelText": "Running Top"
+  },
+  {
+    "id": 9,
+    "rowType": "noSelectionRow",
+    "rowTwoId": "bonusScore",
+    "labelText": "Bonus"
+  },
+  {
+    "id": 10,
+    "rowType": "noSelectionRow",
+    "rowTwoId": "totalTopScore",
+    "labelText": "Total Top",
+    "bottomFormatting": true
+  },
+  {
+    "id": 11,
+    "rowType": "",
+    "rowTwoId": "threeKindScore",
+    "labelText": "3 of a Kind"
+  },
+  {
+    "id": 12,
+    "rowType": "",
+    "rowTwoId": "fourKindScore",
+    "labelText": "4 of a Kind"
+  },
+  {
+    "id": 13,
+    "rowType": "",
+    "rowTwoId": "fullHouseScore",
+    "labelText": "Full House"
+  },
+  {
+    "id": 14,
+    "rowType": "",
+    "rowTwoId": "smallStraightScore",
+    "labelText": "Small Straight"
+  },
+  {
+    "id": 15,
+    "rowType": "",
+    "rowTwoId": "largeStraightScore",
+    "labelText": "Large Straight"
+  },
+  {
+    "id": 16,
+    "rowType": "",
+    "rowTwoId": "yahtzeeScore",
+    "labelText": "Yahtzee"
+  },
+  {
+    "id": 17,
+    "rowType": "",
+    "rowTwoId": "doubleYahtzeeScore",
+    "labelText": "Yahtzee 2x"
+  },
+  {
+    "id": 18,
+    "rowType": "",
+    "rowTwoId": "chanceScore",
+    "labelText": "Chance",
+    "bottomFormatting": true
+  },
+  {
+    "id": 19,
+    "rowType": "noSelectionRow",
+    "rowTwoId": "totalBottomScore",
+    "labelText": "Total Bottom"
+  },
+  {
+    "id": 20,
+    "rowType": "noSelectionRow",
+    "rowTwoId": "totalTopOnBottom",
+    "labelText": "Total Top",
+    "bottomFormatting": true
+  },
+  {
+    "id": 21,
+    "rowType": "finalRow",
+    "rowTwoId": "totalScore",
+    "labelText": "Total Score"
+  }
+]
