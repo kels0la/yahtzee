@@ -22,9 +22,20 @@ class MainPageContainer extends React.Component {
       diceThreeImage: diceThree,
       diceFourImage: diceFour,
       diceFiveImage: diceFive,
-      imgList: [diceOne, diceTwo, diceThree, diceFour, diceFive]
+      diceImages: [diceOne, diceTwo, diceThree, diceFour, diceFive]
     };
   }
+
+  rollDice = () => {
+    this.obtainNumbers()
+  }
+
+  handleChange = (event) => {
+    const item = event.target.name;
+    const isChecked = event.target.checked;
+    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+  }
+
 
   rolledNumber = () => { return Math.floor((Math.random() * (7 - 1)) + 1); }
 
@@ -32,143 +43,73 @@ class MainPageContainer extends React.Component {
     // I'll need to include the if dice is checked logic here.
     let diceNumber1, diceNumber2, diceNumber3, diceNumber4, diceNumber5;
  
+    // 2nd parameter passed in to diceSwitchStatement is dice position number
     diceNumber1 = this.rolledNumber();
-    this.diceOneSwitchStatement(diceNumber1)
-
+    this.diceSwitchStatement(diceNumber1, 1)
     diceNumber2 = this.rolledNumber();
-    this.diceTwoSwitchStatement(diceNumber2)
-
+    this.diceSwitchStatement(diceNumber2, 2)
     diceNumber3 = this.rolledNumber();
-    this.diceThreeSwitchStatement(diceNumber3)
-
+    this.diceSwitchStatement(diceNumber3, 3)
     diceNumber4 = this.rolledNumber();
-    this.diceFourSwitchStatement(diceNumber4)
-
+    this.diceSwitchStatement(diceNumber4, 4)
     diceNumber5 = this.rolledNumber();
-    this.diceFiveSwitchStatement(diceNumber5)
-
-    this.setState({
-      diceOneValue: diceNumber1,
-      diceTwoValue: diceNumber2,
-      diceThreeValue: diceNumber3,
-      diceFourValue: diceNumber4,
-      diceFiveValue: diceNumber5
-    });
+    this.diceSwitchStatement(diceNumber5, 5)
   }
 
-  diceOneSwitchStatement = (diceNumber) => {
-    switch (diceNumber) {
-      case 1:
-        return this.setState({diceOneImage: diceOne})
-      case 2:
-        return this.setState({diceOneImage: diceTwo})
-      case 3:
-        return this.setState({diceOneImage: diceThree})
-      case 4:
-        return this.setState({diceOneImage: diceFour})
-      case 5:
-        return this.setState({diceOneImage: diceFive})
-      case 6:
-        return this.setState({diceOneImage: diceFive})
+  determineWhichDice = (dicePosition, diceRollNumber) => {
+    let diceNumber
+    // Setting the image for the particular dice number
+    switch (diceRollNumber){
+      case 1: diceNumber = diceOne;
+        break
+      case 2: diceNumber = diceTwo;
+        break
+      case 3: diceNumber = diceThree;
+        break
+      case 4: diceNumber = diceFour;
+        break
+      case 5: diceNumber = diceFive;
+        break
+      case 6: diceNumber = diceSix;
+        break
       default:
-        return this.setState({diceOneImage: diceSix})
+        console.log("nothing hit")
     }
-  }
-
-  diceTwoSwitchStatement = (diceNumber) => {
-    switch (diceNumber) {
+    // Updating image state based upon the dice position
+    switch (dicePosition){
       case 1:
-        return this.setState({diceTwoImage: diceOne})
+        return this.setState({diceOneImage: diceNumber, diceOneValue: diceRollNumber});
       case 2:
-        return this.setState({diceTwoImage: diceTwo})
+        return this.setState({diceTwoImage: diceNumber, diceTwoValue: diceRollNumber});
       case 3:
-        return this.setState({diceTwoImage: diceThree})
+        return this.setState({diceThreeImage: diceNumber, diceThreeValue: diceRollNumber});
       case 4:
-        return this.setState({diceTwoImage: diceFour})
+        return this.setState({diceFourImage: diceNumber, diceFourValue: diceRollNumber});
       case 5:
-        return this.setState({diceTwoImage: diceFive})
-      case 6:
-          return this.setState({diceTwoImage: diceSix})
+        return this.setState({diceFiveImage: diceNumber, diceFiveValue: diceRollNumber});
       default:
-        return this.setState({diceTwoImage: diceSix})
-    }
-  }
+        return console.log("nothing hit");
+    };
+  };
 
-  diceThreeSwitchStatement = (diceNumber) => {
-    switch (diceNumber) {
+  diceSwitchStatement = (diceRollNumber, dicePosition) => {
+    switch (diceRollNumber) {
       case 1:
-        return this.setState({diceThreeImage: diceOne})
+        return this.determineWhichDice(dicePosition, diceRollNumber);
       case 2:
-        return this.setState({diceThreeImage: diceTwo})
+        return this.determineWhichDice(dicePosition, diceRollNumber);
       case 3:
-        return this.setState({diceThreeImage: diceThree})
+        return this.determineWhichDice(dicePosition, diceRollNumber);
       case 4:
-        return this.setState({diceThreeImage: diceFour})
+        return this.determineWhichDice(dicePosition, diceRollNumber);
       case 5:
-        return this.setState({diceThreeImage: diceFive})
+        return this.determineWhichDice(dicePosition, diceRollNumber);
       case 6:
-        return this.setState({diceThreeImage: diceSix})
+        return this.determineWhichDice(dicePosition, diceRollNumber);
       default:
-        return this.setState({diceThreeImage: diceSix})
-    }
-  }
-
-  diceFourSwitchStatement = (diceNumber) => {
-    switch (diceNumber) {
-      case 1:
-        return this.setState({diceFourImage: diceOne})
-      case 2:
-        return this.setState({diceFourImage: diceTwo})
-      case 3:
-        return this.setState({diceFourImage: diceThree})
-      case 4:
-        return this.setState({diceFourImage: diceFour})
-      case 5:
-        return this.setState({diceFourImage: diceFive})
-      case 6:
-        return this.setState({diceFourImage: diceSix})
-      default:
-        return this.setState({diceFourImage: diceSix})
-    }
-  }
-
-  diceFiveSwitchStatement = (diceNumber) => {
-    switch (diceNumber) {
-      case 1:
-        return this.setState({diceFiveImage: diceOne})
-      case 2:
-        return this.setState({diceFiveImage: diceTwo})
-      case 3:
-        return this.setState({diceFiveImage: diceThree})
-      case 4:
-        return this.setState({diceFiveImage: diceFour})
-      case 5:
-        return this.setState({diceFiveImage: diceFive})
-      case 6:
-        return this.setState({diceFiveImage: diceSix})
-      default:
-        return this.setState({diceFourImage: diceSix})
-    }
-  }
-
-  rollDice = () => {
-    this.obtainNumbers()
-
-
-    // What is this value? How is it declared? How is it passed in? Maybe not a dicenumber function. Or maybe it automatically has it? I could check with a console log once I add in the function and click the button. Good first step.
-    // Assuming I have the value here, how do I proceed?
-    // This does what? It displays number on the page, and state is updated? So I can use that for scoring purposes?
-    // diceNumberSwitchStatement(diceNumber)
-  }
-  // handleDiceChange(event) {
-  //   this.setState({value: event.target.value});
-  // }
-
-  // let diceOne = Math.floor((Math.random() * (6-1)) + 1)
-  // let diceTwo = Math.floor((Math.random() * (6-1)) + 1)
-  // let diceThree = Math.floor((Math.random() * (6-1)) + 1)
-  // let diceFour = Math.floor((Math.random() * (6-1)) + 1)
-  // let diceFive = Math.floor((Math.random() * (6-1)) + 1)
+        return console.log("diceRollNumber not defined")
+    };
+  };
 
   render() {
     return (
@@ -176,8 +117,6 @@ class MainPageContainer extends React.Component {
         <MainPage
           {...this.state}
           rollDice={this.rollDice}
-        // handleDiceChange={this.handleDiceChange}
-
         />
       </React.Fragment>
     )

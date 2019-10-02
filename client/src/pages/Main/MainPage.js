@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, TableRow, Dice } from '../../components/Widgets';
+import { Button, TableRow, Dice, diceData } from '../../components/Widgets';
 import rowData from '../../rowData.json';
-import diceData from '../../diceData.json';
 // Importing images
 import YahtzeeImg from '../../assets/images/yahtzeeimg.png';
 
@@ -31,12 +30,22 @@ const MainPage = props => (
           <Button text='Roll Dice' styles='text-light-gray border-red' onClick={() => props.rollDice()}></Button>
         </span>
         <div className='inline-flex pl-3'>
-          {/* diceNumber is currently hardcoded. Requires logic to switch dice based upon roll */}
-          <Dice diceId={'diceOneId'} diceImage={props.diceOneImage}/>
-          <Dice diceId={'diceTwoId'} diceImage={props.diceTwoImage}/>
-          <Dice diceId={'diceThreeId'} diceImage={props.diceThreeImage}/>
-          <Dice diceId={'diceFourId'} diceImage={props.diceFourImage}/>
-          <Dice diceId={'diceFiveId'} diceImage={props.diceFiveImage}/>
+          {/* I would like do a mapping, but I don't know how to do it with the diceImage changing */}
+          <Dice diceId={'diceOneId'} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage}/>
+          <Dice diceId={'diceTwoId'} checkboxName={'checkBoxTwo'} diceImage={props.diceTwoImage}/>
+          <Dice diceId={'diceThreeId'} checkboxName={'checkBoxThree'} diceImage={props.diceThreeImage}/>
+          <Dice diceId={'diceFourId'} checkboxName={'checkBoxFour'} diceImage={props.diceFourImage}/>
+          <Dice diceId={'diceFiveId'} checkboxName={'checkBoxFive'} diceImage={props.diceFiveImage}/>
+      {/* {console.log(diceData)} */}
+          {/* {diceData.map(dice => (
+            <Dice 
+              key={dice.id}
+              diceId={dice.diceId}
+              checkBoxName={dice.checkBoxName}
+              diceImage={dice.diceImage}
+              checked={dice.checked}
+            />
+            ))} */}
         </div>
       </div>
     </div>
