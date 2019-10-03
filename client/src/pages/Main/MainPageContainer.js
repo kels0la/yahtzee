@@ -1,12 +1,12 @@
 import React from 'react';
 import MainPage from './MainPage';
 
-import diceOne from '../../assets/images/diceOne.png';
-import diceTwo from '../../assets/images/diceTwo.png';
-import diceThree from '../../assets/images/diceThree.png';
-import diceFour from '../../assets/images/diceFour.png';
-import diceFive from '../../assets/images/diceFive.png';
-import diceSix from '../../assets/images/diceSix.png';
+import diceOneImage from '../../assets/images/diceOne.png';
+import diceTwoImage from '../../assets/images/diceTwo.png';
+import diceThreeImage from '../../assets/images/diceThree.png';
+import diceFourImage from '../../assets/images/diceFour.png';
+import diceFiveImage from '../../assets/images/diceFive.png';
+import diceSixImage from '../../assets/images/diceSix.png';
 
 class MainPageContainer extends React.Component {
   constructor(props) {
@@ -17,11 +17,11 @@ class MainPageContainer extends React.Component {
       diceThreeValue: 0,
       diceFourValue: 0,
       diceFiveValue: 0,
-      diceOneImage: diceOne,
-      diceTwoImage: diceTwo,
-      diceThreeImage: diceThree,
-      diceFourImage: diceFour,
-      diceFiveImage: diceFive,
+      diceOneImage: diceOneImage,
+      diceTwoImage: diceTwoImage,
+      diceThreeImage: diceThreeImage,
+      diceFourImage: diceFourImage,
+      diceFiveImage: diceFiveImage,
       diceOneChecked: false,
       diceTwoChecked: false,
       diceThreeChecked: false,
@@ -50,26 +50,27 @@ class MainPageContainer extends React.Component {
   }
 
   rollDice = () => {
+    console.log(this.state.turnNumber)
     switch (this.state.turnNumber) {
       case 0:
         this.obtainNumbers();
         this.setState({turnNumber: 1, disabledDice: [false, false, false, false, false], disabledRadio: false})
-        return
+        break
       case 1:
         this.obtainNumbers();
         this.setState({turnNumber: 2})
-        return
+        break
       case 2:
         this.obtainNumbers();
         this.setState({turnNumber: 3})
-        return
+        break
       case 3:
         this.obtainNumbers();
-        this.setState({turnNumber: 0})
+        this.setState({turnNumber: 1, disabledDice: [false, false, false, false, false], disabledRadio: false})
         this.unCheckDice();
         // this.dontAllowRollUntilSomethingIsSelected
         // I'll need to force the person to select something here. Disable roll dice button until selection. Then once selection happens, it's re-enabled
-        return
+        break
       default: console.log("If you see this, apparently there are more turns in Yahtzee")
     }
   };
@@ -148,17 +149,17 @@ class MainPageContainer extends React.Component {
     let diceNumber;
     // Setting the image for the particular dice number
     switch (diceRollNumber) {
-      case 1: diceNumber = diceOne;
+      case 1: diceNumber = diceOneImage;
         break
-      case 2: diceNumber = diceTwo;
+      case 2: diceNumber = diceTwoImage;
         break
-      case 3: diceNumber = diceThree;
+      case 3: diceNumber = diceThreeImage;
         break
-      case 4: diceNumber = diceFour;
+      case 4: diceNumber = diceFourImage;
         break
-      case 5: diceNumber = diceFive;
+      case 5: diceNumber = diceFiveImage;
         break
-      case 6: diceNumber = diceSix;
+      case 6: diceNumber = diceSixImage;
         break
       default:
         console.log("nothing hit")
