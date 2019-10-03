@@ -10,21 +10,21 @@ export const diceData = [
   {
     "id": 1,
     "diceId": "diceOneId",
-    "checked": false,
+    "diceChecked": false,
     "checkBoxName": "checkBoxOne",
     "diceImage": diceOne
   },
   {
     "id": 2,
     "diceId": "diceTwoId",
-    "checked": false,
+    "diceChecked": false,
     "checkBoxName": "checkBoxTwo",
     "diceImage": diceTwo
   },
   {
     "id": 3,
     "diceId": "diceThreeId",
-    "checked": false,
+    "diceChecked": false,
     "checkBoxName": "checkBoxThree",
     "diceImage": diceThree
     
@@ -32,14 +32,14 @@ export const diceData = [
   {
     "id": 4,
     "diceId": "diceFourId",
-    "checked": false,
+    "diceChecked": false,
     "checkBoxName": "checkBoxFour",
     "diceImage": diceFour
   },
   {
     "id": 5,
     "diceId": "diceFiveId",
-    "checked": false,
+    "diceChecked": false,
     "checkBoxName": "checkBoxFive",
     "diceImage": diceFive
   }
