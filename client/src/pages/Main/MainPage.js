@@ -21,29 +21,32 @@ const MainPage = props => (
                 rowTwoId={row.rowTwoId}
                 labelText={row.labelText}
                 bottomFormatting={row.bottomFormatting}
+                disabledRadio={props.disabledRadio}
+                disabledFinalized={props.disabledFinalize}
               />
             ))}
           </form>
         </div>
         {/* Dice and Submit Button */}
         <span>
-          <Button text='Roll Dice' styles='text-light-gray border-red' onClick={() => props.rollDice()}></Button>
+          <Button disabledButton={props.disabledButton} text='Roll Dice' styles='text-light-gray border-red' onClick={() => props.rollDice()}></Button>
         </span>
         <div className='inline-flex pl-3'>
           {/* I would like do a mapping, but I don't know how to do it with the diceImage changing */}
-          <Dice diceId={'diceOneId'} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage}/>
-          <Dice diceId={'diceTwoId'} checkboxName={'checkBoxTwo'} diceImage={props.diceTwoImage}/>
-          <Dice diceId={'diceThreeId'} checkboxName={'checkBoxThree'} diceImage={props.diceThreeImage}/>
-          <Dice diceId={'diceFourId'} checkboxName={'checkBoxFour'} diceImage={props.diceFourImage}/>
-          <Dice diceId={'diceFiveId'} checkboxName={'checkBoxFive'} diceImage={props.diceFiveImage}/>
+          <Dice diceId={'diceOneId'} disabled={props.disabledDice[0]} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage} diceChecked={props.diceOneChecked} onChange={props.onChange}/>
+          <Dice diceId={'diceTwoId'} disabled={props.disabledDice[1]} checkboxName={'checkBoxTwo'} diceImage={props.diceTwoImage} diceChecked={props.diceTwoChecked} onChange={props.onChange}/>
+          <Dice diceId={'diceThreeId'} disabled={props.disabledDice[2]} checkboxName={'checkBoxThree'} diceImage={props.diceThreeImage} diceChecked={props.diceThreeChecked} onChange={props.onChange}/>
+          <Dice diceId={'diceFourId'} disabled={props.disabledDice[3]} checkboxName={'checkBoxFour'} diceImage={props.diceFourImage} diceChecked={props.diceFourChecked} onChange={props.onChange}/>
+          <Dice diceId={'diceFiveId'} disabled={props.disabledDice[4]} checkboxName={'checkBoxFive'} diceImage={props.diceFiveImage} diceChecked={props.diceFiveChecked} onChange={props.onChange}/>
       {/* {console.log(diceData)} */}
           {/* {diceData.map(dice => (
+            // I'm thinking I could do a forloop to add the props.diceFourImage. But I'll wait.
             <Dice 
               key={dice.id}
               diceId={dice.diceId}
               checkBoxName={dice.checkBoxName}
               diceImage={dice.diceImage}
-              checked={dice.checked}
+              diceChecked={dice.diceChecked}
             />
             ))} */}
         </div>

@@ -50,14 +50,14 @@ export const TableRow = props => {
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function finalRowFormatting() {
-    rowThreeDisplay = <Button2 type="submit" text='Finalize Turn' />
+    rowThreeDisplay = <Button2 type="submit" text='Finalize Turn' disabledFinalized={props.disabledFinalized} />
     rowOneClasses = 'font-bold';
     rowTwoClasses = 'pt-1 font-bold';
     rowThreeClasses = 'pt-1';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function standardRowFormatting() {
-    rowThreeDisplay = <RadioButton />;
+    rowThreeDisplay = <RadioButton disabledRadio={props.disabledRadio}/>;
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
 
