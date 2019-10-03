@@ -98,6 +98,7 @@ class MainPageContainer extends React.Component {
     let diceNumber1, diceNumber2, diceNumber3, diceNumber4, diceNumber5;
     // if statement checks to see if the dice is checked. If not, then dice is rolled.
     // 2nd parameter passed in to diceRollDetermination is dice position number.
+
     if (this.state.diceOneChecked === false) {
       diceNumber1 = this.rolledNumber();
       this.diceRollDetermination(diceNumber1, 1)

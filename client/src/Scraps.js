@@ -178,3 +178,16 @@ class MainPageContainer extends React.Component {
 }
 
 export default MainPageContainer;
+
+// for loop for dice checking but need to be able to update/setState on a particular value in an array
+
+let diceNumberArray = []
+let rolledNumber;
+for (var i = 0; i < diceChecked.length; i++) {
+  let index = i + 1;
+  if (this.state.diceChecked[i] === false) {
+    rolledNumber = this.rolledNumber();
+    diceNumberArray.push(rolledNumber)
+    this.diceRollDetermination(diceNumber[i], index)
+  }
+}
