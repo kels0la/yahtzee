@@ -20,5 +20,5 @@ body {
 }
 
 input:checked + label img {
-  box-shadow: 0 0px 10px 0 #2BA228;   
+  box-shadow: 0 0px 10px 0 rgb(1, 27, 1);   
 }
