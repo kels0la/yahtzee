@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TableRow, Dice, diceData } from '../../components/Widgets';
+import { Button, TableRow, Dice } from '../../components/Widgets';
 import rowData from '../../rowData.json';
 // Importing images
 import YahtzeeImg from '../../assets/images/yahtzeeimg.png';
@@ -11,10 +11,10 @@ const MainPage = props => (
       <div className='text-center'><img src={YahtzeeImg} alt='yahtzee' /></div>
       <div className='px-3 -mt-5'><hr className="border-medium-gray border-3 hrModals"></hr></div>
       <div className='p-3 flex'>
-        <div className='table rounded text-sm border-light-gray border p-1 shadowEffect mr-5'>
+        <div className='table rounded border-light-gray border p-2 shadowEffect mr-5'>
           <form>
-            <div id="gameTurnNumberStatus">
-              {props.turnNumber == 0 ? <div className='font-bold text-light-gray pt-2 h-8 mt-1px'>Roll the dice to start!</div> : <div className='font-bold text-sm text-light-gray pt-2 h-8 mt-1px'>Roll Number: {props.turnNumber}</div>}
+            <div id="gameTurnNumberStatus" className='border-b-2 border-brand-green text-sm text-light-gray font-bold'>
+              {props.turnNumber === 0 ? <div className='pt-1 h-8 mt-1px'>Roll the dice to start!</div> : <div className='pt-1 h-8 mt-1px'>Roll Number: {props.turnNumber}</div>}
             </div>
             {rowData.map(row => (
               <TableRow

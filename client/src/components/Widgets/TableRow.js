@@ -40,9 +40,9 @@ export const TableRow = props => {
     labelText = 'Label';
     scoreDisplay = 'Score';
     rowThreeDisplay = 'Select'
-    rowOneClasses = 'border-b-2 border-brand-green pb-1 text-base text-red';
-    rowTwoClasses = 'border-b-2 border-brand-green pb-1 text-base text-red';
-    rowThreeClasses = 'border-b-2 border-brand-green pb-1 text-base text-red';
+    rowOneClasses = 'border-b-2 border-brand-green pb-1 text-sm text-red';
+    rowTwoClasses = 'border-b-2 border-brand-green pb-1 text-sm text-red';
+    rowThreeClasses = 'border-b-2 border-brand-green pb-1 text-sm text-red';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function noSelectionRowFormatting() {
@@ -51,9 +51,9 @@ export const TableRow = props => {
   };
   function finalRowFormatting() {
     rowThreeDisplay = <Button2 type="submit" text='Finalize Turn' disabledFinalized={props.disabledFinalized} />
-    rowOneClasses = 'font-bold';
-    rowTwoClasses = 'pt-1 font-bold';
-    rowThreeClasses = 'pt-1';
+    rowOneClasses = 'text-sm font-bold';
+    rowTwoClasses = 'pt-1 text-sm font-bold';
+    rowThreeClasses = 'pt-1 text-sm';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function standardRowFormatting() {
@@ -63,7 +63,7 @@ export const TableRow = props => {
 
   return (
     <React.Fragment>
-      <div className='table-row'>
+      <div className='table-row text-xs'>
         <div className={`table-cell pt-1 ${rowOneClasses}`}>{labelText}</div>
         <div className={`table-cell text-center pl-2 ${rowTwoClasses}`} id={`${rowTwoId}`}>{scoreDisplay}</div>
         {rowThree}
