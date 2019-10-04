@@ -57,7 +57,7 @@ export const TableRow = props => {
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function standardRowFormatting() {
-    rowThreeDisplay = <RadioButton disabledRadio={props.disabledRadio}/>;
+    rowThreeDisplay = <RadioButton disabledRadio={props.disabledRadio} />;
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
 

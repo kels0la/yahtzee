@@ -65,9 +65,10 @@ class MainPageContainer extends React.Component {
         this.setState({turnNumber: 3})
         break
       case 3:
-        this.obtainNumbers();
-        this.setState({turnNumber: 1, disabledDice: [false, false, false, false, false], disabledRadio: false})
         this.unCheckDice();
+        this.obtainNumbers();
+        this.setState({turnNumber: 1})
+        
         // this.dontAllowRollUntilSomethingIsSelected
         // I'll need to force the person to select something here. Disable roll dice button until selection. Then once selection happens, it's re-enabled
         break
@@ -96,32 +97,42 @@ class MainPageContainer extends React.Component {
   rolledNumber = () => { return Math.floor((Math.random() * (7 - 1)) + 1); };
 
   obtainNumbers = () => {
-    let diceNumber1, diceNumber2, diceNumber3, diceNumber4, diceNumber5;
+    let diceOne;
+    let diceTwo;
+    let diceThree;
+    let diceFour;
+    let diceFive;
     // if statement checks to see if the dice is checked. If not, then dice is rolled.
     // 2nd parameter passed in to diceRollDetermination is dice position number.
 
+    console.log("diceOne:   " + this.state.diceOneChecked)
+    console.log("diceTwo:   " + this.state.diceTwoChecked)
+    console.log("diceThree: " + this.state.diceThreeChecked)
+    console.log("diceFour:  " + this.state.diceFourChecked)
+    console.log("diceFive:  " + this.state.diceFiveChecked)
+
     if (this.state.diceOneChecked === false) {
-      diceNumber1 = this.rolledNumber();
-      this.diceRollDetermination(diceNumber1, 1)
+      diceOne = this.rolledNumber();
+      this.diceRollDetermination(diceOne, 1)
     } 
 
     if (this.state.diceTwoChecked === false) {
-      diceNumber2 = this.rolledNumber();
-      this.diceRollDetermination(diceNumber2, 2)
+      diceTwo = this.rolledNumber();
+      this.diceRollDetermination(diceTwo, 2)
     } 
     if (this.state.diceThreeChecked === false) {
-      diceNumber3 = this.rolledNumber();
-      this.diceRollDetermination(diceNumber3, 3)
+      diceThree = this.rolledNumber();
+      this.diceRollDetermination(diceThree, 3)
     } 
 
     if (this.state.diceFourChecked === false) {
-      diceNumber4 = this.rolledNumber();
-      this.diceRollDetermination(diceNumber4, 4)
+      diceFour = this.rolledNumber();
+      this.diceRollDetermination(diceFour, 4)
     } 
 
     if (this.state.diceFiveChecked === false) {
-      diceNumber5 = this.rolledNumber();
-      this.diceRollDetermination(diceNumber5, 5)
+      diceFive = this.rolledNumber();
+      this.diceRollDetermination(diceFive, 5)
     } 
   };
 
