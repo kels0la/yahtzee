@@ -12,7 +12,7 @@ body {
 }
 
 .shadowEffect {
-  box-shadow: 0 0px 14px 0 red;
+  box-shadow: 0 0px 14px 0 #2BA228;
 }
 
 .shadowEffectSmall {
@@ -21,4 +21,8 @@ body {
 
 input:checked + label img {
   box-shadow: 0 0px 10px 0 #2BA228;   
+}
+
+.shadowEffectRed {
+  box-shadow: 0 0px 14px 0 red;
 }
