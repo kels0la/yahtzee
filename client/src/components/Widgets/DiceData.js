@@ -1,5 +1,3 @@
-import React from 'react';
-
 import diceOne from '../../assets/images/diceOne.png';
 import diceTwo from '../../assets/images/diceTwo.png';
 import diceThree from '../../assets/images/diceThree.png';
