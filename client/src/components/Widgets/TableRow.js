@@ -5,7 +5,7 @@ export const TableRow = props => {
 
   let { rowType, rowTwoId, labelText, bottomFormatting } = props;
   let rowOneClasses, rowTwoClasses, rowThreeClasses, rowThreeDisplay, scoreDisplay, rowThree;
-  let bottomBorder = 'border-b-2 border-red pb-1';
+  let bottomBorder = 'border-b-2 border-brand-green pb-1';
 
   switch (rowType) {
     case 'labelRow':
@@ -40,9 +40,9 @@ export const TableRow = props => {
     labelText = 'Label';
     scoreDisplay = 'Score';
     rowThreeDisplay = 'Select'
-    rowOneClasses = 'border-b-2 border-red pb-1 text-base text-red';
-    rowTwoClasses = 'border-b-2 border-red pb-1 text-base text-red';
-    rowThreeClasses = 'border-b-2 border-red pb-1 text-base text-red';
+    rowOneClasses = 'border-b-2 border-brand-green pb-1 text-base text-red';
+    rowTwoClasses = 'border-b-2 border-brand-green pb-1 text-base text-red';
+    rowThreeClasses = 'border-b-2 border-brand-green pb-1 text-base text-red';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function noSelectionRowFormatting() {

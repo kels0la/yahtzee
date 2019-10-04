@@ -11,7 +11,7 @@ const MainPage = props => (
       <div className='text-center'><img src={YahtzeeImg} alt='yahtzee' /></div>
         <div className='px-3 -mt-5'><hr className="border-medium-gray border-3 hrModals"></hr></div>
       <div className='p-3 flex'>
-        <div className='table text-sm border-light-gray border p-1 shadowEffect'>
+        <div className='table rounded text-sm border-light-gray border p-1 shadowEffect mr-5'>
           <form>
             {rowData.map(row => (
               <TableRow 
@@ -28,9 +28,9 @@ const MainPage = props => (
           </form>
         </div>
         {/* Dice and Submit Button */}
-        <span>
-          <Button disabledButton={props.disabledButton} text='Roll Dice' styles='text-light-gray border-red' onClick={() => props.rollDice()}></Button>
-        </span>
+        <div className='rounded text-sm text-light-gray px-4 pt-2 h-8 mt-1px border border-brand-green border-3 inline-flex shadowEffectRed mr-1'>
+          Roll Number: {props.turnNumber}
+        </div>
         <div className='inline-flex pl-3'>
           {/* I would like do a mapping, but I don't know how to do it with the diceImage changing */}
           <Dice diceId={'diceOneId'} disabled={props.disabledDice[0]} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage} diceChecked={props.diceOneChecked} onChange={props.onChange}/>
@@ -50,6 +50,9 @@ const MainPage = props => (
             />
             ))} */}
         </div>
+        <span>
+          <Button disabledButton={props.disabledButton} text='Roll Dice' styles='text-light-gray border-red' onClick={() => props.rollDice()}></Button>
+        </span>
       </div>
     </div>
   </React.Fragment>
