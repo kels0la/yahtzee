@@ -31,6 +31,9 @@ const MainPage = props => (
           </form>
         </div>
         {/* Dice and Submit Button */}
+        <div>
+          <Button disabledButton={props.disabledButton} text='Roll Dice' styles='text-light-gray border-red' onClick={() => props.rollDice()}></Button>
+        </div>
         <div className='inline-flex pl-3'>
           {/* I would like do a mapping, but I don't know how to do it with the diceImage changing */}
           <Dice diceId={'diceOneId'} disabled={props.disabledDice[0]} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage} diceChecked={props.diceOneChecked} onChange={props.onChange} />
@@ -51,7 +54,7 @@ const MainPage = props => (
             ))} */}
         </div>
         <div>
-          <Button disabledButton={props.disabledButton} text='Roll Dice' styles='text-light-gray border-red' onClick={() => props.rollDice()}></Button>
+
         </div>
       </div>
     </div>
