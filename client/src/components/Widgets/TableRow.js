@@ -41,31 +41,31 @@ export const TableRow = props => {
     scoreDisplay = 'Score';
     rowThreeDisplay = 'Select'
     rowOneClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm text-yahtzee-red';
-    rowTwoClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm text-yahtzee-red';
-    rowThreeClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm text-yahtzee-red';
-    rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
+    rowTwoClasses = 'border-t-2 border-b-2 pt-1 border-brand-green pb-1 text-sm text-yahtzee-red';
+    rowThreeClasses = 'border-t-2 border-b-2 pt-1 border-brand-green pb-1 text-sm text-yahtzee-red';
+    rowThree = <div className={`w-1/3 table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function noSelectionRowFormatting() {
     rowThreeDisplay = ''
-    rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
+    rowThree = <div className={`w-1/3 table-cell pl-2 pt-1 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function finalRowFormatting() {
     rowThreeDisplay = <Button2 classprops='outline-button-two p-0 px-1 border-black border rounded text-sm bg-brand-green h-6' type="submit" styles='font-bold text-darkest-gray' text='Take Score' disabledFinalized={props.disabledFinalized} />
-    rowOneClasses = 'text-sm font-bold';
-    rowTwoClasses = 'pt-2 text-sm font-bold';
+    rowOneClasses = 'pt-3 -mt-1px text-sm font-bold';
+    rowTwoClasses = 'pt-2 -mt-1px text-sm font-bold';
     rowThreeClasses = 'pt-2 text-sm';
-    rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
+    rowThree = <div className={`w-1/3 table-cell pl-2 text-right ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function standardRowFormatting() {
     rowThreeDisplay = <RadioButton disabledRadio={props.disabledRadio} />;
-    rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
+    rowThree = <div className={`w-1/3 table-cell pl-2 pt-1 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
 
   return (
     <React.Fragment>
-      <div className='table-row text-xs'>
-        <div className={`table-cell pt-1 ${rowOneClasses}`}>{labelText}</div>
-        <div className={`table-cell text-center pl-2 ${rowTwoClasses}`} id={`${rowTwoId}`}>{scoreDisplay}</div>
+      <div className='table-row w-full flex text-xs'>
+        <div className={`w-1/3 table-cell pt-1 ${rowOneClasses}`}>{labelText}</div>
+        <div className={`w-1/3 table-cell text-center pl-2 ${rowTwoClasses}`} id={`${rowTwoId}`}>{scoreDisplay}</div>
         {rowThree}
       </div>
     </React.Fragment>
