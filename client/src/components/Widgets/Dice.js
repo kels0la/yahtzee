@@ -8,8 +8,16 @@ export const Dice = props => {
   return (
     <React.Fragment>
       <div className='pl-1 '>
-        <input type='checkbox' disabled={disabled} checked={diceChecked} name={checkboxName} className='hidden' id={`${diceId}`} onChange={onChange} />
-        <label for={`${diceId}`}>
+        <input 
+          type='checkbox' 
+          disabled={disabled} 
+          checked={diceChecked} 
+          name={checkboxName} 
+          className='hidden' 
+          id={`${diceId}`} 
+          onChange={onChange} 
+        />
+        <label htmlFor={`${diceId}`}>
           <img className='border border-light-gray rounded-lg shadowEffectSmall h-16 w-16 cursor-pointer' src={diceImage} alt='dice' />
         </label>
       </div>

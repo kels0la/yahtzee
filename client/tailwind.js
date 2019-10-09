@@ -59,6 +59,7 @@ let colors = {
   'alert-success': '#FF3608',
   'modal-border': '#444',
   'mack-the-knife': '#444',
+  'yahtzee-red': '#cd2d2c',
 
   'transparent': 'transparent',
 

@@ -45,7 +45,7 @@ class MainPageContainer extends React.Component {
     });
   };
 
-  disabledFinalize = () => {
+  disableFinalize = () => {
     this.setState(prevState => ({ disabledFinalize: !prevState.disabledFinalize }))
   }
 
@@ -68,7 +68,7 @@ class MainPageContainer extends React.Component {
         let bindThis = this;
         setTimeout(() => {
             bindThis.obtainNumbers()
-        }, 1);
+        }, 10);
         this.unCheckDice();
         this.setState({ turnNumber: 1 })
 
@@ -118,50 +118,31 @@ class MainPageContainer extends React.Component {
     // 2nd parameter passed in to diceRollDetermination is dice position number.
     if (this.state.diceOneChecked === false) {
       diceOne = this.rolledNumber();
-      this.diceRollDetermination(diceOne, 1)
+      this.determineWhichDice(diceOne, 1)
     }
 
     if (this.state.diceTwoChecked === false) {
       diceTwo = this.rolledNumber();
-      this.diceRollDetermination(diceTwo, 2)
+      this.determineWhichDice(diceTwo, 2)
     }
     if (this.state.diceThreeChecked === false) {
       diceThree = this.rolledNumber();
-      this.diceRollDetermination(diceThree, 3)
+      this.determineWhichDice(diceThree, 3)
     }
 
     if (this.state.diceFourChecked === false) {
       diceFour = this.rolledNumber();
-      this.diceRollDetermination(diceFour, 4)
+      this.determineWhichDice(diceFour, 4)
     }
 
     if (this.state.diceFiveChecked === false) {
       diceFive = this.rolledNumber();
-      this.diceRollDetermination(diceFive, 5)
+      this.determineWhichDice(diceFive, 5)
     }
   };
 
   // Depending on the dice roll, call a function with the dicePosition
-  diceRollDetermination = (diceRollNumber, dicePosition) => {
-    switch (diceRollNumber) {
-      case 1:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 2:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 3:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 4:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 5:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 6:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      default:
-        return console.log("diceRollNumber not defined");
-    };
-  };
-
-  determineWhichDice = (dicePosition, diceRollNumber) => {
+  determineWhichDice = (diceRollNumber, dicePosition) => {
     let diceNumber;
     // Setting the image for the particular dice number
     switch (diceRollNumber) {
@@ -180,7 +161,6 @@ class MainPageContainer extends React.Component {
       default:
         console.log("nothing hit")
     };
-
     // Updating image state based upon the dice position
     switch (dicePosition) {
       case 1:

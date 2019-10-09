@@ -40,9 +40,9 @@ export const TableRow = props => {
     labelText = 'Label';
     scoreDisplay = 'Score';
     rowThreeDisplay = 'Select'
-    rowOneClasses = 'border-b-2 border-brand-green pb-1 text-sm text-red';
-    rowTwoClasses = 'border-b-2 border-brand-green pb-1 text-sm text-red';
-    rowThreeClasses = 'border-b-2 border-brand-green pb-1 text-sm text-red';
+    rowOneClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm text-yahtzee-red';
+    rowTwoClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm text-yahtzee-red';
+    rowThreeClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm text-yahtzee-red';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function noSelectionRowFormatting() {
@@ -50,10 +50,10 @@ export const TableRow = props => {
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function finalRowFormatting() {
-    rowThreeDisplay = <Button2 type="submit" text='Finalize Turn' disabledFinalized={props.disabledFinalized} />
+    rowThreeDisplay = <Button2 classprops='outline-button-two p-0 px-1 border-black border rounded text-sm bg-brand-green h-6' type="submit" styles='font-bold text-darkest-gray' text='Take Score' disabledFinalized={props.disabledFinalized} />
     rowOneClasses = 'text-sm font-bold';
-    rowTwoClasses = 'pt-1 text-sm font-bold';
-    rowThreeClasses = 'pt-1 text-sm';
+    rowTwoClasses = 'pt-2 text-sm font-bold';
+    rowThreeClasses = 'pt-2 text-sm';
     rowThree = <div className={`table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function standardRowFormatting() {

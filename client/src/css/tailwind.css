@@ -660,6 +660,8 @@ input {
   padding-right: 10px;
   padding-top: 1px;
   padding-bottom: 1px;
+  margin-left: 20px;
+  margin-top: 10px;
   font-family: Roboto;
   font-size: 1.25rem;
 }
@@ -806,6 +808,10 @@ input {
 
 .bg-mack-the-knife {
   background-color: #444;
+}
+
+.bg-yahtzee-red {
+  background-color: #cd2d2c;
 }
 
 .bg-transparent {
@@ -1160,6 +1166,10 @@ input {
   background-color: #444;
 }
 
+.hover\:bg-yahtzee-red:hover {
+  background-color: #cd2d2c;
+}
+
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
@@ -1510,6 +1520,10 @@ input {
 
 .focus\:bg-mack-the-knife:focus {
   background-color: #444;
+}
+
+.focus\:bg-yahtzee-red:focus {
+  background-color: #cd2d2c;
 }
 
 .focus\:bg-transparent:focus {
@@ -1936,6 +1950,10 @@ input {
   border-color: #444;
 }
 
+.border-yahtzee-red {
+  border-color: #cd2d2c;
+}
+
 .border-transparent {
   border-color: transparent;
 }
@@ -2286,6 +2304,10 @@ input {
 
 .hover\:border-mack-the-knife:hover {
   border-color: #444;
+}
+
+.hover\:border-yahtzee-red:hover {
+  border-color: #cd2d2c;
 }
 
 .hover\:border-transparent:hover {
@@ -2640,6 +2662,10 @@ input {
   border-color: #444;
 }
 
+.focus\:border-yahtzee-red:focus {
+  border-color: #cd2d2c;
+}
+
 .focus\:border-transparent:focus {
   border-color: transparent;
 }
@@ -2990,6 +3016,10 @@ input {
 
 .group:hover .group-hover\:border-mack-the-knife {
   border-color: #444;
+}
+
+.group:hover .group-hover\:border-yahtzee-red {
+  border-color: #cd2d2c;
 }
 
 .group:hover .group-hover\:border-transparent {
@@ -6420,6 +6450,10 @@ input {
   color: #444;
 }
 
+.text-yahtzee-red {
+  color: #cd2d2c;
+}
+
 .text-transparent {
   color: transparent;
 }
@@ -6772,6 +6806,10 @@ input {
   color: #444;
 }
 
+.hover\:text-yahtzee-red:hover {
+  color: #cd2d2c;
+}
+
 .hover\:text-transparent:hover {
   color: transparent;
 }
@@ -7122,6 +7160,10 @@ input {
 
 .focus\:text-mack-the-knife:focus {
   color: #444;
+}
+
+.focus\:text-yahtzee-red:focus {
+  color: #cd2d2c;
 }
 
 .focus\:text-transparent:focus {
@@ -7981,6 +8023,10 @@ input {
     background-color: #444;
   }
 
+  .sm\:bg-yahtzee-red {
+    background-color: #cd2d2c;
+  }
+
   .sm\:bg-transparent {
     background-color: transparent;
   }
@@ -8333,6 +8379,10 @@ input {
     background-color: #444;
   }
 
+  .sm\:hover\:bg-yahtzee-red:hover {
+    background-color: #cd2d2c;
+  }
+
   .sm\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -8683,6 +8733,10 @@ input {
 
   .sm\:focus\:bg-mack-the-knife:focus {
     background-color: #444;
+  }
+
+  .sm\:focus\:bg-yahtzee-red:focus {
+    background-color: #cd2d2c;
   }
 
   .sm\:focus\:bg-transparent:focus {
@@ -9101,6 +9155,10 @@ input {
     border-color: #444;
   }
 
+  .sm\:border-yahtzee-red {
+    border-color: #cd2d2c;
+  }
+
   .sm\:border-transparent {
     border-color: transparent;
   }
@@ -9451,6 +9509,10 @@ input {
 
   .sm\:hover\:border-mack-the-knife:hover {
     border-color: #444;
+  }
+
+  .sm\:hover\:border-yahtzee-red:hover {
+    border-color: #cd2d2c;
   }
 
   .sm\:hover\:border-transparent:hover {
@@ -9805,6 +9867,10 @@ input {
     border-color: #444;
   }
 
+  .sm\:focus\:border-yahtzee-red:focus {
+    border-color: #cd2d2c;
+  }
+
   .sm\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -10155,6 +10221,10 @@ input {
 
   .group:hover .sm\:group-hover\:border-mack-the-knife {
     border-color: #444;
+  }
+
+  .group:hover .sm\:group-hover\:border-yahtzee-red {
+    border-color: #cd2d2c;
   }
 
   .group:hover .sm\:group-hover\:border-transparent {
@@ -13569,6 +13639,10 @@ input {
     color: #444;
   }
 
+  .sm\:text-yahtzee-red {
+    color: #cd2d2c;
+  }
+
   .sm\:text-transparent {
     color: transparent;
   }
@@ -13921,6 +13995,10 @@ input {
     color: #444;
   }
 
+  .sm\:hover\:text-yahtzee-red:hover {
+    color: #cd2d2c;
+  }
+
   .sm\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -14271,6 +14349,10 @@ input {
 
   .sm\:focus\:text-mack-the-knife:focus {
     color: #444;
+  }
+
+  .sm\:focus\:text-yahtzee-red:focus {
+    color: #cd2d2c;
   }
 
   .sm\:focus\:text-transparent:focus {
@@ -15116,6 +15198,10 @@ input {
     background-color: #444;
   }
 
+  .md\:bg-yahtzee-red {
+    background-color: #cd2d2c;
+  }
+
   .md\:bg-transparent {
     background-color: transparent;
   }
@@ -15468,6 +15554,10 @@ input {
     background-color: #444;
   }
 
+  .md\:hover\:bg-yahtzee-red:hover {
+    background-color: #cd2d2c;
+  }
+
   .md\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -15818,6 +15908,10 @@ input {
 
   .md\:focus\:bg-mack-the-knife:focus {
     background-color: #444;
+  }
+
+  .md\:focus\:bg-yahtzee-red:focus {
+    background-color: #cd2d2c;
   }
 
   .md\:focus\:bg-transparent:focus {
@@ -16236,6 +16330,10 @@ input {
     border-color: #444;
   }
 
+  .md\:border-yahtzee-red {
+    border-color: #cd2d2c;
+  }
+
   .md\:border-transparent {
     border-color: transparent;
   }
@@ -16586,6 +16684,10 @@ input {
 
   .md\:hover\:border-mack-the-knife:hover {
     border-color: #444;
+  }
+
+  .md\:hover\:border-yahtzee-red:hover {
+    border-color: #cd2d2c;
   }
 
   .md\:hover\:border-transparent:hover {
@@ -16940,6 +17042,10 @@ input {
     border-color: #444;
   }
 
+  .md\:focus\:border-yahtzee-red:focus {
+    border-color: #cd2d2c;
+  }
+
   .md\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -17290,6 +17396,10 @@ input {
 
   .group:hover .md\:group-hover\:border-mack-the-knife {
     border-color: #444;
+  }
+
+  .group:hover .md\:group-hover\:border-yahtzee-red {
+    border-color: #cd2d2c;
   }
 
   .group:hover .md\:group-hover\:border-transparent {
@@ -20704,6 +20814,10 @@ input {
     color: #444;
   }
 
+  .md\:text-yahtzee-red {
+    color: #cd2d2c;
+  }
+
   .md\:text-transparent {
     color: transparent;
   }
@@ -21056,6 +21170,10 @@ input {
     color: #444;
   }
 
+  .md\:hover\:text-yahtzee-red:hover {
+    color: #cd2d2c;
+  }
+
   .md\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -21406,6 +21524,10 @@ input {
 
   .md\:focus\:text-mack-the-knife:focus {
     color: #444;
+  }
+
+  .md\:focus\:text-yahtzee-red:focus {
+    color: #cd2d2c;
   }
 
   .md\:focus\:text-transparent:focus {
@@ -22251,6 +22373,10 @@ input {
     background-color: #444;
   }
 
+  .lg\:bg-yahtzee-red {
+    background-color: #cd2d2c;
+  }
+
   .lg\:bg-transparent {
     background-color: transparent;
   }
@@ -22603,6 +22729,10 @@ input {
     background-color: #444;
   }
 
+  .lg\:hover\:bg-yahtzee-red:hover {
+    background-color: #cd2d2c;
+  }
+
   .lg\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -22953,6 +23083,10 @@ input {
 
   .lg\:focus\:bg-mack-the-knife:focus {
     background-color: #444;
+  }
+
+  .lg\:focus\:bg-yahtzee-red:focus {
+    background-color: #cd2d2c;
   }
 
   .lg\:focus\:bg-transparent:focus {
@@ -23371,6 +23505,10 @@ input {
     border-color: #444;
   }
 
+  .lg\:border-yahtzee-red {
+    border-color: #cd2d2c;
+  }
+
   .lg\:border-transparent {
     border-color: transparent;
   }
@@ -23721,6 +23859,10 @@ input {
 
   .lg\:hover\:border-mack-the-knife:hover {
     border-color: #444;
+  }
+
+  .lg\:hover\:border-yahtzee-red:hover {
+    border-color: #cd2d2c;
   }
 
   .lg\:hover\:border-transparent:hover {
@@ -24075,6 +24217,10 @@ input {
     border-color: #444;
   }
 
+  .lg\:focus\:border-yahtzee-red:focus {
+    border-color: #cd2d2c;
+  }
+
   .lg\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -24425,6 +24571,10 @@ input {
 
   .group:hover .lg\:group-hover\:border-mack-the-knife {
     border-color: #444;
+  }
+
+  .group:hover .lg\:group-hover\:border-yahtzee-red {
+    border-color: #cd2d2c;
   }
 
   .group:hover .lg\:group-hover\:border-transparent {
@@ -27839,6 +27989,10 @@ input {
     color: #444;
   }
 
+  .lg\:text-yahtzee-red {
+    color: #cd2d2c;
+  }
+
   .lg\:text-transparent {
     color: transparent;
   }
@@ -28191,6 +28345,10 @@ input {
     color: #444;
   }
 
+  .lg\:hover\:text-yahtzee-red:hover {
+    color: #cd2d2c;
+  }
+
   .lg\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -28541,6 +28699,10 @@ input {
 
   .lg\:focus\:text-mack-the-knife:focus {
     color: #444;
+  }
+
+  .lg\:focus\:text-yahtzee-red:focus {
+    color: #cd2d2c;
   }
 
   .lg\:focus\:text-transparent:focus {
@@ -29386,6 +29548,10 @@ input {
     background-color: #444;
   }
 
+  .xl\:bg-yahtzee-red {
+    background-color: #cd2d2c;
+  }
+
   .xl\:bg-transparent {
     background-color: transparent;
   }
@@ -29738,6 +29904,10 @@ input {
     background-color: #444;
   }
 
+  .xl\:hover\:bg-yahtzee-red:hover {
+    background-color: #cd2d2c;
+  }
+
   .xl\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -30088,6 +30258,10 @@ input {
 
   .xl\:focus\:bg-mack-the-knife:focus {
     background-color: #444;
+  }
+
+  .xl\:focus\:bg-yahtzee-red:focus {
+    background-color: #cd2d2c;
   }
 
   .xl\:focus\:bg-transparent:focus {
@@ -30506,6 +30680,10 @@ input {
     border-color: #444;
   }
 
+  .xl\:border-yahtzee-red {
+    border-color: #cd2d2c;
+  }
+
   .xl\:border-transparent {
     border-color: transparent;
   }
@@ -30856,6 +31034,10 @@ input {
 
   .xl\:hover\:border-mack-the-knife:hover {
     border-color: #444;
+  }
+
+  .xl\:hover\:border-yahtzee-red:hover {
+    border-color: #cd2d2c;
   }
 
   .xl\:hover\:border-transparent:hover {
@@ -31210,6 +31392,10 @@ input {
     border-color: #444;
   }
 
+  .xl\:focus\:border-yahtzee-red:focus {
+    border-color: #cd2d2c;
+  }
+
   .xl\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -31560,6 +31746,10 @@ input {
 
   .group:hover .xl\:group-hover\:border-mack-the-knife {
     border-color: #444;
+  }
+
+  .group:hover .xl\:group-hover\:border-yahtzee-red {
+    border-color: #cd2d2c;
   }
 
   .group:hover .xl\:group-hover\:border-transparent {
@@ -34974,6 +35164,10 @@ input {
     color: #444;
   }
 
+  .xl\:text-yahtzee-red {
+    color: #cd2d2c;
+  }
+
   .xl\:text-transparent {
     color: transparent;
   }
@@ -35326,6 +35520,10 @@ input {
     color: #444;
   }
 
+  .xl\:hover\:text-yahtzee-red:hover {
+    color: #cd2d2c;
+  }
+
   .xl\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -35676,6 +35874,10 @@ input {
 
   .xl\:focus\:text-mack-the-knife:focus {
     color: #444;
+  }
+
+  .xl\:focus\:text-yahtzee-red:focus {
+    color: #cd2d2c;
   }
 
   .xl\:focus\:text-transparent:focus {
