@@ -45,30 +45,33 @@ class MainPageContainer extends React.Component {
     });
   };
 
-  disabledFinalize = () => {
-    this.setState(prevState => ({disabledFinalize: !prevState.disabledFinalize}))
+  disableFinalize = () => {
+    this.setState(prevState => ({ disabledFinalize: !prevState.disabledFinalize }))
   }
 
   rollDice = () => {
-    console.log(this.state.turnNumber)
+    console.log("turnNumber: " + this.state.turnNumber)
     switch (this.state.turnNumber) {
       case 0:
         this.obtainNumbers();
-        this.setState({turnNumber: 1, disabledDice: [false, false, false, false, false], disabledRadio: false})
+        this.setState({ turnNumber: 1, disabledDice: [false, false, false, false, false], disabledRadio: false })
         break
       case 1:
         this.obtainNumbers();
-        this.setState({turnNumber: 2})
+        this.setState({ turnNumber: 2 })
         break
       case 2:
         this.obtainNumbers();
-        this.setState({turnNumber: 3})
+        this.setState({ turnNumber: 3 })
         break
       case 3:
+        let bindThis = this;
+        setTimeout(() => {
+            bindThis.obtainNumbers()
+        }, 10);
         this.unCheckDice();
-        this.obtainNumbers();
-        this.setState({turnNumber: 1})
-        
+        this.setState({ turnNumber: 1 })
+
         // this.dontAllowRollUntilSomethingIsSelected
         // I'll need to force the person to select something here. Disable roll dice button until selection. Then once selection happens, it's re-enabled
         break
@@ -80,21 +83,23 @@ class MainPageContainer extends React.Component {
     const diceName = event.target.name;
     switch (diceName) {
       case 'checkBoxOne':
-        return this.setState(prevState => ({diceOneChecked: !prevState.diceOneChecked}));
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
       case 'checkBoxTwo':
-        return this.setState(prevState => ({diceTwoChecked: !prevState.diceTwoChecked}));
+        return this.setState(prevState => ({ diceTwoChecked: !prevState.diceTwoChecked }));
       case 'checkBoxThree':
-        return this.setState(prevState => ({diceThreeChecked: !prevState.diceThreeChecked}));
+        return this.setState(prevState => ({ diceThreeChecked: !prevState.diceThreeChecked }));
       case 'checkBoxFour':
-        return this.setState(prevState => ({diceFourChecked: !prevState.diceFourChecked}));
+        return this.setState(prevState => ({ diceFourChecked: !prevState.diceFourChecked }));
       case 'checkBoxFive':
-        return this.setState(prevState => ({diceFiveChecked: !prevState.diceFiveChecked}));
+        return this.setState(prevState => ({ diceFiveChecked: !prevState.diceFiveChecked }));
       default:
         return console.log("checkBoxNumber not defined");
     };
   };
 
-  rolledNumber = () => { return Math.floor((Math.random() * (7 - 1)) + 1); };
+  rolledNumber = () => {
+    return Math.floor((Math.random() * (7 - 1)) + 1);
+  };
 
   obtainNumbers = () => {
     let diceOne;
@@ -102,8 +107,6 @@ class MainPageContainer extends React.Component {
     let diceThree;
     let diceFour;
     let diceFive;
-    // if statement checks to see if the dice is checked. If not, then dice is rolled.
-    // 2nd parameter passed in to diceRollDetermination is dice position number.
 
     console.log("diceOne:   " + this.state.diceOneChecked)
     console.log("diceTwo:   " + this.state.diceTwoChecked)
@@ -111,52 +114,35 @@ class MainPageContainer extends React.Component {
     console.log("diceFour:  " + this.state.diceFourChecked)
     console.log("diceFive:  " + this.state.diceFiveChecked)
 
+    // if statement checks to see if the dice is checked. If not, then dice is rolled.
+    // 2nd parameter passed in to diceRollDetermination is dice position number.
     if (this.state.diceOneChecked === false) {
       diceOne = this.rolledNumber();
-      this.diceRollDetermination(diceOne, 1)
-    } 
+      this.determineWhichDice(diceOne, 1)
+    }
 
     if (this.state.diceTwoChecked === false) {
       diceTwo = this.rolledNumber();
-      this.diceRollDetermination(diceTwo, 2)
-    } 
+      this.determineWhichDice(diceTwo, 2)
+    }
     if (this.state.diceThreeChecked === false) {
       diceThree = this.rolledNumber();
-      this.diceRollDetermination(diceThree, 3)
-    } 
+      this.determineWhichDice(diceThree, 3)
+    }
 
     if (this.state.diceFourChecked === false) {
       diceFour = this.rolledNumber();
-      this.diceRollDetermination(diceFour, 4)
-    } 
+      this.determineWhichDice(diceFour, 4)
+    }
 
     if (this.state.diceFiveChecked === false) {
       diceFive = this.rolledNumber();
-      this.diceRollDetermination(diceFive, 5)
-    } 
+      this.determineWhichDice(diceFive, 5)
+    }
   };
 
   // Depending on the dice roll, call a function with the dicePosition
-  diceRollDetermination = (diceRollNumber, dicePosition) => {
-    switch (diceRollNumber) {
-      case 1:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 2:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 3:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 4:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 5:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      case 6:
-        return this.determineWhichDice(dicePosition, diceRollNumber);
-      default:
-        return console.log("diceRollNumber not defined");
-    };
-  };
-
-  determineWhichDice = (dicePosition, diceRollNumber) => {
+  determineWhichDice = (diceRollNumber, dicePosition) => {
     let diceNumber;
     // Setting the image for the particular dice number
     switch (diceRollNumber) {
