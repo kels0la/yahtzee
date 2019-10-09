@@ -65,9 +65,8 @@ class MainPageContainer extends React.Component {
         this.setState({ turnNumber: 3 })
         break
       case 3:
-        let bindThis = this;
         setTimeout(() => {
-            bindThis.obtainNumbers()
+          this.obtainNumbers()
         }, 10);
         this.unCheckDice();
         this.setState({ turnNumber: 1 })
@@ -107,12 +106,6 @@ class MainPageContainer extends React.Component {
     let diceThree;
     let diceFour;
     let diceFive;
-
-    console.log("diceOne:   " + this.state.diceOneChecked)
-    console.log("diceTwo:   " + this.state.diceTwoChecked)
-    console.log("diceThree: " + this.state.diceThreeChecked)
-    console.log("diceFour:  " + this.state.diceFourChecked)
-    console.log("diceFive:  " + this.state.diceFiveChecked)
 
     // if statement checks to see if the dice is checked. If not, then dice is rolled.
     // 2nd parameter passed in to diceRollDetermination is dice position number.
