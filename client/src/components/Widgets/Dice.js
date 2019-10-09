@@ -7,7 +7,7 @@ export const Dice = props => {
 
   return (
     <React.Fragment>
-      <div className='pl-1 '>
+      <div className='inline-flex text-center mx-1'>
         <input 
           type='checkbox' 
           disabled={disabled} 
