@@ -4,8 +4,11 @@ import rowData from '../../rowData.json';
 // Importing images
 import YahtzeeImg from '../../assets/images/yahtzeeimg.png';
 
-const MainPage = props => (
+const MainPage = props => {
+
+  return (
   <React.Fragment>
+    
     <div className='w-full h-screen bg-darkest-gray'>
       <div className='flex w-full'>
         <div className='w-1/3'>
@@ -58,6 +61,7 @@ const MainPage = props => (
       </div>
     </div>
   </React.Fragment>
-);
+  )
+};
 
-export default MainPage;
+export default MainPage;  
