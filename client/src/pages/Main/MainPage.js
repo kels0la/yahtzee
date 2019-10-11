@@ -43,6 +43,7 @@ const MainPage = props => (
                       scores={props.scores}
                       handleRadioButtonSelection={props.handleRadioButtonSelection}
                       selectedOption={props.selectedOption}
+                      toggleHidden={props.toggleHidden}
                     />
                   ))}
                 </div>

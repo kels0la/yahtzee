@@ -32,20 +32,20 @@ class MainPageContainer extends React.Component {
       disabledRollDiceBtn: false,
       disabledTakeScoreBtn: true,
       disabledScores: {
-        ones: true, onesChecked: false,
-        twos: true, twosChecked: false,
-        threes: true, threesChecked: false,
-        fours: true, foursChecked: false,
-        fives: true, fivesChecked: false,
-        sixes: true, sixesChecked: false,
-        threeKind: true, threeKindChecked: false,
-        fourKind: true, fourKindChecked: false,
-        fullHouse: true, fullHouseChecked: false,
-        smallStraight: true, smallStraightChecked: false,
-        largeStraight: true, largeStraightChecked: false,
-        yahtzee: true, yahtzeeChecked: false,
-        doubleYahtzee: true, doubleYahtzeeChecked: false,
-        chance: true, chanceChecked: false,
+        ones: true, onesHidden: false,
+        twos: true, twosHidden: false,
+        threes: true, threesHidden: false,
+        fours: true, foursHidden: false,
+        fives: true, fivesHidden: false,
+        sixes: true, sixesHidden: false,
+        threeKind: true, threeKindHidden: false,
+        fourKind: true, fourKindHidden: false,
+        fullHouse: true, fullHouseHidden: false,
+        smallStraight: true, smallStraightHidden: false,
+        largeStraight: true, largeStraightHidden: false,
+        yahtzee: true, yahtzeeHidden: false,
+        doubleYahtzee: true, doubleYahtzeeHidden: false,
+        chance: true, chanceHidden: false,
       },
       scores: {
         ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, doubleYahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
@@ -53,73 +53,6 @@ class MainPageContainer extends React.Component {
       selectedOption: ''
     };
   }
-  unCheckRadios = () => {
-    this.setState({
-      disabledScores: {
-        onesChecked: false,
-        twosChecked: false,
-        threesChecked: false,
-        foursChecked: false,
-        fivesChecked: false,
-        sixesChecked: false,
-        threeKindChecked: false,
-        fourKindChecked: false,
-        fullHouseChecked: false,
-        smallStraightChecked: false,
-        largeStraightChecked: false,
-        yahtzeeChecked: false,
-        doubleYahtzeeChecked: false,
-        chanceChecked: false,
-      },
-      selectedOption: ''
-    })
-  }
-
-  unCheckDice = () => {
-    this.setState({
-      diceOneChecked: false,
-      diceTwoChecked: false,
-      diceThreeChecked: false,
-      diceFourChecked: false,
-      diceFiveChecked: false,
-    });
-  };
-
-  handleTakeScoreDisable = () => {
-    this.setState(prevState => ({ disabledTakeScoreBtn: !prevState.disabledTakeScoreBtn }));
-  };
-
-  handleRollDiceDisable = () => {
-    this.setState(prevState => ({ disabledRollDiceBtn: !prevState.disabledRollDiceBtn }));
-  };
-
-  rollDice = () => {
-    console.log("turnNumber: " + this.state.turnNumber)
-    switch (this.state.turnNumber) {
-      case 0:
-        this.obtainNumbers();
-        this.setState({
-          turnNumber: 1, disabledDice: [false, false, false, false, false], disabledScores: { ones: false, twos: false, threes: false, fours: false, fives: false, sixes: false, threeKind: false, fourKind: false, fullHouse: false, smallStraight: false, largeStraight: false, yahtzee: false, doubleYahtzee: false, chance: false }
-        });
-        break
-      case 1:
-        this.obtainNumbers();
-        this.setState({ turnNumber: 2 });
-        break
-      case 2:
-        this.obtainNumbers();
-        this.setState({ turnNumber: 3 });
-        break
-      case 3:
-        setTimeout(() => {
-          this.obtainNumbers();
-        }, 10);
-        this.unCheckDice();
-        this.setState({ turnNumber: 1 });
-        break
-      default: console.log("If you see this, apparently there are more turns in Yahtzee")
-    }
-  };
 
   handleRadioButtonSelection = (event) => {
     const value = event.target.value;
@@ -128,24 +61,11 @@ class MainPageContainer extends React.Component {
     });
   };
 
-  determineOnesScore = () => {
-    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
-    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
-    let diceArrayFiltering = diceArray.filter((diceValue) => {
-      return diceValue === 1
-    });
-
-    let onesScore = diceArrayFiltering.length;
-    let updatedScore = {...this.state.scores, ones: onesScore}
-
-      this.setState({
-        scores: updatedScore,
-        disabledScores: { ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true },
-        turnNumber: 0
-      })
-
-    
-  };
+  handleSubmitSelection = (event) => {
+    event.preventDefault();
+    this.scoreSelectionLogic(this.state.selectedOption)
+    this.unCheckDice();
+  }
 
   scoreSelectionLogic = (selectedOption) => {
     switch (selectedOption) {
@@ -180,16 +100,26 @@ class MainPageContainer extends React.Component {
     };
   };
 
-  handleSubmitSelection = (event) => {
-    event.preventDefault();
-    // something to do with this.state.selectedOption. I think a Switch Statement here. If this.state.selectedOption = XXX
-    // Then you do this. Then at the end, radios are unchecked.
-    // The this is add to score, updated scores, disabled particular radio button. Let's start with ones.
-    this.scoreSelectionLogic(this.state.selectedOption)
-
-    console.log("You have submitted: ", this.state.selectedOption)
-    
-  }
+  determineOnesScore = () => {
+    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
+    let diceArrayFiltering = diceArray.filter((diceValue) => {
+      return diceValue === 1
+    });
+    // Need RunningTop, TotalTop, Total Score totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
+    let onesScore = diceArrayFiltering.length;
+    let updatedScore = {
+      ...this.state.scores, 
+      ones: onesScore, 
+      totalTop: this.state.scores.totalTop + onesScore,
+      totalScore: this.state.scores.totalScore + onesScore 
+    }
+      this.setState({
+        scores: updatedScore,
+        disabledScores: { ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true, onesHidden: true },
+        turnNumber: 0
+      })
+  };
 
   handleChange = (event) => {
     const diceName = event.target.name;
@@ -207,6 +137,34 @@ class MainPageContainer extends React.Component {
       default:
         return console.log("checkBoxNumber not defined");
     };
+  };
+
+  rollDice = () => {
+    console.log("turnNumber: " + this.state.turnNumber)
+    switch (this.state.turnNumber) {
+      case 0:
+        this.obtainNumbers();
+        this.setState({
+          turnNumber: 1, disabledDice: [false, false, false, false, false], disabledScores: { ones: false, twos: false, threes: false, fours: false, fives: false, sixes: false, threeKind: false, fourKind: false, fullHouse: false, smallStraight: false, largeStraight: false, yahtzee: false, doubleYahtzee: false, chance: false }
+        });
+        break
+      case 1:
+        this.obtainNumbers();
+        this.setState({ turnNumber: 2 });
+        break
+      case 2:
+        this.obtainNumbers();
+        this.setState({ turnNumber: 3 });
+        break
+      case 3:
+        setTimeout(() => {
+          this.obtainNumbers();
+        }, 10);
+        this.unCheckDice();
+        this.setState({ turnNumber: 1 });
+        break
+      default: console.log("If you see this, apparently there are more turns in Yahtzee")
+    }
   };
 
   rolledNumber = () => {
@@ -282,6 +240,24 @@ class MainPageContainer extends React.Component {
       default:
         return console.log("nothing hit");
     };
+  };
+
+  unCheckDice = () => {
+    this.setState({
+      diceOneChecked: false,
+      diceTwoChecked: false,
+      diceThreeChecked: false,
+      diceFourChecked: false,
+      diceFiveChecked: false,
+    });
+  };
+
+  handleTakeScoreDisable = () => {
+    this.setState(prevState => ({ disabledTakeScoreBtn: !prevState.disabledTakeScoreBtn }));
+  };
+
+  handleRollDiceDisable = () => {
+    this.setState(prevState => ({ disabledRollDiceBtn: !prevState.disabledRollDiceBtn }));
   };
 
   render() {

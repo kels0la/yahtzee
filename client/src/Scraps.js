@@ -295,3 +295,25 @@ checkScoreCombinations = (diceValueOne, diceValueTwo, diceValueThree, diceValueF
       }, 10);
       
     };
+
+    unCheckRadios = () => {
+      this.setState({
+        disabledScores: {
+          onesChecked: false,
+          twosChecked: false,
+          threesChecked: false,
+          foursChecked: false,
+          fivesChecked: false,
+          sixesChecked: false,
+          threeKindChecked: false,
+          fourKindChecked: false,
+          fullHouseChecked: false,
+          smallStraightChecked: false,
+          largeStraightChecked: false,
+          yahtzeeChecked: false,
+          doubleYahtzeeChecked: false,
+          chanceChecked: false,
+        },
+        selectedOption: ''
+      })
+    }
