@@ -23,7 +23,7 @@ const MainPage = props => (
             <div className='table rounded border-light-gray border px-2 pt-2 pb-2 shadowEffect mr-5 w-full'>
               <div className='flex w-full justify-between'>
                 <div id="gameTurnNumberStatus" className='text-sm text-light-gray font-bold'>
-                  {props.turnNumber === 0 ? <div className='pt-1 h-8 mt-1px'>Roll the dice to start!</div> : <div className='pt-1 h-8 mt-1px'>Roll Number: {props.turnNumber}</div>}
+                  {props.turnNumber === 0 ? <div className='pt-1 h-8 mt-1px'>Roll the dice!</div> : <div className='pt-1 h-8 mt-1px'>Roll Number: {props.turnNumber}</div>}
                 </div>
                 <Button classprops='main-button outline-button p-0 inline-block px-1 border-black border rounded text-sm bg-light-gray hvr-wobble-skew h-6' disabledrolldicebtn={props.disabledRollDiceBtn ? 1 : 0} text='Roll Dice' styles='text-darkest-gray font-bold' onClick={() => props.rollDice()}></Button>
               </div>

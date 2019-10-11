@@ -248,3 +248,50 @@ checkScoreCombinations = (diceValueOne, diceValueTwo, diceValueThree, diceValueF
         return console.log("checkBoxNumber not defined");
     };
   };
+   // switch (value) {
+    //   case 'onesScore':
+    //     return this.setState(prevState => ({disabledScores: {onesChecked: !prevState.onesChecked}}));
+    //   case 'twosScore':
+    //     return this.setState(prevState => ({disabledScores: {twosChecked: !prevState.twosChecked}}));
+    //   case 'threesScore':
+    //     return this.setState(prevState => ({disabledScores: {threesChecked: !prevState.threesChecked}}));
+    //   case 'foursScore':
+    //     return this.setState(prevState => ({disabledScores: {foursChecked: !prevState.foursChecked}}));
+    //   case 'fivesScore':
+    //     return this.setState(prevState => ({disabledScores: {fivesChecked: !prevState.fivesChecked}}));
+    //   case 'sixesScore':
+    //     return this.setState(prevState => ({disabledScores: {sixesChecked: !prevState.sixesChecked}}));
+    //   case 'threeKindScore':
+    //     return this.setState(prevState => ({disabledScores: {threeKindChecked: !prevState.threeKindChecked}}));
+    //   case 'fourKindScore':
+    //     return this.setState(prevState => ({disabledScores: {fourKindChecked: !prevState.fourKindChecked}}));
+    //   case 'fullHouseScore':
+    //     return this.setState(prevState => ({disabledScores: {fullHouseChecked: !prevState.fullHouseChecked}}));
+    //   case 'smallStraightScore':
+    //     return this.setState(prevState => ({disabledScores: {smallStraightChecked: !prevState.smallStraightChecked}}));
+    //   case 'largeStraightScore':
+    //     return this.setState(prevState => ({disabledScores: {largeStraightChecked: !prevState.largeStraightChecked}}));
+    //   case 'yahtzeeScore':
+    //     return this.setState(prevState => ({disabledScores: {yahtzeeChecked: !prevState.yahtzeeChecked}}));
+    //   case 'doubleYahtzeeScore':
+    //     return this.setState(prevState => ({disabledScores: {doubleYahtzeeChecked: !prevState.doubleYahtzeeChecked}}));
+    //     case 'chanceScore':
+    //     return this.setState(prevState => ({disabledScores: {chanceChecked: !prevState.chanceChecked}}));
+    //   default:
+    // }
+
+    determineOnesScore = () => {
+      let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+      // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
+      let diceArrayFiltering = diceArray.filter((diceValue) => {
+        return diceValue === 1
+      });
+  
+      let onesScore = diceArrayFiltering.length;
+      const updatedScore = {...this.state.scores}
+      updatedScore.ones = onesScore;
+      setTimeout(() => {
+        this.setState(updatedScore)
+      }, 10);
+      
+    };

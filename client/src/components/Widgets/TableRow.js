@@ -76,7 +76,7 @@ export const TableRow = props => {
       type="submit" 
       styles='font-bold text-darkest-gray' 
       text='Take Score' 
-      disabledtakescorebtn={disabledTakeScoreBtn ? 1 : 0 } 
+      disabledtakescorebtn={disabledTakeScoreBtn ? 1 : 0 } // An error in the console wanted this to return a 1 or 0 for true or false rather than the boolean value.
       disabled={cantSubmit}
     />;
     rowOneClasses = 'pt-3 -mt-1px text-sm font-bold';
@@ -88,7 +88,7 @@ export const TableRow = props => {
     switch (props.disabledRadio) {
       case 'onesDisabled':
         scoreDisplay = scores.ones
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.ones} radioBtnValue={radioBtnValue} disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection}/>;
+        rowThreeDisplay = <RadioButton disabledScore={disabledScores.ones} radioBtnValue={radioBtnValue} disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} handleCheckboxChange={props.handleCheckboxChange} />;
         break;
       case 'twosDisabled':
         scoreDisplay = scores.twos
