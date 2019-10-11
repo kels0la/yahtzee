@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button, TableRow, Dice } from '../../components/Widgets';
+import { Button,  Dice, TableRow } from '../../components/Widgets';
 import rowData from '../../rowData.json';
 // Importing images
 import YahtzeeImg from '../../assets/images/yahtzeeimg.png';
 
 const MainPage = props => (
   <React.Fragment>
-    {/* {console.log(props)} */}
-    <div className='w-full h-screen bg-darkest-gray '>
+    <div className='w-full h-screen bg-darkest-gray'>
       <div className='flex w-full'>
         <div className='w-1/3'>
           <div className='flex'><img src={YahtzeeImg} alt='yahtzee' /></div>
@@ -24,22 +23,27 @@ const MainPage = props => (
             <div className='table rounded border-light-gray border px-2 pt-2 pb-2 shadowEffect mr-5 w-full'>
               <div className='flex w-full justify-between'>
                 <div id="gameTurnNumberStatus" className='text-sm text-light-gray font-bold'>
-                  {props.turnNumber === 0 ? <div className='pt-1 h-8 mt-1px'>Roll the dice to start!</div> : <div className='pt-1 h-8 mt-1px'>Roll Number: {props.turnNumber}</div>}
+                  {props.turnNumber === 0 ? <div className='pt-1 h-8 mt-1px'>Roll the dice!</div> : <div className='pt-1 h-8 mt-1px'>Roll Number: {props.turnNumber}</div>}
                 </div>
-                <Button classprops='main-button outline-button p-0 inline-block px-1 border-black border rounded text-sm bg-light-gray hvr-wobble-skew h-6' disabledbutton={props.disabledButton} text='Roll Dice' styles='text-darkest-gray font-bold' onClick={() => props.rollDice()}></Button>
+                <Button classprops='main-button outline-button p-0 inline-block px-1 border-black border rounded text-sm bg-light-gray hvr-wobble-skew h-6' disabledrolldicebtn={props.disabledRollDiceBtn ? 1 : 0} text='Roll Dice' styles='text-darkest-gray font-bold' onClick={() => props.rollDice()}></Button>
               </div>
-              <form>
+              <form onSubmit={props.handleSubmitSelection}>
                 <div className='w-full'>
                   {rowData.map(row => (
                     <TableRow
                       id={row.id}
                       key={row.id}
                       rowType={row.rowType}
-                      rowTwoId={row.rowTwoId}
+                      radioBtnValue={row.radioBtnValue}
                       labelText={row.labelText}
                       bottomFormatting={row.bottomFormatting}
-                      disabledRadio={props.disabledRadio}
-                      disabledFinalized={props.disabledFinalize}
+                      disabledRadio={row.disabledRadio}
+                      disabledTakeScoreBtn={props.disabledTakeScoreBtn}
+                      disabledScores={props.disabledScores}
+                      scores={props.scores}
+                      handleRadioButtonSelection={props.handleRadioButtonSelection}
+                      selectedOption={props.selectedOption}
+                      toggleHidden={props.toggleHidden}
                     />
                   ))}
                 </div>

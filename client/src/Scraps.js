@@ -191,3 +191,129 @@ for (var i = 0; i < diceChecked.length; i++) {
     this.diceRollDetermination(diceNumber[i], index)
   }
 }
+
+checkScoreCombinations = (diceValueOne, diceValueTwo, diceValueThree, diceValueFour, diceValueFive) => {
+  let diceValuesArray = [];
+
+  diceValuesArray.push(diceValueOne, diceValueTwo, diceValueThree, diceValueFour, diceValueFive)
+  console.log(diceValuesArray)
+
+  diceValuesArray.filter(checkOnes);
+
+  function checkOnes(value) {
+    let oneScore = 0;
+    if (value === 1) {
+      oneScore += 1
+      console.log(oneScore)
+    } else { return }
+    this.setState({
+
+    })
+  }
+
+}
+
+  handleRadioChange = (event) => {
+    const radioButtonValue = event.target.value;
+    switch (radioButtonValue) {
+      case 'onesScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'twosScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'threesScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'foursScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'fivesScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'sixesScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'threeKindScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'fourKindScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'fullHouseScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'smallStraightScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'largeStraightScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'yahtzeeScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'doubleYahtzeeScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+        case 'chanceScore':
+        return this.setState(prevState => ({ diceOneChecked: !prevState.diceOneChecked }));
+      default:
+        return console.log("checkBoxNumber not defined");
+    };
+  };
+   // switch (value) {
+    //   case 'onesScore':
+    //     return this.setState(prevState => ({disabledScores: {onesChecked: !prevState.onesChecked}}));
+    //   case 'twosScore':
+    //     return this.setState(prevState => ({disabledScores: {twosChecked: !prevState.twosChecked}}));
+    //   case 'threesScore':
+    //     return this.setState(prevState => ({disabledScores: {threesChecked: !prevState.threesChecked}}));
+    //   case 'foursScore':
+    //     return this.setState(prevState => ({disabledScores: {foursChecked: !prevState.foursChecked}}));
+    //   case 'fivesScore':
+    //     return this.setState(prevState => ({disabledScores: {fivesChecked: !prevState.fivesChecked}}));
+    //   case 'sixesScore':
+    //     return this.setState(prevState => ({disabledScores: {sixesChecked: !prevState.sixesChecked}}));
+    //   case 'threeKindScore':
+    //     return this.setState(prevState => ({disabledScores: {threeKindChecked: !prevState.threeKindChecked}}));
+    //   case 'fourKindScore':
+    //     return this.setState(prevState => ({disabledScores: {fourKindChecked: !prevState.fourKindChecked}}));
+    //   case 'fullHouseScore':
+    //     return this.setState(prevState => ({disabledScores: {fullHouseChecked: !prevState.fullHouseChecked}}));
+    //   case 'smallStraightScore':
+    //     return this.setState(prevState => ({disabledScores: {smallStraightChecked: !prevState.smallStraightChecked}}));
+    //   case 'largeStraightScore':
+    //     return this.setState(prevState => ({disabledScores: {largeStraightChecked: !prevState.largeStraightChecked}}));
+    //   case 'yahtzeeScore':
+    //     return this.setState(prevState => ({disabledScores: {yahtzeeChecked: !prevState.yahtzeeChecked}}));
+    //   case 'doubleYahtzeeScore':
+    //     return this.setState(prevState => ({disabledScores: {doubleYahtzeeChecked: !prevState.doubleYahtzeeChecked}}));
+    //     case 'chanceScore':
+    //     return this.setState(prevState => ({disabledScores: {chanceChecked: !prevState.chanceChecked}}));
+    //   default:
+    // }
+
+    determineOnesScore = () => {
+      let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+      // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
+      let diceArrayFiltering = diceArray.filter((diceValue) => {
+        return diceValue === 1
+      });
+  
+      let onesScore = diceArrayFiltering.length;
+      const updatedScore = {...this.state.scores}
+      updatedScore.ones = onesScore;
+      setTimeout(() => {
+        this.setState(updatedScore)
+      }, 10);
+      
+    };
+
+    unCheckRadios = () => {
+      this.setState({
+        disabledScores: {
+          onesChecked: false,
+          twosChecked: false,
+          threesChecked: false,
+          foursChecked: false,
+          fivesChecked: false,
+          sixesChecked: false,
+          threeKindChecked: false,
+          fourKindChecked: false,
+          fullHouseChecked: false,
+          smallStraightChecked: false,
+          largeStraightChecked: false,
+          yahtzeeChecked: false,
+          doubleYahtzeeChecked: false,
+          chanceChecked: false,
+        },
+        selectedOption: ''
+      })
+    }
