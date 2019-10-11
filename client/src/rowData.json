@@ -1,131 +1,144 @@
 [
   {
     "id": 1,
-    "rowType": "labelRow",
-    "rowTwoId": "onesScore"
+    "rowType": "labelRow"
   },
   {
     "id": 2,
     "rowType": "",
-    "rowTwoId": "onesScore",
-    "labelText": "Aces"
+    "radioBtnValue": "onesScore",
+    "labelText": "Aces",
+    "disabledRadio": "onesDisabled"
   },
   {
     "id": 3,
     "rowType": "",
-    "rowTwoId": "twosScore",
-    "labelText": "Twos"
+    "radioBtnValue": "twosScore",
+    "labelText": "Twos",
+    "disabledRadio": "twosDisabled"
   },
   {
     "id": 4,
     "rowType": "",
-    "rowTwoId": "threesScore",
-    "labelText": "Threes"
+    "radioBtnValue": "threesScore",
+    "labelText": "Threes",
+    "disabledRadio": "threesDisabled"
   },
   {
     "id": 5,
     "rowType": "",
-    "rowTwoId": "foursScore",
-    "labelText": "Four"
+    "radioBtnValue": "foursScore",
+    "labelText": "Four",
+    "disabledRadio": "foursDisabled"
   },
   {
     "id": 6,
     "rowType": "",
-    "rowTwoId": "fivesScore",
-    "labelText": "Fives"
+    "radioBtnValue": "fivesScore",
+    "labelText": "Fives",
+    "disabledRadio": "fivesDisabled"
   },
   {
     "id": 7,
     "rowType": "",
-    "rowTwoId": "sixesScore",
+    "radioBtnValue": "sixesScore",
     "labelText": "Sixes",
-    "bottomFormatting": true
+    "bottomFormatting": true,
+    "disabledRadio": "sixesDisabled"
   },
   {
     "id": 8,
     "rowType": "noSelectionRow",
-    "rowTwoId": "runningTopScore",
+    "radioBtnValue": "runningTopScore",
     "labelText": "Running Top"
   },
   {
     "id": 9,
     "rowType": "noSelectionRow",
-    "rowTwoId": "bonusScore",
+    "radioBtnValue": "bonusScore",
     "labelText": "Bonus"
   },
   {
     "id": 10,
     "rowType": "noSelectionRow",
-    "rowTwoId": "totalTopScore",
+    "radioBtnValue": "totalTopScore",
     "labelText": "Total Top",
     "bottomFormatting": true
   },
   {
     "id": 11,
     "rowType": "",
-    "rowTwoId": "threeKindScore",
-    "labelText": "3 of a Kind"
+    "radioBtnValue": "threeKindScore",
+    "labelText": "3 of a Kind",
+    "disabledRadio": "threeKindDisabled"
   },
   {
     "id": 12,
     "rowType": "",
-    "rowTwoId": "fourKindScore",
-    "labelText": "4 of a Kind"
+    "radioBtnValue": "fourKindScore",
+    "labelText": "4 of a Kind",
+    "disabledRadio": "fourKindDisabled"
   },
   {
     "id": 13,
     "rowType": "",
-    "rowTwoId": "fullHouseScore",
-    "labelText": "Full House"
+    "radioBtnValue": "fullHouseScore",
+    "labelText": "Full House",
+    "disabledRadio": "fullHouseDisabled"
   },
   {
     "id": 14,
     "rowType": "",
-    "rowTwoId": "smallStraightScore",
-    "labelText": "Small Straight"
+    "radioBtnValue": "smallStraightScore",
+    "labelText": "Small Straight",
+    "disabledRadio": "smallStraightDisabled"
   },
   {
     "id": 15,
     "rowType": "",
-    "rowTwoId": "largeStraightScore",
-    "labelText": "Large Straight"
+    "radioBtnValue": "largeStraightScore",
+    "labelText": "Large Straight",
+    "disabledRadio": "largeStraightDisabled"
   },
   {
     "id": 16,
     "rowType": "",
-    "rowTwoId": "yahtzeeScore",
-    "labelText": "Yahtzee"
+    "radioBtnValue": "yahtzeeScore",
+    "labelText": "Yahtzee",
+    "disabledRadio": "yahtzeeDisabled"
   },
   {
     "id": 17,
     "rowType": "",
-    "rowTwoId": "doubleYahtzeeScore",
-    "labelText": "Yahtzee 2x"
+    "radioBtnValue": "doubleYahtzeeScore",
+    "labelText": "Yahtzee 2x",
+    "disabledRadio": "doubleYahtzeeDisabled"
   },
   {
     "id": 18,
     "rowType": "",
-    "rowTwoId": "chanceScore",
+    "radioBtnValue": "chanceScore",
     "labelText": "Chance",
-    "bottomFormatting": true
+    "bottomFormatting": true,
+    "disabledRadio": "chanceDisabled"
   },
   {
     "id": 19,
     "rowType": "noSelectionRow",
-    "rowTwoId": "totalBottomScore",
+    "radioBtnValue": "totalBottomScore",
     "labelText": "Total Bottom"
   },
   {
     "id": 20,
     "rowType": "noSelectionRow",
-    "rowTwoId": "totalTopOnBottom",
+    "radioBtnValue": "totalTopOnBottom",
     "labelText": "Total Top",
     "bottomFormatting": true
   },
   {
     "id": 21,
     "rowType": "finalRow",
-    "rowTwoId": "totalScore",
+    "radioBtnValue": "totalScore",
     "labelText": "Total Score"
   }
 ]

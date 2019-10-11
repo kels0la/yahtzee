@@ -29,9 +29,28 @@ class MainPageContainer extends React.Component {
       diceFiveChecked: false,
       turnNumber: 0,
       disabledDice: [true, true, true, true, true],
-      disabledButton: false,
-      disabledRadio: true,
-      disabledFinalize: true
+      disabledRollDiceBtn: false,
+      disabledTakeScoreBtn: true,
+      disabledScores: {
+        ones: true,
+        twos: true,
+        threes: true,
+        fours: true,
+        fives: true,
+        sixes: true,
+        threeKind: true,
+        fourKind: true,
+        fullHouse: true,
+        smallStraight: true,
+        largeStraight: true,
+        yahtzee: true,
+        doubleYahtzee: true,
+        chance: true
+      },
+      scores: {
+        ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, doubleYahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus:0, totalTop: 0, totalBottom: 0
+      },
+      selectedOption: ''
     };
   }
 
@@ -41,12 +60,16 @@ class MainPageContainer extends React.Component {
       diceTwoChecked: false,
       diceThreeChecked: false,
       diceFourChecked: false,
-      diceFiveChecked: false
+      diceFiveChecked: false,
     });
   };
 
-  disableFinalize = () => {
-    this.setState(prevState => ({ disabledFinalize: !prevState.disabledFinalize }))
+  handleTakeScoreDisable = () => {
+    this.setState(prevState => ({ disabledTakeScoreBtn: !prevState.disabledTakeScoreBtn }));
+  }
+
+  handleRollDiceDisable = () => {
+    this.setState(prevState => ({ disabledRollDiceBtn: !prevState.disabledRollDiceBtn }));
   }
 
   rollDice = () => {
@@ -54,29 +77,48 @@ class MainPageContainer extends React.Component {
     switch (this.state.turnNumber) {
       case 0:
         this.obtainNumbers();
-        this.setState({ turnNumber: 1, disabledDice: [false, false, false, false, false], disabledRadio: false })
+        this.setState({
+          turnNumber: 1, disabledDice: [false, false, false, false, false], disabledScores: {ones: false, twos: false, threes: false, fours: false, fives: false, sixes: false, threeKind: false, fourKind: false, fullHouse: false, smallStraight: false, largeStraight: false, yahtzee: false, doubleYahtzee: false, chance: false}
+        });
         break
       case 1:
         this.obtainNumbers();
-        this.setState({ turnNumber: 2 })
+        this.setState({ turnNumber: 2 });
         break
       case 2:
         this.obtainNumbers();
-        this.setState({ turnNumber: 3 })
+        this.setState({ turnNumber: 3 });
         break
       case 3:
         setTimeout(() => {
-          this.obtainNumbers()
+          this.obtainNumbers();
         }, 10);
         this.unCheckDice();
-        this.setState({ turnNumber: 1 })
-
-        // this.dontAllowRollUntilSomethingIsSelected
-        // I'll need to force the person to select something here. Disable roll dice button until selection. Then once selection happens, it's re-enabled
+        this.setState({ turnNumber: 1 });
         break
       default: console.log("If you see this, apparently there are more turns in Yahtzee")
     }
   };
+
+  // radioBtnDisable = (event) => {
+  //   const radioBtnValue = event.target.value;
+
+
+  //   this.setState(prevState => ({ disabledRadio: !prevState.disabledRadio }))
+  // }
+  handleRadioButtonSelection = (event) => {
+    const value = event.target.value;
+    this.setState({
+      selectedOption: value
+    })
+  }
+
+  handleSubmitSelection = (event) => {
+    event.preventDefault();
+    // Okay, I could uncheck each radio button here after submission
+    // How do I check if something has been checked?
+    console.log("You have subbmitted: ", this.state.selectedOption)
+  }
 
   handleChange = (event) => {
     const diceName = event.target.name;
@@ -178,6 +220,8 @@ class MainPageContainer extends React.Component {
           {...this.state}
           rollDice={this.rollDice}
           onChange={this.handleChange}
+          handleRadioButtonSelection={this.handleRadioButtonSelection}
+          handleSubmitSelection={this.handleSubmitSelection}
         />
       </React.Fragment>
     )
