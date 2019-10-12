@@ -52,7 +52,7 @@ class MainPageContainer extends React.Component {
       selectedOption: ''
     };
   }
-
+// Based upon the Radio Button selected, this.state.selectedOption is changed
   handleRadioButtonSelection = (event) => {
     const value = event.target.value;
     this.setState({
@@ -60,12 +60,14 @@ class MainPageContainer extends React.Component {
     });
   };
 
+  // onClick of Button function capture this.state.selectedOption and passes it into the scoreSelectionLogic() function
   handleSubmitSelection = (event) => {
     event.preventDefault();
     this.scoreSelectionLogic(this.state.selectedOption)
     this.unCheckDice();
   }
-
+// Depending on the selected Radio Button option, this.state.selectedOption changes based upon what is clicked, 
+// and the proper function is called, where the score is checked and added.
   scoreSelectionLogic = (selectedOption) => {
     switch (selectedOption) {
       case 'onesScore':
@@ -110,15 +112,18 @@ class MainPageContainer extends React.Component {
       default: console.log("Error: Scores closed")
     };
   };
-
+  // The following "determineScores" functions pertain to each Yahtzee scoretype
   determineOnesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
-    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
+    // This filter function returns a new array with values that only include 1.
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 1
     });
-    // Need RunningTop, TotalTop, Total Score totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
+    // With this new array, we capture the length and multiply it by the dice number. 
+    // In this case, the dice number is 1, so it is unnecessary
     let onesScore = diceArrayFiltering.length;
+    // This updateScore object takes in the current state with ...this.state.scores
+    // And then updates the relevant scores based upon the onesScore variable.
     let updatedScore = {
       ...this.state.scores,
       ones: onesScore,
@@ -126,21 +131,24 @@ class MainPageContainer extends React.Component {
       runningTop: this.state.scores.runningTop + onesScore,
       totalScore: this.state.scores.totalScore + onesScore
     }
+    // This updateDisabledScores object captures the current state of the disabledScores object in state
+    // And disables selection of other radio buttons until the dice is rolled
+    // And hides the radio button for ones by turning onesHidden into true.
     let updateDisabledScores = {
       ...this.state.disabledScores,
       ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       onesHidden: true
     }
+    // We then update relevant state in the setScoreTakingState() function
+    // By passing in these objects as arguments
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
   determineTwosScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
-    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 2
     });
-    // Need RunningTop, TotalTop, Total Score totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
     let twosScore = diceArrayFiltering.length;
     twosScore = twosScore * 2;
     let updatedScore = {
@@ -157,9 +165,9 @@ class MainPageContainer extends React.Component {
     }
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
+
   determineThreesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
-    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 3
     });
@@ -180,9 +188,9 @@ class MainPageContainer extends React.Component {
     }
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
+
   determineFoursScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
-    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 4
     });
@@ -203,9 +211,9 @@ class MainPageContainer extends React.Component {
     }
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
+
   determineFivesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
-    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 5
     });
@@ -218,17 +226,17 @@ class MainPageContainer extends React.Component {
       totalTop: this.state.scores.totalTop + fivesScore,
       runningTop: this.state.scores.runningTop + fivesScore,
       totalScore: this.state.scores.totalScore + fivesScore
-    }
+    };
     let updateDisabledScores = {
       ...this.state.disabledScores,
       ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       fivesHidden: true
-    }
+    };
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
+
   determineSixesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
-    // This creates a new array with only ones, which I can then do a .length to determine how many and add to score.
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 6
     });
@@ -241,22 +249,26 @@ class MainPageContainer extends React.Component {
       totalTop: this.state.scores.totalTop + sixesScore,
       runningTop: this.state.scores.runningTop + sixesScore,
       totalScore: this.state.scores.totalScore + sixesScore
-    }
+    };
     let updateDisabledScores = {
       ...this.state.disabledScores,
       ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       sixesHidden: true
-    }
+    };
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
   determineThreeKindScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
     let threeKindScore = 0;
+    // We sort the array by values
     let arr = diceArray.sort();
-
+    // With these sorted values, we determine if there are any 3 of the same values
+    // If there are, we add up the array with a for loop
     if ((arr[0] === arr[1] && arr[0] === arr[2]) || (arr[1] === arr[2] && arr[1] === arr[3]) || (arr[2] === arr[3] && arr[2] === arr[4])) {
-      threeKindScore = arr[0] + arr[1] + arr[2] + arr[3] + arr[4];
+      for (var i = 0; i < arr.length; i++){
+        threeKindScore += arr[i];
+      }
     } else threeKindScore = 0
 
     let updatedScore = {
@@ -271,14 +283,13 @@ class MainPageContainer extends React.Component {
       threeKindHidden: true
     };
     this.setScoreTakingState(updatedScore, updateDisabledScores);
-
   };
 
   determineFourKindScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
     let fourKindScore;
     let arr = diceArray.sort();
-
+    // The only difference between this and threeKind is we don't use a forloop here.
     if ((arr[0] === arr[1] && arr[0] === arr[2] && arr[0] === arr[3]) || (arr[1] === arr[2] && arr[1] === arr[3] && arr[1] === arr[4])) {
       fourKindScore = arr[0] + arr[1] + arr[2] + arr[3] + arr[4];
     } else fourKindScore = 0;
@@ -295,15 +306,14 @@ class MainPageContainer extends React.Component {
       fourKindHidden: true
     };
     this.setScoreTakingState(updatedScore, updateDisabledScores);
-
   };
-
 
   determineFullHouseScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
     let fullHouseScore;
     let arr = diceArray.sort();
-
+    // Much like 3 and 4 of a kind, the array is sorted.
+    // With this sorted array, we can determine if there are 3 in a row && 2 in a row. There are only two ways that can be sorted
     if ((arr[0] === arr[1] && arr[0] === arr[2] && arr[3] === arr[4]) || (arr[0] === arr[1] && arr[2] === arr[3] && arr[2] === arr[4])) {
       fullHouseScore = 25;
     } else fullHouseScore = 0;
@@ -326,7 +336,7 @@ class MainPageContainer extends React.Component {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
     let smallStraightScore;
     let arr = diceArray;
-
+    // Using the array.includes() method, we can determine if there is a small straight. There are 3 different scenarios
     if ((arr.includes(1) && arr.includes(2) && arr.includes(3) && arr.includes(4)) ||
       (arr.includes(2) && arr.includes(3) && arr.includes(4) && arr.includes(5)) ||
       (arr.includes(3) && arr.includes(4) && arr.includes(5) && arr.includes(6))
@@ -376,6 +386,8 @@ class MainPageContainer extends React.Component {
   determineYahtzeeScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
     let yahtzeeScore;
+    // Using the array.every() function, we can determine if every dice has the same value
+    // If they do, the checkingYahtzeeArray variable returns true. If it does, yahtzeeScore is set to 50.
     let checkingYahtzeeArray = diceArray.every(diceValue => diceValue === diceArray[0]);
 
     if (checkingYahtzeeArray === true) {
@@ -397,6 +409,7 @@ class MainPageContainer extends React.Component {
   };
 
   determineChanceScore = () => {
+    // This is simply adding up the five dice values from state.
     let chanceScore = this.state.diceOneValue + this.state.diceTwoValue + this.state.diceThreeValue + this.state.diceFourValue + this.state.diceFiveValue;
     let updatedScore = {
       ...this.state.scores,
@@ -412,10 +425,10 @@ class MainPageContainer extends React.Component {
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
-  // Checks the runningTop score to see if 
+  // Checks the runningTop score to see if bonus should be added when player takes score
   checkBonus = () => {
     let updatedScoresWithBonus;
-    if (this.state.scores.runningTop > 62 || this.state.scores.bonus === 0) {
+    if (this.state.scores.runningTop > 62 && this.state.scores.bonus === 0) {
       updatedScoresWithBonus = {
         ...this.state.scores,
         bonus: 35,
@@ -428,6 +441,7 @@ class MainPageContainer extends React.Component {
     } return;
   };
 
+  // This function is called after scores are checked. Takes in two parameters based on updating the score and disabling/hiding relevant fields
   setScoreTakingState = (updatedScore, updateDisabledScores) => {
     this.setState({
       scores: updatedScore,
@@ -463,7 +477,7 @@ class MainPageContainer extends React.Component {
     };
   };
 
-  // To determine which turn number user is on
+  // To determine which turn number user is on and to enable/disable buttons based upon where they are in their turn
   rollDice = () => {
     switch (this.state.turnNumber) {
       case 0:
@@ -506,6 +520,7 @@ class MainPageContainer extends React.Component {
     return Math.floor((Math.random() * (7 - 1)) + 1);
   };
 
+  // To capture dice values, images, and proper ordering
   obtainNumbers = () => {
     let diceOne;
     let diceTwo;
@@ -541,6 +556,7 @@ class MainPageContainer extends React.Component {
   };
 
   // Depending on the dice roll, call a function with the dicePosition
+  // First parameter determines value of the dice. Second determines the dice position
   determineWhichDice = (diceRollNumber, dicePosition) => {
     let diceNumber;
     // Setting the image for the particular dice number
@@ -577,6 +593,7 @@ class MainPageContainer extends React.Component {
     };
   };
 
+  // Unchecks the dice at the end of each turn
   unCheckDice = () => {
     this.setState({
       diceOneChecked: false,
