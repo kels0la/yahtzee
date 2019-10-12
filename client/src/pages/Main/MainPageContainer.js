@@ -44,11 +44,10 @@ class MainPageContainer extends React.Component {
         smallStraight: true, smallStraightHidden: false,
         largeStraight: true, largeStraightHidden: false,
         yahtzee: true, yahtzeeHidden: false,
-        doubleYahtzee: true, doubleYahtzeeHidden: false,
         chance: true, chanceHidden: false,
       },
       scores: {
-        ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, doubleYahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
+        ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
       },
       selectedOption: ''
     };
@@ -66,6 +65,21 @@ class MainPageContainer extends React.Component {
     this.scoreSelectionLogic(this.state.selectedOption)
     this.unCheckDice();
   }
+
+  setScoreTakingState = (updatedScore, updateDisabledScores) => {
+    this.setState({
+      scores: updatedScore,
+      disabledScores: updateDisabledScores,
+      turnNumber: 0,
+      disabledDice: [true, true, true, true, true],
+      disabledTakeScoreBtn: true,
+      selectedOption: '',
+      disabledRollDiceBtn: false
+    })
+    setTimeout(() => {
+      this.checkBonus();
+    }, 100);
+  };
 
   scoreSelectionLogic = (selectedOption) => {
     switch (selectedOption) {
@@ -88,21 +102,43 @@ class MainPageContainer extends React.Component {
         this.determineSixesScore();
         break
       case 'threeKindScore':
+        this.determineThreeKindScore();
         break
       case 'fourKindScore':
+        this.determineFourKindScore();
+        break
+      case 'fullHouseScore':
+        this.determineFullHouseScore();
         break
       case 'smallStraightScore':
+        this.determineSmallStraightScore();
         break
       case 'largeStraightScore':
+        this.determineLargeStraightScore();
         break
       case 'yahtzeeScore':
-        break
-      case 'doubleYahtzeeScore':
+        this.determineYahtzeeScore();
         break
       case 'chanceScore':
+        this.determineChanceScore();
         break;
       default: console.log("Error: Scores closed")
     };
+  };
+
+  checkBonus = () => {
+    let updatedScoresWithBonus;
+    if (this.state.scores.runningTop > 62) {
+      updatedScoresWithBonus = {
+        ...this.state.scores,
+        bonus: 35,
+        totalTop: this.state.scores.totalTop + 35,
+        totalScore: this.state.scores.totalScore + 35
+      }
+      this.setState({
+        scores: updatedScoresWithBonus
+      })
+    } return;
   };
 
   determineOnesScore = () => {
@@ -114,26 +150,18 @@ class MainPageContainer extends React.Component {
     // Need RunningTop, TotalTop, Total Score totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
     let onesScore = diceArrayFiltering.length;
     let updatedScore = {
-      ...this.state.scores, 
-      ones: onesScore, 
+      ...this.state.scores,
+      ones: onesScore,
       totalTop: this.state.scores.totalTop + onesScore,
       runningTop: this.state.scores.runningTop + onesScore,
-      totalScore: this.state.scores.totalScore + onesScore 
+      totalScore: this.state.scores.totalScore + onesScore
     }
     let updateDisabledScores = {
       ...this.state.disabledScores,
-      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       onesHidden: true
     }
-      this.setState({
-        scores: updatedScore,
-        disabledScores: updateDisabledScores,
-        turnNumber: 0,
-        disabledDice: [true, true, true, true, true],
-        disabledTakeScoreBtn: true,
-        selectedOption: '',
-        disabledRollDiceBtn: false
-      })
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
   determineTwosScore = () => {
@@ -146,26 +174,18 @@ class MainPageContainer extends React.Component {
     let twosScore = diceArrayFiltering.length;
     twosScore = twosScore * 2;
     let updatedScore = {
-      ...this.state.scores, 
-      twos: twosScore, 
+      ...this.state.scores,
+      twos: twosScore,
       totalTop: this.state.scores.totalTop + twosScore,
       runningTop: this.state.scores.runningTop + twosScore,
-      totalScore: this.state.scores.totalScore + twosScore 
+      totalScore: this.state.scores.totalScore + twosScore
     }
     let updateDisabledScores = {
       ...this.state.disabledScores,
-      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       twosHidden: true
     }
-      this.setState({
-        scores: updatedScore,
-        disabledScores: updateDisabledScores,
-        turnNumber: 0,
-        disabledDice: [true, true, true, true, true],
-        disabledTakeScoreBtn: true,
-        selectedOption: '',
-        disabledRollDiceBtn: false
-      })
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
   determineThreesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
@@ -177,26 +197,18 @@ class MainPageContainer extends React.Component {
     threesScore = threesScore * 3;
 
     let updatedScore = {
-      ...this.state.scores, 
-      threes: threesScore, 
+      ...this.state.scores,
+      threes: threesScore,
       totalTop: this.state.scores.totalTop + threesScore,
       runningTop: this.state.scores.runningTop + threesScore,
-      totalScore: this.state.scores.totalScore + threesScore 
+      totalScore: this.state.scores.totalScore + threesScore
     }
     let updateDisabledScores = {
       ...this.state.disabledScores,
-      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       threesHidden: true
     }
-      this.setState({
-        scores: updatedScore,
-        disabledScores: updateDisabledScores,
-        turnNumber: 0,
-        disabledDice: [true, true, true, true, true],
-        disabledTakeScoreBtn: true,
-        selectedOption: '',
-        disabledRollDiceBtn: false
-      })
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
   determineFoursScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
@@ -208,26 +220,18 @@ class MainPageContainer extends React.Component {
     foursScore = foursScore * 4;
 
     let updatedScore = {
-      ...this.state.scores, 
-      fours: foursScore, 
+      ...this.state.scores,
+      fours: foursScore,
       totalTop: this.state.scores.totalTop + foursScore,
       runningTop: this.state.scores.runningTop + foursScore,
-      totalScore: this.state.scores.totalScore + foursScore 
+      totalScore: this.state.scores.totalScore + foursScore
     }
     let updateDisabledScores = {
       ...this.state.disabledScores,
-      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       foursHidden: true
     }
-      this.setState({
-        scores: updatedScore,
-        disabledScores: updateDisabledScores,
-        turnNumber: 0,
-        disabledDice: [true, true, true, true, true],
-        disabledTakeScoreBtn: true,
-        selectedOption: '',
-        disabledRollDiceBtn: false
-      })
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
   determineFivesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
@@ -239,26 +243,18 @@ class MainPageContainer extends React.Component {
     fivesScore = fivesScore * 5;
 
     let updatedScore = {
-      ...this.state.scores, 
-      fives: fivesScore, 
+      ...this.state.scores,
+      fives: fivesScore,
       totalTop: this.state.scores.totalTop + fivesScore,
       runningTop: this.state.scores.runningTop + fivesScore,
-      totalScore: this.state.scores.totalScore + fivesScore 
+      totalScore: this.state.scores.totalScore + fivesScore
     }
     let updateDisabledScores = {
       ...this.state.disabledScores,
-      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       fivesHidden: true
     }
-      this.setState({
-        scores: updatedScore,
-        disabledScores: updateDisabledScores,
-        turnNumber: 0,
-        disabledDice: [true, true, true, true, true],
-        disabledTakeScoreBtn: true,
-        selectedOption: '',
-        disabledRollDiceBtn: false
-      })
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
   determineSixesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
@@ -270,26 +266,180 @@ class MainPageContainer extends React.Component {
     sixesScore = sixesScore * 6;
 
     let updatedScore = {
-      ...this.state.scores, 
-      sixes: sixesScore, 
+      ...this.state.scores,
+      sixes: sixesScore,
       totalTop: this.state.scores.totalTop + sixesScore,
       runningTop: this.state.scores.runningTop + sixesScore,
-      totalScore: this.state.scores.totalScore + sixesScore 
+      totalScore: this.state.scores.totalScore + sixesScore
     }
     let updateDisabledScores = {
       ...this.state.disabledScores,
-      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, doubleYahtzee: true, chance: true,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
       sixesHidden: true
     }
-      this.setState({
-        scores: updatedScore,
-        disabledScores: updateDisabledScores,
-        turnNumber: 0,
-        disabledDice: [true, true, true, true, true],
-        disabledTakeScoreBtn: true,
-        selectedOption: '',
-        disabledRollDiceBtn: false
-      })
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
+  };
+
+  determineThreeKindScore = () => {
+    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+    let threeKindScore = 0;
+    let arr = diceArray.sort();
+
+    if ((arr[0] === arr[1] && arr[0] === arr[2]) || (arr[1] === arr[2] && arr[1] === arr[3]) || (arr[2] === arr[3] && arr[2] === arr[4])) {
+      threeKindScore = arr[0] + arr[1] + arr[2] + arr[3] + arr[4];
+    } else threeKindScore = 0
+
+    let updatedScore = {
+      ...this.state.scores,
+      threeKind: threeKindScore,
+      totalBottom: this.state.scores.totalBottom + threeKindScore,
+      totalScore: this.state.scores.totalScore + threeKindScore
+    };
+    let updateDisabledScores = {
+      ...this.state.disabledScores,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
+      threeKindHidden: true
+    };
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
+
+  };
+
+  determineFourKindScore = () => {
+    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+    let fourKindScore;
+    let arr = diceArray.sort();
+
+    if ((arr[0] === arr[1] && arr[0] === arr[2] && arr[0] === arr[3]) || (arr[1] === arr[2] && arr[1] === arr[3] && arr[1] === arr[4])) {
+      fourKindScore = arr[0] + arr[1] + arr[2] + arr[3] + arr[4];
+    } else fourKindScore = 0;
+
+    let updatedScore = {
+      ...this.state.scores,
+      fourKind: fourKindScore,
+      totalBottom: this.state.scores.totalBottom + fourKindScore,
+      totalScore: this.state.scores.totalScore + fourKindScore
+    };
+    let updateDisabledScores = {
+      ...this.state.disabledScores,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
+      fourKindHidden: true
+    };
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
+
+  };
+
+
+  determineFullHouseScore = () => {
+    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+    let fullHouseScore;
+    let arr = diceArray.sort();
+
+    if ((arr[0] === arr[1] && arr[0] === arr[2] && arr[3] === arr[4]) || (arr[0] === arr[1] && arr[2] === arr[3] && arr[2] === arr[4])) {
+      fullHouseScore = 25;
+    } else fullHouseScore = 0;
+
+    let updatedScore = {
+      ...this.state.scores,
+      fullHouse: fullHouseScore,
+      totalBottom: this.state.scores.totalBottom + fullHouseScore,
+      totalScore: this.state.scores.totalScore + fullHouseScore
+    };
+    let updateDisabledScores = {
+      ...this.state.disabledScores,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
+      fullHouseHidden: true
+    };
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
+  }
+
+  determineSmallStraightScore = () => {
+    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+    let smallStraightScore;
+    let arr = diceArray;
+
+    if ((arr.includes(1) && arr.includes(2) && arr.includes(3) && arr.includes(4)) ||
+      (arr.includes(2) && arr.includes(3) && arr.includes(4) && arr.includes(5)) ||
+      (arr.includes(3) && arr.includes(4) && arr.includes(5) && arr.includes(6))
+    ) {
+      smallStraightScore = 30;
+    } else smallStraightScore = 0;
+
+    let updatedScore = {
+      ...this.state.scores,
+      smallStraight: smallStraightScore,
+      totalBottom: this.state.scores.totalBottom + smallStraightScore,
+      totalScore: this.state.scores.totalScore + smallStraightScore
+    };
+    let updateDisabledScores = {
+      ...this.state.disabledScores,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
+      smallStraightHidden: true
+    };
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
+  };
+
+  determineLargeStraightScore = () => {
+    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+    let largeStraightScore;
+    let arr = diceArray;
+
+    if ((arr.includes(1) && arr.includes(2) && arr.includes(3) && arr.includes(4) && arr.includes(5)) ||
+      (arr.includes(2) && arr.includes(3) && arr.includes(4) && arr.includes(5) && arr.includes(6))
+    ) {
+      largeStraightScore = 40;
+    } else largeStraightScore = 0;
+
+    let updatedScore = {
+      ...this.state.scores,
+      largeStraight: largeStraightScore,
+      totalBottom: this.state.scores.totalBottom + largeStraightScore,
+      totalScore: this.state.scores.totalScore + largeStraightScore
+    };
+    let updateDisabledScores = {
+      ...this.state.disabledScores,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
+      largeStraightHidden: true
+    };
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
+  };
+
+  determineYahtzeeScore = () => {
+    let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
+    let yahtzeeScore;
+    let checkingYahtzeeArray = diceArray.every(diceValue => diceValue === diceArray[0]);
+
+    if (checkingYahtzeeArray === true) {
+      yahtzeeScore = 50;
+    } else yahtzeeScore = 0;
+
+    let updatedScore = {
+      ...this.state.scores,
+      yahtzee: yahtzeeScore,
+      totalBottom: this.state.scores.totalBottom + yahtzeeScore,
+      totalScore: this.state.scores.totalScore + yahtzeeScore
+    };
+    let updateDisabledScores = {
+      ...this.state.disabledScores,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
+      yahtzeeHidden: true
+    };
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
+  };
+
+  determineChanceScore = () => {
+    let chanceScore = this.state.diceOneValue + this.state.diceTwoValue + this.state.diceThreeValue + this.state.diceFourValue + this.state.diceFiveValue;
+    let updatedScore = {
+      ...this.state.scores,
+      chance: chanceScore,
+      totalBottom: this.state.scores.totalBottom + chanceScore,
+      totalScore: this.state.scores.totalScore + chanceScore
+    }
+    let updateDisabledScores = {
+      ...this.state.disabledScores,
+      ones: true, twos: true, threes: true, fours: true, fives: true, sixes: true, threeKind: true, fourKind: true, fullHouse: true, smallStraight: true, largeStraight: true, yahtzee: true, chance: true,
+      chanceHidden: true
+    }
+    this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
   handleChange = (event) => {
@@ -311,14 +461,13 @@ class MainPageContainer extends React.Component {
   };
 
   rollDice = () => {
-    console.log("turnNumber: " + this.state.turnNumber)
     switch (this.state.turnNumber) {
       case 0:
         this.obtainNumbers();
-        let enableDisabled = {...this.state.disabledScores, ones: false, twos: false, threes: false, fours: false, fives: false, sixes: false, threeKind: false, fourKind: false, fullHouse: false, smallStraight: false, largeStraight: false, yahtzee: false, doubleYahtzee: false, chance: false } 
+        let enableDisabled = { ...this.state.disabledScores, ones: false, twos: false, threes: false, fours: false, fives: false, sixes: false, threeKind: false, fourKind: false, fullHouse: false, smallStraight: false, largeStraight: false, yahtzee: false, doubleYahtzee: true, chance: false }
         this.setState({
-          turnNumber: 1, 
-          disabledDice: [false, false, false, false, false], 
+          turnNumber: 1,
+          disabledDice: [false, false, false, false, false],
           disabledScores: enableDisabled,
           disabledTakeScoreBtn: false,
           disabledRollDiceBtn: false
@@ -329,11 +478,11 @@ class MainPageContainer extends React.Component {
         this.setState({ turnNumber: 2 });
         break
       case 2:
+        setTimeout(() => {
+          this.obtainNumbers();
           setTimeout(() => {
-            this.obtainNumbers();
-            setTimeout(() => {
-                this.setState({disabledRollDiceBtn: true})
-            }, 100);
+            this.setState({ disabledRollDiceBtn: true })
+          }, 100);
         }, 100);
         this.setState({ turnNumber: 3 });
         break
