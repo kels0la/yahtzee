@@ -66,21 +66,6 @@ class MainPageContainer extends React.Component {
     this.unCheckDice();
   }
 
-  setScoreTakingState = (updatedScore, updateDisabledScores) => {
-    this.setState({
-      scores: updatedScore,
-      disabledScores: updateDisabledScores,
-      turnNumber: 0,
-      disabledDice: [true, true, true, true, true],
-      disabledTakeScoreBtn: true,
-      selectedOption: '',
-      disabledRollDiceBtn: false
-    })
-    setTimeout(() => {
-      this.checkBonus();
-    }, 100);
-  };
-
   scoreSelectionLogic = (selectedOption) => {
     switch (selectedOption) {
       case 'onesScore':
@@ -124,21 +109,6 @@ class MainPageContainer extends React.Component {
         break;
       default: console.log("Error: Scores closed")
     };
-  };
-
-  checkBonus = () => {
-    let updatedScoresWithBonus;
-    if (this.state.scores.runningTop > 62) {
-      updatedScoresWithBonus = {
-        ...this.state.scores,
-        bonus: 35,
-        totalTop: this.state.scores.totalTop + 35,
-        totalScore: this.state.scores.totalScore + 35
-      }
-      this.setState({
-        scores: updatedScoresWithBonus
-      })
-    } return;
   };
 
   determineOnesScore = () => {
@@ -442,7 +412,40 @@ class MainPageContainer extends React.Component {
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
-  handleChange = (event) => {
+  // Checks the runningTop score to see if 
+  checkBonus = () => {
+    let updatedScoresWithBonus;
+    if (this.state.scores.runningTop > 62 || this.state.scores.bonus === 0) {
+      updatedScoresWithBonus = {
+        ...this.state.scores,
+        bonus: 35,
+        totalTop: this.state.scores.totalTop + 35,
+        totalScore: this.state.scores.totalScore + 35
+      }
+      this.setState({
+        scores: updatedScoresWithBonus
+      })
+    } return;
+  };
+
+  setScoreTakingState = (updatedScore, updateDisabledScores) => {
+    this.setState({
+      scores: updatedScore,
+      disabledScores: updateDisabledScores,
+      turnNumber: 0,
+      disabledDice: [true, true, true, true, true],
+      disabledTakeScoreBtn: true,
+      selectedOption: '',
+      disabledRollDiceBtn: false
+    })
+    // setTimeout is needed to make sure bonus score is updated after an initial score is taken.
+    setTimeout(() => {
+      this.checkBonus();
+    }, 100);
+  };
+
+  // To mark dice as checked or unchecked in order to capture values and change shadow color
+  handleDiceChecked = (event) => {
     const diceName = event.target.name;
     switch (diceName) {
       case 'checkBoxOne':
@@ -460,6 +463,7 @@ class MainPageContainer extends React.Component {
     };
   };
 
+  // To determine which turn number user is on
   rollDice = () => {
     switch (this.state.turnNumber) {
       case 0:
@@ -497,6 +501,7 @@ class MainPageContainer extends React.Component {
     }
   };
 
+  // To generate random number 1-6
   rolledNumber = () => {
     return Math.floor((Math.random() * (7 - 1)) + 1);
   };
@@ -588,7 +593,7 @@ class MainPageContainer extends React.Component {
         <MainPage
           {...this.state}
           rollDice={this.rollDice}
-          onChange={this.handleChange}
+          handleDiceChecked={this.handleDiceChecked}
           handleRadioButtonSelection={this.handleRadioButtonSelection}
           handleSubmitSelection={this.handleSubmitSelection}
         />
