@@ -110,33 +110,26 @@
   {
     "id": 17,
     "rowType": "",
-    "radioBtnValue": "doubleYahtzeeScore",
-    "labelText": "Yahtzee 2x",
-    "disabledRadio": "doubleYahtzeeDisabled"
-  },
-  {
-    "id": 18,
-    "rowType": "",
     "radioBtnValue": "chanceScore",
     "labelText": "Chance",
     "bottomFormatting": true,
     "disabledRadio": "chanceDisabled"
   },
   {
-    "id": 19,
+    "id": 18,
     "rowType": "noSelectionRow",
     "radioBtnValue": "totalBottomScore",
     "labelText": "Total Bottom"
   },
   {
-    "id": 20,
+    "id": 19,
     "rowType": "noSelectionRow",
     "radioBtnValue": "totalTopOnBottom",
     "labelText": "Total Top",
     "bottomFormatting": true
   },
   {
-    "id": 21,
+    "id": 20,
     "rowType": "finalRow",
     "radioBtnValue": "totalScore",
     "labelText": "Total Score"

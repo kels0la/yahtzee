@@ -6,7 +6,8 @@ export const TableRow = props => {
   let { rowType, radioBtnValue, labelText, bottomFormatting, disabledScores, scores, disabledTakeScoreBtn, selectedOption } = props;
   let rowOneClasses, rowTwoClasses, rowThreeClasses, rowThreeDisplay, scoreDisplay, rowThree;
   let bottomBorder = 'border-b-2 border-brand-green pb-1';
-  const cantSubmit = selectedOption === '';
+  const cantSubmit = (selectedOption === '' || disabledTakeScoreBtn === true);
+  
 
   switch (rowType) {
     case 'labelRow':
@@ -76,7 +77,7 @@ export const TableRow = props => {
         type="submit"
         styles='font-bold text-darkest-gray'
         text='Take Score'
-        disabledtakescorebtn={disabledTakeScoreBtn ? 1 : 0} // An error in the console wanted this to return a 1 or 0 for true or false rather than the boolean value.
+        // disabledtakescorebtn={disabledTakeScoreBtn ? 1 : 0} // An error in the console wanted this to return a 1 or 0 for true or false rather than the boolean value.
         disabled={cantSubmit}
       />;
     rowOneClasses = 'pt-3 -mt-1px text-sm font-bold';

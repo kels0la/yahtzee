@@ -4,8 +4,11 @@ import rowData from '../../rowData.json';
 // Importing images
 import YahtzeeImg from '../../assets/images/yahtzeeimg.png';
 
-const MainPage = props => (
+const MainPage = props => {
+
+  return (
   <React.Fragment>
+    
     <div className='w-full h-screen bg-darkest-gray'>
       <div className='flex w-full'>
         <div className='w-1/3'>
@@ -13,11 +16,11 @@ const MainPage = props => (
         </div>
         <div className='w-1/3'>
           <div className='flex justify-center mb-3 mt-6'>
-            <Dice diceId={'diceOneId'} disabled={props.disabledDice[0]} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage} diceChecked={props.diceOneChecked} onChange={props.onChange} />
-            <Dice diceId={'diceTwoId'} disabled={props.disabledDice[1]} checkboxName={'checkBoxTwo'} diceImage={props.diceTwoImage} diceChecked={props.diceTwoChecked} onChange={props.onChange} />
-            <Dice diceId={'diceThreeId'} disabled={props.disabledDice[2]} checkboxName={'checkBoxThree'} diceImage={props.diceThreeImage} diceChecked={props.diceThreeChecked} onChange={props.onChange} />
-            <Dice diceId={'diceFourId'} disabled={props.disabledDice[3]} checkboxName={'checkBoxFour'} diceImage={props.diceFourImage} diceChecked={props.diceFourChecked} onChange={props.onChange} />
-            <Dice diceId={'diceFiveId'} disabled={props.disabledDice[4]} checkboxName={'checkBoxFive'} diceImage={props.diceFiveImage} diceChecked={props.diceFiveChecked} onChange={props.onChange} />
+            <Dice diceId={'diceOneId'} disabled={props.disabledDice[0]} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage} diceChecked={props.diceOneChecked} onChange={props.handleDiceChecked} />
+            <Dice diceId={'diceTwoId'} disabled={props.disabledDice[1]} checkboxName={'checkBoxTwo'} diceImage={props.diceTwoImage} diceChecked={props.diceTwoChecked} onChange={props.handleDiceChecked} />
+            <Dice diceId={'diceThreeId'} disabled={props.disabledDice[2]} checkboxName={'checkBoxThree'} diceImage={props.diceThreeImage} diceChecked={props.diceThreeChecked} onChange={props.handleDiceChecked} />
+            <Dice diceId={'diceFourId'} disabled={props.disabledDice[3]} checkboxName={'checkBoxFour'} diceImage={props.diceFourImage} diceChecked={props.diceFourChecked} onChange={props.handleDiceChecked} />
+            <Dice diceId={'diceFiveId'} disabled={props.disabledDice[4]} checkboxName={'checkBoxFive'} diceImage={props.diceFiveImage} diceChecked={props.diceFiveChecked} onChange={props.handleDiceChecked} />
           </div>
           <div className='p-3 mx-8'>
             <div className='table rounded border-light-gray border px-2 pt-2 pb-2 shadowEffect mr-5 w-full'>
@@ -58,6 +61,7 @@ const MainPage = props => (
       </div>
     </div>
   </React.Fragment>
-);
+  )
+};
 
-export default MainPage;
+export default MainPage;  

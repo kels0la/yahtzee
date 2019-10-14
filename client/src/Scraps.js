@@ -317,3 +317,12 @@ checkScoreCombinations = (diceValueOne, diceValueTwo, diceValueThree, diceValueF
         selectedOption: ''
       })
     }
+
+    handleTakeScoreDisable = () => {
+      this.setState(prevState => ({ disabledTakeScoreBtn: !prevState.disabledTakeScoreBtn }));
+    };
+  
+    handleRollDiceDisable = () => {
+      this.setState(prevState => ({ disabledRollDiceBtn: !prevState.disabledRollDiceBtn }));
+    };
+  
