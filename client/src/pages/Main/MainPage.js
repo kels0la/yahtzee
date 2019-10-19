@@ -15,7 +15,8 @@ const MainPage = props => {
         <div className='flex w-full'>
           <div className='w-1/3'>
             <div className='flex'><img src={YahtzeeImg} alt='yahtzee' /></div>
-            <RestartGame resetGame={props.resetGame} closeRestartModal={props.closeRestartModal} displayRestartModal={props.displayRestartModal} showRestartModal={props.showRestartModal} />
+            {/* Opens modal to confirm a person would like to start a new game */}
+            <RestartGame overallTurns={props.overallTurns} resetGame={props.resetGame} closeRestartModal={props.closeRestartModal} displayRestartModal={props.displayRestartModal} showRestartModal={props.showRestartModal} />
           </div>
           <div className='w-1/3'>
             <div className='flex justify-center mb-3 mt-6'>
@@ -31,6 +32,7 @@ const MainPage = props => {
                   <div id="gameTurnNumberStatus" className='text-sm text-light-gray font-bold'>
                     {props.turnNumber === 0 ? <div className='pt-1 h-8 mt-1px'>Roll the dice!</div> : <div className='pt-1 h-8 mt-1px'>Roll Number: {props.turnNumber}</div>}
                   </div>
+                  {/* This button rolls the dice */}
                   <Button classprops='main-button outline-button p-0 inline-block px-1 border-black border rounded text-sm bg-light-gray hvr-wobble-skew h-6' disabledrolldicebtn={props.disabledRollDiceBtn ? 1 : 0} text='Roll Dice' styles='text-darkest-gray font-bold' onClick={(event) => props.rollDice(event)}></Button>
                 </div>
                 <form onSubmit={props.handleSubmitSelection}>

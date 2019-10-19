@@ -11,9 +11,9 @@ export const GameEndingModal = props => {
       <div className='overlay'>
         <div className='w-1/3'></div>
         <div className='w-1/3 modalTop bg-body-background ml-auto mr-auto p-3 border border-light-gray shadowEffect pin-x absolute rounded-lg mt-32 z-10 mb-3'>
-          <p className='mb-3 text-center'><h2>Your final score was: <span className='text-brand-green'>{totalScore}</span></h2></p>
+          <h2 className='mb-3 text-center'>Your final score was: <span className='text-brand-green'>{totalScore}</span></h2>
           <hr className="border-brand-green border hrModals mb-3"></hr>
-          <p className='mb-3 text-center'><h4>Thank you for playing!</h4></p>
+          <h4 className='mb-3 text-center'>Thank you for playing!</h4>
           <p className='mb-1 text-center'>Click <b className='text-brand-green'>"Start New Game"</b> to start a new game. Or...</p>
           <p className='mb-3 text-center'>Click <b className='text-brand-green'>"Bask in Glory"</b> to stare at your score a little while longer.</p>
           <hr className="border-brand-green border hrModals mb-3"></hr>

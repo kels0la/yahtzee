@@ -56,11 +56,7 @@ class MainPageContainer extends React.Component {
     };
   };
 
-  showEndGameModal = () => {
-    this.setState({showEndGameModal: true})
-  }
-
-// Based upon the Radio Button selected, this.state.selectedOption is changed
+  // Based upon the Radio Button selected, this.state.selectedOption is changed
   handleRadioButtonSelection = (event) => {
     const value = event.target.value;
     this.setState({
@@ -74,8 +70,9 @@ class MainPageContainer extends React.Component {
     this.scoreSelectionLogic(this.state.selectedOption)
     this.unCheckDice();
   }
-// Depending on the selected Radio Button option, this.state.selectedOption changes based upon what is clicked, 
-// and the proper function is called, where the score is checked and added.
+
+  // Depending on the selected Radio Button option, this.state.selectedOption changes based upon what is clicked, 
+  // and the proper function is called, where the score is checked and added.
   scoreSelectionLogic = (selectedOption) => {
     switch (selectedOption) {
       case 'onesScore':
@@ -120,6 +117,7 @@ class MainPageContainer extends React.Component {
       default: console.log("Error: Scores closed")
     };
   };
+
   // The following "determineScores" functions pertain to each Yahtzee scoretype
   determineOnesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
@@ -435,22 +433,6 @@ class MainPageContainer extends React.Component {
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
-  // Checks the runningTop score to see if bonus should be added when player takes score
-  checkBonus = () => {
-    let updatedScoresWithBonus;
-    if (this.state.scores.runningTop > 62 && this.state.scores.bonus === 0) {
-      updatedScoresWithBonus = {
-        ...this.state.scores,
-        bonus: 35,
-        totalTop: this.state.scores.totalTop + 35,
-        totalScore: this.state.scores.totalScore + 35
-      }
-      this.setState({
-        scores: updatedScoresWithBonus
-      })
-    } else return;
-  };
-
   // This function is called after scores are checked. Takes in two parameters based on updating the score and disabling/hiding relevant fields
   setScoreTakingState = (updatedScore, updateDisabledScores) => {
     this.setState({
@@ -470,6 +452,24 @@ class MainPageContainer extends React.Component {
     }, 100);
   };
 
+    // Checks the runningTop score to see if bonus should be added when player takes score
+    checkBonus = () => {
+      let updatedScoresWithBonus;
+      if (this.state.scores.runningTop > 62 && this.state.scores.bonus === 0) {
+        updatedScoresWithBonus = {
+          ...this.state.scores,
+          bonus: 35,
+          totalTop: this.state.scores.totalTop + 35,
+          totalScore: this.state.scores.totalScore + 35
+        }
+        this.setState({
+          scores: updatedScoresWithBonus
+        })
+      } else return;
+    };
+
+  // Checks to see if the game is over based upon the overallTurns state. If it is, game is "disabled" 
+  // and the showEndGameModal() function is called
   checkEndGame = () => {
     console.log("How many turns " + this.state.overallTurns);
     if (this.state.overallTurns > 12) {
@@ -632,16 +632,7 @@ class MainPageContainer extends React.Component {
     });
   };
 
-  dontReset = (event) => {
-    event.preventDefault();
-    this.setState({showEndGameModal: false})
-  };
-
-  closeRestartModal = (event) => {
-    event.preventDefault();
-    this.setState({showRestartModal: false})
-  }
-
+  // Resets back to initial state
   resetGame = (event) => {
     event.preventDefault();
     this.setState({
@@ -686,13 +677,31 @@ class MainPageContainer extends React.Component {
       selectedOption: '',
       showEndGameModal: false,
       showRestartModal: false
-    })
-  }
+    });
+  };
 
-  displayRestartModal = (event) => {
+  // Displays the EndGameModal
+  showEndGameModal = () => {
+    this.setState({showEndGameModal: true})
+  };
+  
+  // Function for users who want to look at score longer, without starting a new game
+  dontReset = (event) => {
+    event.preventDefault();
+    this.setState({showEndGameModal: false})
+  };
+
+   // Showing the Restart Modal
+   displayRestartModal = (event) => {
     event.preventDefault();
     this.setState({showRestartModal: true})
-  }
+  };
+
+  // Closing the Restart Modal
+  closeRestartModal = (event) => {
+    event.preventDefault();
+    this.setState({showRestartModal: false})
+  };
 
   render() {
     return (
