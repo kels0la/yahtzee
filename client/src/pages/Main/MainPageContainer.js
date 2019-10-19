@@ -18,16 +18,17 @@ class MainPageContainer extends React.Component {
       diceFourValue: 0,
       diceFiveValue: 0,
       diceOneImage: diceOneImage,
-      diceTwoImage: diceTwoImage,
-      diceThreeImage: diceThreeImage,
-      diceFourImage: diceFourImage,
-      diceFiveImage: diceFiveImage,
+      diceTwoImage: diceOneImage,
+      diceThreeImage: diceOneImage,
+      diceFourImage: diceOneImage,
+      diceFiveImage: diceOneImage,
       diceOneChecked: false,
       diceTwoChecked: false,
       diceThreeChecked: false,
       diceFourChecked: false,
       diceFiveChecked: false,
       turnNumber: 0,
+      overallTurns: 10,
       disabledDice: [true, true, true, true, true],
       disabledRollDiceBtn: false,
       disabledTakeScoreBtn: true,
@@ -49,9 +50,16 @@ class MainPageContainer extends React.Component {
       scores: {
         ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
       },
-      selectedOption: ''
+      selectedOption: '',
+      showEndGameModal: false,
+      showRestartModal: false
     };
+  };
+
+  showEndGameModal = () => {
+    this.setState({showEndGameModal: true})
   }
+
 // Based upon the Radio Button selected, this.state.selectedOption is changed
   handleRadioButtonSelection = (event) => {
     const value = event.target.value;
@@ -149,8 +157,10 @@ class MainPageContainer extends React.Component {
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 2
     });
+
     let twosScore = diceArrayFiltering.length;
-    twosScore = twosScore * 2;
+    twosScore *= 2;
+
     let updatedScore = {
       ...this.state.scores,
       twos: twosScore,
@@ -438,7 +448,7 @@ class MainPageContainer extends React.Component {
       this.setState({
         scores: updatedScoresWithBonus
       })
-    } return;
+    } else return;
   };
 
   // This function is called after scores are checked. Takes in two parameters based on updating the score and disabling/hiding relevant fields
@@ -450,12 +460,29 @@ class MainPageContainer extends React.Component {
       disabledDice: [true, true, true, true, true],
       disabledTakeScoreBtn: true,
       selectedOption: '',
+      overallTurns: this.state.overallTurns + 1,
       disabledRollDiceBtn: false
     })
     // setTimeout is needed to make sure bonus score is updated after an initial score is taken.
     setTimeout(() => {
       this.checkBonus();
+      this.checkEndGame();
     }, 100);
+  };
+
+  checkEndGame = () => {
+    console.log("How many turns " + this.state.overallTurns);
+    if (this.state.overallTurns > 12) {
+      this.setState({
+        selectedOption: '',
+        disabledTakeScoreBtn: true,
+        disabledDice: [true, true, true, true, true],
+        disabledRollDiceBtn: true
+      });
+      setTimeout(() => {
+        this.showEndGameModal();
+      }, 100);
+    } else return;
   };
 
   // To mark dice as checked or unchecked in order to capture values and change shadow color
@@ -478,7 +505,8 @@ class MainPageContainer extends React.Component {
   };
 
   // To determine which turn number user is on and to enable/disable buttons based upon where they are in their turn
-  rollDice = () => {
+  rollDice = (event) => {
+    event.preventDefault();
     switch (this.state.turnNumber) {
       case 0:
         this.obtainNumbers();
@@ -604,6 +632,68 @@ class MainPageContainer extends React.Component {
     });
   };
 
+  dontReset = (event) => {
+    event.preventDefault();
+    this.setState({showEndGameModal: false})
+  };
+
+  closeRestartModal = (event) => {
+    event.preventDefault();
+    this.setState({showRestartModal: false})
+  }
+
+  resetGame = (event) => {
+    event.preventDefault();
+    this.setState({
+      diceOneValue: 0,
+      diceTwoValue: 0,
+      diceThreeValue: 0,
+      diceFourValue: 0,
+      diceFiveValue: 0,
+      diceOneImage: diceOneImage,
+      diceTwoImage: diceOneImage,
+      diceThreeImage: diceOneImage,
+      diceFourImage: diceOneImage,
+      diceFiveImage: diceOneImage,
+      diceOneChecked: false,
+      diceTwoChecked: false,
+      diceThreeChecked: false,
+      diceFourChecked: false,
+      diceFiveChecked: false,
+      turnNumber: 0,
+      overallTurns: 0,
+      disabledDice: [true, true, true, true, true],
+      disabledRollDiceBtn: false,
+      disabledTakeScoreBtn: true,
+      disabledScores: {
+        ones: true, onesHidden: false,
+        twos: true, twosHidden: false,
+        threes: true, threesHidden: false,
+        fours: true, foursHidden: false,
+        fives: true, fivesHidden: false,
+        sixes: true, sixesHidden: false,
+        threeKind: true, threeKindHidden: false,
+        fourKind: true, fourKindHidden: false,
+        fullHouse: true, fullHouseHidden: false,
+        smallStraight: true, smallStraightHidden: false,
+        largeStraight: true, largeStraightHidden: false,
+        yahtzee: true, yahtzeeHidden: false,
+        chance: true, chanceHidden: false,
+      },
+      scores: {
+        ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
+      },
+      selectedOption: '',
+      showEndGameModal: false,
+      showRestartModal: false
+    })
+  }
+
+  displayRestartModal = (event) => {
+    event.preventDefault();
+    this.setState({showRestartModal: true})
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -613,6 +703,10 @@ class MainPageContainer extends React.Component {
           handleDiceChecked={this.handleDiceChecked}
           handleRadioButtonSelection={this.handleRadioButtonSelection}
           handleSubmitSelection={this.handleSubmitSelection}
+          resetGame={this.resetGame}
+          dontReset={this.dontReset}
+          displayRestartModal={this.displayRestartModal}
+          closeRestartModal={this.closeRestartModal}
         />
       </React.Fragment>
     )
