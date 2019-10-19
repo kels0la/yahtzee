@@ -18,16 +18,17 @@ class MainPageContainer extends React.Component {
       diceFourValue: 0,
       diceFiveValue: 0,
       diceOneImage: diceOneImage,
-      diceTwoImage: diceTwoImage,
-      diceThreeImage: diceThreeImage,
-      diceFourImage: diceFourImage,
-      diceFiveImage: diceFiveImage,
+      diceTwoImage: diceOneImage,
+      diceThreeImage: diceOneImage,
+      diceFourImage: diceOneImage,
+      diceFiveImage: diceOneImage,
       diceOneChecked: false,
       diceTwoChecked: false,
       diceThreeChecked: false,
       diceFourChecked: false,
       diceFiveChecked: false,
       turnNumber: 0,
+      overallTurns: 0,
       disabledDice: [true, true, true, true, true],
       disabledRollDiceBtn: false,
       disabledTakeScoreBtn: true,
@@ -49,10 +50,13 @@ class MainPageContainer extends React.Component {
       scores: {
         ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
       },
-      selectedOption: ''
+      selectedOption: '',
+      showEndGameModal: false,
+      showRestartModal: false
     };
-  }
-// Based upon the Radio Button selected, this.state.selectedOption is changed
+  };
+
+  // Based upon the Radio Button selected, this.state.selectedOption is changed
   handleRadioButtonSelection = (event) => {
     const value = event.target.value;
     this.setState({
@@ -66,8 +70,9 @@ class MainPageContainer extends React.Component {
     this.scoreSelectionLogic(this.state.selectedOption)
     this.unCheckDice();
   }
-// Depending on the selected Radio Button option, this.state.selectedOption changes based upon what is clicked, 
-// and the proper function is called, where the score is checked and added.
+
+  // Depending on the selected Radio Button option, this.state.selectedOption changes based upon what is clicked, 
+  // and the proper function is called, where the score is checked and added.
   scoreSelectionLogic = (selectedOption) => {
     switch (selectedOption) {
       case 'onesScore':
@@ -112,6 +117,7 @@ class MainPageContainer extends React.Component {
       default: console.log("Error: Scores closed")
     };
   };
+
   // The following "determineScores" functions pertain to each Yahtzee scoretype
   determineOnesScore = () => {
     let diceArray = [this.state.diceOneValue, this.state.diceTwoValue, this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue]
@@ -149,8 +155,10 @@ class MainPageContainer extends React.Component {
     let diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 2
     });
+
     let twosScore = diceArrayFiltering.length;
-    twosScore = twosScore * 2;
+    twosScore *= 2;
+
     let updatedScore = {
       ...this.state.scores,
       twos: twosScore,
@@ -425,22 +433,6 @@ class MainPageContainer extends React.Component {
     this.setScoreTakingState(updatedScore, updateDisabledScores);
   };
 
-  // Checks the runningTop score to see if bonus should be added when player takes score
-  checkBonus = () => {
-    let updatedScoresWithBonus;
-    if (this.state.scores.runningTop > 62 && this.state.scores.bonus === 0) {
-      updatedScoresWithBonus = {
-        ...this.state.scores,
-        bonus: 35,
-        totalTop: this.state.scores.totalTop + 35,
-        totalScore: this.state.scores.totalScore + 35
-      }
-      this.setState({
-        scores: updatedScoresWithBonus
-      })
-    } return;
-  };
-
   // This function is called after scores are checked. Takes in two parameters based on updating the score and disabling/hiding relevant fields
   setScoreTakingState = (updatedScore, updateDisabledScores) => {
     this.setState({
@@ -450,12 +442,47 @@ class MainPageContainer extends React.Component {
       disabledDice: [true, true, true, true, true],
       disabledTakeScoreBtn: true,
       selectedOption: '',
+      overallTurns: this.state.overallTurns + 1,
       disabledRollDiceBtn: false
     })
     // setTimeout is needed to make sure bonus score is updated after an initial score is taken.
     setTimeout(() => {
       this.checkBonus();
+      this.checkEndGame();
     }, 100);
+  };
+
+    // Checks the runningTop score to see if bonus should be added when player takes score
+    checkBonus = () => {
+      let updatedScoresWithBonus;
+      if (this.state.scores.runningTop > 62 && this.state.scores.bonus === 0) {
+        updatedScoresWithBonus = {
+          ...this.state.scores,
+          bonus: 35,
+          totalTop: this.state.scores.totalTop + 35,
+          totalScore: this.state.scores.totalScore + 35
+        }
+        this.setState({
+          scores: updatedScoresWithBonus
+        })
+      } else return;
+    };
+
+  // Checks to see if the game is over based upon the overallTurns state. If it is, game is "disabled" 
+  // and the showEndGameModal() function is called
+  checkEndGame = () => {
+    console.log("How many turns " + this.state.overallTurns);
+    if (this.state.overallTurns > 12) {
+      this.setState({
+        selectedOption: '',
+        disabledTakeScoreBtn: true,
+        disabledDice: [true, true, true, true, true],
+        disabledRollDiceBtn: true
+      });
+      setTimeout(() => {
+        this.showEndGameModal();
+      }, 100);
+    } else return;
   };
 
   // To mark dice as checked or unchecked in order to capture values and change shadow color
@@ -478,7 +505,8 @@ class MainPageContainer extends React.Component {
   };
 
   // To determine which turn number user is on and to enable/disable buttons based upon where they are in their turn
-  rollDice = () => {
+  rollDice = (event) => {
+    event.preventDefault();
     switch (this.state.turnNumber) {
       case 0:
         this.obtainNumbers();
@@ -604,6 +632,77 @@ class MainPageContainer extends React.Component {
     });
   };
 
+  // Resets back to initial state
+  resetGame = (event) => {
+    event.preventDefault();
+    this.setState({
+      diceOneValue: 0,
+      diceTwoValue: 0,
+      diceThreeValue: 0,
+      diceFourValue: 0,
+      diceFiveValue: 0,
+      diceOneImage: diceOneImage,
+      diceTwoImage: diceOneImage,
+      diceThreeImage: diceOneImage,
+      diceFourImage: diceOneImage,
+      diceFiveImage: diceOneImage,
+      diceOneChecked: false,
+      diceTwoChecked: false,
+      diceThreeChecked: false,
+      diceFourChecked: false,
+      diceFiveChecked: false,
+      turnNumber: 0,
+      overallTurns: 0,
+      disabledDice: [true, true, true, true, true],
+      disabledRollDiceBtn: false,
+      disabledTakeScoreBtn: true,
+      disabledScores: {
+        ones: true, onesHidden: false,
+        twos: true, twosHidden: false,
+        threes: true, threesHidden: false,
+        fours: true, foursHidden: false,
+        fives: true, fivesHidden: false,
+        sixes: true, sixesHidden: false,
+        threeKind: true, threeKindHidden: false,
+        fourKind: true, fourKindHidden: false,
+        fullHouse: true, fullHouseHidden: false,
+        smallStraight: true, smallStraightHidden: false,
+        largeStraight: true, largeStraightHidden: false,
+        yahtzee: true, yahtzeeHidden: false,
+        chance: true, chanceHidden: false,
+      },
+      scores: {
+        ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0, yahtzee: 0, chance: 0, totalScore: 0, runningTop: 0, bonus: 0, totalTop: 0, totalBottom: 0
+      },
+      selectedOption: '',
+      showEndGameModal: false,
+      showRestartModal: false
+    });
+  };
+
+  // Displays the EndGameModal
+  showEndGameModal = () => {
+    this.setState({showEndGameModal: true})
+  };
+  
+  // Function for users who want to look at score longer, without starting a new game
+  dontReset = (event) => {
+    event.preventDefault();
+    this.setState({showEndGameModal: false})
+  };
+
+   // Showing the Restart Modal
+   displayRestartModal = (event) => {
+    event.preventDefault();
+    this.setState({showRestartModal: true})
+  };
+
+  // Closing the Restart Modal
+  closeRestartModal = (event) => {
+    event.preventDefault();
+    this.setState({showRestartModal: false})
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -613,6 +712,10 @@ class MainPageContainer extends React.Component {
           handleDiceChecked={this.handleDiceChecked}
           handleRadioButtonSelection={this.handleRadioButtonSelection}
           handleSubmitSelection={this.handleSubmitSelection}
+          resetGame={this.resetGame}
+          dontReset={this.dontReset}
+          displayRestartModal={this.displayRestartModal}
+          closeRestartModal={this.closeRestartModal}
         />
       </React.Fragment>
     )
