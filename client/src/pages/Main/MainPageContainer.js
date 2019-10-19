@@ -28,7 +28,7 @@ class MainPageContainer extends React.Component {
       diceFourChecked: false,
       diceFiveChecked: false,
       turnNumber: 0,
-      overallTurns: 10,
+      overallTurns: 0,
       disabledDice: [true, true, true, true, true],
       disabledRollDiceBtn: false,
       disabledTakeScoreBtn: true,
