@@ -1,5 +1,4 @@
 import React from 'react';
-import { ResetButton } from '../Widgets';
 import { ModalRestart } from './ModalRestart';
 
 export const RestartGame = props => {
@@ -28,11 +27,10 @@ export const RestartGame = props => {
 
   return (
     <React.Fragment>
-      <ResetButton 
-        classprops='main-button outline-button p-0 inline-block px-1 border-black border rounded text-sm bg-yahtzee-red'
-        text='New Game'
-        onClick={(event) => props.displayRestartModal(event)}
-      />
+      {/* This needs to be switched from a Button into just a div with clickable text <a> */}
+       <div className='cursor-pointer' onClick={(event) => props.displayRestartModal(event)}>
+          New Game
+        </div>
       {showModal}
     </React.Fragment>
   );

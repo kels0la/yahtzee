@@ -1,8 +1,8 @@
 body {
-  background: #1b1b1b;
+  background: #D8D8D8;
   font-family: 'Montserrat', sans-serif;
   color: #D8D8D8;
-  /*overflow: hidden; */
+  overflow: hidden;
   margin: 0;
 }
 
@@ -12,11 +12,19 @@ body {
 }
 
 .shadowEffect {
-  box-shadow: 0 0px 14px 0 #2BA228;
+  box-shadow: 0 0px 14px 0 #000000;
 }
 
 .shadowEffectSmall {
   box-shadow: 0 0px 5px 0 #cd2d2c;
+}
+
+.shadowRight {
+	box-shadow: 5px 0 10px -2px #000000;
+}
+
+.diceShadowEffect {
+  box-shadow: 0 0px 4px 0 #000000;
 }
 
 input:checked + label img {
@@ -47,6 +55,17 @@ input:checked + label img {
   right: 0;
   background-color: rgba(0,0,0,0.5);
   z-index: 10;
+}
+
+.overlaytwo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+  margin-top: 28px;
 }
 
 .modalTop {

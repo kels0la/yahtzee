@@ -18,7 +18,7 @@ export const Dice = props => {
           onChange={onChange} 
         />
         <label htmlFor={`${diceId}`}>
-          <img onAnimationEnd={endAnimation} className={shouldShake ? `shake border border-light-gray rounded-lg shadowEffectSmall h-16 w-16 cursor-pointer`:`border border-light-gray rounded-lg shadowEffectSmall h-16 w-16 cursor-pointer`} src={diceImage} alt='dice' />
+          <img onAnimationEnd={endAnimation} className={shouldShake ? `shake border-sm bg-light-gray border-light-gray rounded-lg shadowEffectSmall h-12 w-12 cursor-pointer`:`border-sm bg-light-gray border-light-gray rounded-lg shadowEffectSmall h-12 w-12 cursor-pointer`} src={diceImage} alt='dice' />
         </label>
       </div>
     </React.Fragment>

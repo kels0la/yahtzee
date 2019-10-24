@@ -57,7 +57,8 @@ class MainPageContainer extends React.Component {
       },
       selectedOption: '',
       showEndGameModal: false,
-      showRestartModal: false
+      showRestartModal: false,
+      showHowToPlayModal: false
     };
   };
 
@@ -612,7 +613,6 @@ class MainPageContainer extends React.Component {
           shakeDiceFive: false,
         });
     }
-    // Will probably  need to run a switch statement capturing the checkbox value or something like that. For now, I'll set all to false.
   };
 
   // Depending on the dice roll, call a function with the dicePosition
@@ -729,7 +729,8 @@ class MainPageContainer extends React.Component {
       },
       selectedOption: '',
       showEndGameModal: false,
-      showRestartModal: false
+      showRestartModal: false,
+      showHowToPlayModal: false
     });
   };
 
@@ -756,6 +757,18 @@ class MainPageContainer extends React.Component {
     this.setState({ showRestartModal: false })
   };
 
+    // Showing the How To Play Modal
+  displayHowToPlayModal = (event) => {
+    event.preventDefault();
+    this.setState({ showHowToPlayModal: true })
+  };
+
+  // Closing the How To Play Modal
+  closeHowToPlayModal = (event) => {
+    event.preventDefault();
+    this.setState({ showHowToPlayModal: false })
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -770,6 +783,8 @@ class MainPageContainer extends React.Component {
           displayRestartModal={this.displayRestartModal}
           closeRestartModal={this.closeRestartModal}
           endAnimation={this.endAnimation}
+          closeHowToPlayModal={this.closeHowToPlayModal}
+          displayHowToPlayModal={this.displayHowToPlayModal}
         />
       </React.Fragment>
     )

@@ -13,12 +13,8 @@ export const TableRow = props => {
     case 'labelRow':
       labelRowFormatting();
       break;
-    case 'noSelectionRow':
-      formatBottom()
-      noSelectionRowFormatting()
-      break;
-    case 'finalRow':
-      finalRowFormatting()
+    case 'firstRow':
+      firstRowFormatting()
       break;
     default:
       formatBottom()
@@ -39,38 +35,18 @@ export const TableRow = props => {
   };
   // Four functions to format each type of row properly and keep the Switch statement clean.
   function labelRowFormatting() {
-    labelText = 'Label';
+    labelText = 'Category';
     scoreDisplay = 'Score';
     rowThreeDisplay = 'Select'
-    rowOneClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm text-yahtzee-red';
-    rowTwoClasses = 'border-t-2 border-b-2 pt-1 border-brand-green pb-1 text-sm text-yahtzee-red';
-    rowThreeClasses = 'border-t-2 border-b-2 pt-1 border-brand-green pb-1 text-sm text-yahtzee-red';
+    rowOneClasses = 'border-t-2 border-b-2 border-brand-green pb-1 text-sm ';
+    rowTwoClasses = 'border-t-2 border-b-2 pt-1 border-brand-green pb-1 text-sm ';
+    rowThreeClasses = 'border-t-2 border-b-2 pt-1 border-brand-green pb-1 text-sm ';
     rowThree = <div className={`w-1/3 table-cell pl-2 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
-  function noSelectionRowFormatting() {
-    switch (props.radioBtnValue) {
-      case 'runningTopScore':
-        scoreDisplay = scores.runningTop;
-        break;
-      case 'bonusScore':
-        scoreDisplay = scores.bonus;
-        break;
-      case 'totalTopScore':
-        scoreDisplay = scores.totalTop;
-        break;
-      case 'totalBottomScore':
-        scoreDisplay = scores.totalBottom;
-        break;
-      case 'totalTopOnBottom':
-        scoreDisplay = scores.totalTop;
-        break;
-      default: console.log("Error rendering props.radioBtnValue")
-    }
-    rowThreeDisplay = ''
-    rowThree = <div className={`w-1/3 table-cell pl-2 pt-1 text-center ${rowThreeClasses}`}>{rowThreeDisplay}</div>
-  };
-  function finalRowFormatting() {
-    scoreDisplay = scores.totalScore
+  
+  function firstRowFormatting() {
+    scoreDisplay = "Scorecard";
+    labelText = ``
     rowThreeDisplay =
       <Button2
         classprops='outline-button-two p-0 px-1 border-black border rounded text-sm bg-brand-green h-6'
@@ -80,10 +56,9 @@ export const TableRow = props => {
         // disabledtakescorebtn={disabledTakeScoreBtn ? 1 : 0} // An error in the console wanted this to return a 1 or 0 for true or false rather than the boolean value.
         disabled={cantSubmit}
       />;
-    rowOneClasses = 'pt-3 -mt-1px text-sm font-bold';
-    rowTwoClasses = 'pt-2 -mt-1px text-sm font-bold';
-    rowThreeClasses = 'pt-2 text-sm';
-    rowThree = <div className={`w-1/3 table-cell pl-2 text-right ${rowThreeClasses}`}>{rowThreeDisplay}</div>
+    rowTwoClasses = 'pb-3 font-bold text-xl font-header';
+    rowThreeClasses = 'pt-1 pb-3 text-sm';
+    rowThree = <div className={`w-1/3 table-cell pl-2 text-right mr-1 ${rowThreeClasses}`}>{rowThreeDisplay}</div>
   };
   function standardRowFormatting() {
     switch (props.disabledRadio) {
@@ -153,7 +128,7 @@ export const TableRow = props => {
     <React.Fragment>
       <div className='table-row w-full flex text-xs'>
         <div className={`w-1/3 table-cell pt-1 ${rowOneClasses}`}>{labelText}</div>
-        <div className={`w-1/3 table-cell pt-1 text-center pl-2 ${rowTwoClasses}`}>{scoreDisplay}</div>
+        <div className={`w-1/3 table-cell pt-1 text-center ${rowTwoClasses}`}>{scoreDisplay}</div>
         {rowThree}
       </div>
     </React.Fragment>
