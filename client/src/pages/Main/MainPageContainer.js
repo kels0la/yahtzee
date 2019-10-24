@@ -27,6 +27,11 @@ class MainPageContainer extends React.Component {
       diceThreeChecked: false,
       diceFourChecked: false,
       diceFiveChecked: false,
+      shakeDiceOne: false,
+      shakeDiceTwo: false,
+      shakeDiceThree: false,
+      shakeDiceFour: false,
+      shakeDiceFive: false,
       turnNumber: 0,
       overallTurns: 0,
       disabledDice: [true, true, true, true, true],
@@ -52,7 +57,8 @@ class MainPageContainer extends React.Component {
       },
       selectedOption: '',
       showEndGameModal: false,
-      showRestartModal: false
+      showRestartModal: false,
+      showHowToPlayModal: false
     };
   };
 
@@ -274,7 +280,7 @@ class MainPageContainer extends React.Component {
     // With these sorted values, we determine if there are any 3 of the same values
     // If there are, we add up the array with a for loop
     if ((arr[0] === arr[1] && arr[0] === arr[2]) || (arr[1] === arr[2] && arr[1] === arr[3]) || (arr[2] === arr[3] && arr[2] === arr[4])) {
-      for (var i = 0; i < arr.length; i++){
+      for (var i = 0; i < arr.length; i++) {
         threeKindScore += arr[i];
       }
     } else threeKindScore = 0
@@ -452,21 +458,21 @@ class MainPageContainer extends React.Component {
     }, 100);
   };
 
-    // Checks the runningTop score to see if bonus should be added when player takes score
-    checkBonus = () => {
-      let updatedScoresWithBonus;
-      if (this.state.scores.runningTop > 62 && this.state.scores.bonus === 0) {
-        updatedScoresWithBonus = {
-          ...this.state.scores,
-          bonus: 35,
-          totalTop: this.state.scores.totalTop + 35,
-          totalScore: this.state.scores.totalScore + 35
-        }
-        this.setState({
-          scores: updatedScoresWithBonus
-        })
-      } else return;
-    };
+  // Checks the runningTop score to see if bonus should be added when player takes score
+  checkBonus = () => {
+    let updatedScoresWithBonus;
+    if (this.state.scores.runningTop > 62 && this.state.scores.bonus === 0) {
+      updatedScoresWithBonus = {
+        ...this.state.scores,
+        bonus: 35,
+        totalTop: this.state.scores.totalTop + 35,
+        totalScore: this.state.scores.totalScore + 35
+      }
+      this.setState({
+        scores: updatedScoresWithBonus
+      })
+    } else return;
+  };
 
   // Checks to see if the game is over based upon the overallTurns state. If it is, game is "disabled" 
   // and the showEndGameModal() function is called
@@ -583,10 +589,37 @@ class MainPageContainer extends React.Component {
     }
   };
 
+  endAnimation = (event) => {
+    event.preventDefault();
+    // I don't think this will work as I'm not clicking on the target name. I'll likely need to pass in an argument
+    // This also may need to be paired with the update, because I want it to do the animation, then change the value.
+    switch (event.target.name) {
+      case 'checkBoxOne':
+        return this.setState({ shakeDiceOne: false });
+      case 'checkBoxTwo':
+        return this.setState({ shakeDiceTwo: false });
+      case 'checkBoxThree':
+        return this.setState({ shakeDiceThree: false });
+      case 'checkBoxFour':
+        return this.setState({ shakeDiceFour: false });
+      case 'checkBoxFive':
+        return this.setState({ shakeDiceTive: false });
+      default:
+        return this.setState({
+          shakeDiceOne: false,
+          shakeDiceTwo: false,
+          shakeDiceThree: false,
+          shakeDiceFour: false,
+          shakeDiceFive: false,
+        });
+    }
+  };
+
   // Depending on the dice roll, call a function with the dicePosition
   // First parameter determines value of the dice. Second determines the dice position
   determineWhichDice = (diceRollNumber, dicePosition) => {
     let diceNumber;
+
     // Setting the image for the particular dice number
     switch (diceRollNumber) {
       case 1: diceNumber = diceOneImage;
@@ -607,15 +640,35 @@ class MainPageContainer extends React.Component {
     // Updating image state based upon the dice position
     switch (dicePosition) {
       case 1:
-        return this.setState({ diceOneImage: diceNumber, diceOneValue: diceRollNumber });
+        this.setState({shakeDiceOne: true})
+        setTimeout(() => {
+          this.setState({ diceOneImage: diceNumber, diceOneValue: diceRollNumber });
+        }, 1100);
+        break
       case 2:
-        return this.setState({ diceTwoImage: diceNumber, diceTwoValue: diceRollNumber });
+        this.setState({shakeDiceTwo: true})
+        setTimeout(() => {
+          this.setState({ diceTwoImage: diceNumber, diceTwoValue: diceRollNumber });
+        }, 1100);
+        break
       case 3:
-        return this.setState({ diceThreeImage: diceNumber, diceThreeValue: diceRollNumber });
+        this.setState({shakeDiceThree: true})
+        setTimeout(() => {
+          this.setState({ diceThreeImage: diceNumber, diceThreeValue: diceRollNumber });
+        }, 1100);
+        break
       case 4:
-        return this.setState({ diceFourImage: diceNumber, diceFourValue: diceRollNumber });
+        this.setState({shakeDiceFour: true})
+        setTimeout(() => {
+          this.setState({ diceFourImage: diceNumber, diceFourValue: diceRollNumber });
+        }, 1100);
+        break
       case 5:
-        return this.setState({ diceFiveImage: diceNumber, diceFiveValue: diceRollNumber });
+        this.setState({shakeDiceFive: true})
+        setTimeout(() => {
+          this.setState({ diceFiveImage: diceNumber, diceFiveValue: diceRollNumber });
+        }, 1100);
+        break
       default:
         return console.log("nothing hit");
     };
@@ -676,31 +729,44 @@ class MainPageContainer extends React.Component {
       },
       selectedOption: '',
       showEndGameModal: false,
-      showRestartModal: false
+      showRestartModal: false,
+      showHowToPlayModal: false
     });
   };
 
   // Displays the EndGameModal
   showEndGameModal = () => {
-    this.setState({showEndGameModal: true})
+    this.setState({ showEndGameModal: true })
   };
-  
+
   // Function for users who want to look at score longer, without starting a new game
   dontReset = (event) => {
     event.preventDefault();
-    this.setState({showEndGameModal: false})
+    this.setState({ showEndGameModal: false })
   };
 
-   // Showing the Restart Modal
-   displayRestartModal = (event) => {
+  // Showing the Restart Modal
+  displayRestartModal = (event) => {
     event.preventDefault();
-    this.setState({showRestartModal: true})
+    this.setState({ showRestartModal: true })
   };
 
   // Closing the Restart Modal
   closeRestartModal = (event) => {
     event.preventDefault();
-    this.setState({showRestartModal: false})
+    this.setState({ showRestartModal: false })
+  };
+
+    // Showing the How To Play Modal
+  displayHowToPlayModal = (event) => {
+    event.preventDefault();
+    this.setState({ showHowToPlayModal: true })
+  };
+
+  // Closing the How To Play Modal
+  closeHowToPlayModal = (event) => {
+    event.preventDefault();
+    this.setState({ showHowToPlayModal: false })
   };
 
   render() {
@@ -716,6 +782,9 @@ class MainPageContainer extends React.Component {
           dontReset={this.dontReset}
           displayRestartModal={this.displayRestartModal}
           closeRestartModal={this.closeRestartModal}
+          endAnimation={this.endAnimation}
+          closeHowToPlayModal={this.closeHowToPlayModal}
+          displayHowToPlayModal={this.displayHowToPlayModal}
         />
       </React.Fragment>
     )

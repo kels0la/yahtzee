@@ -1,45 +1,51 @@
 [
   {
     "id": 1,
-    "rowType": "labelRow"
+    "rowType": "firstRow",
+    "radioBtnValue": "totalScore",
+    "labelText": "Total Score"
   },
   {
     "id": 2,
+    "rowType": "labelRow"
+  },
+  {
+    "id": 3,
     "rowType": "",
     "radioBtnValue": "onesScore",
     "labelText": "Aces",
     "disabledRadio": "onesDisabled"
   },
   {
-    "id": 3,
+    "id": 4,
     "rowType": "",
     "radioBtnValue": "twosScore",
     "labelText": "Twos",
     "disabledRadio": "twosDisabled"
   },
   {
-    "id": 4,
+    "id": 5,
     "rowType": "",
     "radioBtnValue": "threesScore",
     "labelText": "Threes",
     "disabledRadio": "threesDisabled"
   },
   {
-    "id": 5,
+    "id": 6,
     "rowType": "",
     "radioBtnValue": "foursScore",
     "labelText": "Four",
     "disabledRadio": "foursDisabled"
   },
   {
-    "id": 6,
+    "id": 7,
     "rowType": "",
     "radioBtnValue": "fivesScore",
     "labelText": "Fives",
     "disabledRadio": "fivesDisabled"
   },
   {
-    "id": 7,
+    "id": 8,
     "rowType": "",
     "radioBtnValue": "sixesScore",
     "labelText": "Sixes",
@@ -47,91 +53,52 @@
     "disabledRadio": "sixesDisabled"
   },
   {
-    "id": 8,
-    "rowType": "noSelectionRow",
-    "radioBtnValue": "runningTopScore",
-    "labelText": "Running Top"
-  },
-  {
     "id": 9,
-    "rowType": "noSelectionRow",
-    "radioBtnValue": "bonusScore",
-    "labelText": "Bonus"
-  },
-  {
-    "id": 10,
-    "rowType": "noSelectionRow",
-    "radioBtnValue": "totalTopScore",
-    "labelText": "Total Top",
-    "bottomFormatting": true
-  },
-  {
-    "id": 11,
     "rowType": "",
     "radioBtnValue": "threeKindScore",
     "labelText": "3 of a Kind",
     "disabledRadio": "threeKindDisabled"
   },
   {
-    "id": 12,
+    "id": 10,
     "rowType": "",
     "radioBtnValue": "fourKindScore",
     "labelText": "4 of a Kind",
     "disabledRadio": "fourKindDisabled"
   },
   {
-    "id": 13,
+    "id": 11,
     "rowType": "",
     "radioBtnValue": "fullHouseScore",
     "labelText": "Full House",
     "disabledRadio": "fullHouseDisabled"
   },
   {
-    "id": 14,
+    "id": 12,
     "rowType": "",
     "radioBtnValue": "smallStraightScore",
     "labelText": "Small Straight",
     "disabledRadio": "smallStraightDisabled"
   },
   {
-    "id": 15,
+    "id": 13,
     "rowType": "",
     "radioBtnValue": "largeStraightScore",
     "labelText": "Large Straight",
     "disabledRadio": "largeStraightDisabled"
   },
   {
-    "id": 16,
+    "id": 14,
     "rowType": "",
     "radioBtnValue": "yahtzeeScore",
     "labelText": "Yahtzee",
     "disabledRadio": "yahtzeeDisabled"
   },
   {
-    "id": 17,
+    "id": 15,
     "rowType": "",
     "radioBtnValue": "chanceScore",
     "labelText": "Chance",
-    "bottomFormatting": true,
     "disabledRadio": "chanceDisabled"
-  },
-  {
-    "id": 18,
-    "rowType": "noSelectionRow",
-    "radioBtnValue": "totalBottomScore",
-    "labelText": "Total Bottom"
-  },
-  {
-    "id": 19,
-    "rowType": "noSelectionRow",
-    "radioBtnValue": "totalTopOnBottom",
-    "labelText": "Total Top",
-    "bottomFormatting": true
-  },
-  {
-    "id": 20,
-    "rowType": "finalRow",
-    "radioBtnValue": "totalScore",
-    "labelText": "Total Score"
   }
 ]

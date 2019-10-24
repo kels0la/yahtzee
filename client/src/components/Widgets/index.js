@@ -5,3 +5,4 @@ export * from './TableRow';
 export * from './Dice';
 export * from './DiceData';
 export * from './ResetButton';
+export * from './RunningScoreDisplay';
