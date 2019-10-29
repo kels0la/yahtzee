@@ -1,6 +1,8 @@
 import React from 'react';
 import MainPage from './MainPage';
 
+import { ThemeContext, themes } from '../../components/Themes/ThemeContext';
+
 import diceOneImage from '../../assets/images/diceOne.png';
 import diceTwoImage from '../../assets/images/diceTwo.png';
 import diceThreeImage from '../../assets/images/diceThree.png';
@@ -58,8 +60,23 @@ class MainPageContainer extends React.Component {
       selectedOption: '',
       showEndGameModal: false,
       showRestartModal: false,
-      showHowToPlayModal: false
+      showHowToPlayModal: false,
+      theme: themes.listoka
     };
+  };
+
+  toggleTheme = (event, themeType) => {
+    console.log(themeType);
+    event.preventDefault();
+    let updatedTheme;
+    if (themeType === 'matador') {
+      updatedTheme = themes.matador
+    } else if (themeType === 'listoka') {
+      updatedTheme = themes.listoka
+    } else updatedTheme = themes.listoka;
+    this.setState({
+      theme: updatedTheme
+    });
   };
 
   // Based upon the Radio Button selected, this.state.selectedOption is changed
@@ -640,31 +657,31 @@ class MainPageContainer extends React.Component {
     // Updating image state based upon the dice position
     switch (dicePosition) {
       case 1:
-        this.setState({shakeDiceOne: true})
+        this.setState({ shakeDiceOne: true })
         setTimeout(() => {
           this.setState({ diceOneImage: diceNumber, diceOneValue: diceRollNumber });
         }, 1100);
         break
       case 2:
-        this.setState({shakeDiceTwo: true})
+        this.setState({ shakeDiceTwo: true })
         setTimeout(() => {
           this.setState({ diceTwoImage: diceNumber, diceTwoValue: diceRollNumber });
         }, 1100);
         break
       case 3:
-        this.setState({shakeDiceThree: true})
+        this.setState({ shakeDiceThree: true })
         setTimeout(() => {
           this.setState({ diceThreeImage: diceNumber, diceThreeValue: diceRollNumber });
         }, 1100);
         break
       case 4:
-        this.setState({shakeDiceFour: true})
+        this.setState({ shakeDiceFour: true })
         setTimeout(() => {
           this.setState({ diceFourImage: diceNumber, diceFourValue: diceRollNumber });
         }, 1100);
         break
       case 5:
-        this.setState({shakeDiceFive: true})
+        this.setState({ shakeDiceFive: true })
         setTimeout(() => {
           this.setState({ diceFiveImage: diceNumber, diceFiveValue: diceRollNumber });
         }, 1100);
@@ -757,7 +774,7 @@ class MainPageContainer extends React.Component {
     this.setState({ showRestartModal: false })
   };
 
-    // Showing the How To Play Modal
+  // Showing the How To Play Modal
   displayHowToPlayModal = (event) => {
     event.preventDefault();
     this.setState({ showHowToPlayModal: true })
@@ -770,25 +787,33 @@ class MainPageContainer extends React.Component {
   };
 
   render() {
+
+    let theme = this.context;
+    console.log(theme)
+    console.log(themes)
     return (
       <React.Fragment>
-        <MainPage
-          {...this.state}
-          rollDice={this.rollDice}
-          handleDiceChecked={this.handleDiceChecked}
-          handleRadioButtonSelection={this.handleRadioButtonSelection}
-          handleSubmitSelection={this.handleSubmitSelection}
-          resetGame={this.resetGame}
-          dontReset={this.dontReset}
-          displayRestartModal={this.displayRestartModal}
-          closeRestartModal={this.closeRestartModal}
-          endAnimation={this.endAnimation}
-          closeHowToPlayModal={this.closeHowToPlayModal}
-          displayHowToPlayModal={this.displayHowToPlayModal}
-        />
+        <ThemeContext.Provider value={this.state.theme} >
+          <MainPage
+            {...this.state}
+            rollDice={this.rollDice}
+            handleDiceChecked={this.handleDiceChecked}
+            handleRadioButtonSelection={this.handleRadioButtonSelection}
+            handleSubmitSelection={this.handleSubmitSelection}
+            resetGame={this.resetGame}
+            dontReset={this.dontReset}
+            displayRestartModal={this.displayRestartModal}
+            closeRestartModal={this.closeRestartModal}
+            endAnimation={this.endAnimation}
+            closeHowToPlayModal={this.closeHowToPlayModal}
+            displayHowToPlayModal={this.displayHowToPlayModal}
+            toggleTheme={this.toggleTheme}
+          />
+        </ThemeContext.Provider>
       </React.Fragment>
     )
   }
 }
+MainPageContainer.contextType = ThemeContext;
 
 export default MainPageContainer;

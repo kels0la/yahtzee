@@ -25,6 +25,7 @@ const MainPage = props => {
             closeHowToPlayModal={props.closeHowToPlayModal}
             displayHowToPlayModal={props.displayHowToPlayModal}
             showHowToPlayModal={props.showHowToPlayModal}
+            toggleTheme={props.toggleTheme}
           />
         </div>
         <div className='w-1/3'>
@@ -32,7 +33,7 @@ const MainPage = props => {
             <div className='p-2 w-full shadowEffect rounded-lg'>
               <div className='pt-2 w-full pb-1 px-1 text-center rounded shadowEffect border-medium-gray border'>
                 <h3 className='font-header'>Dice Den</h3>
-                <hr className="border-brand-green border hrModals mb-3"></hr>
+                <hr className="border-brand-green border outsetBorder mb-3"></hr>
                 <div className='mb-3'>
                   <Dice diceId={'diceOneId'} disabled={props.disabledDice[0]} checkboxName={'checkBoxOne'} diceImage={props.diceOneImage} diceChecked={props.diceOneChecked} onChange={props.handleDiceChecked} endAnimation={props.endAnimation} shouldShake={props.shakeDiceOne} />
                   <Dice diceId={'diceTwoId'} disabled={props.disabledDice[1]} checkboxName={'checkBoxTwo'} diceImage={props.diceTwoImage} diceChecked={props.diceTwoChecked} onChange={props.handleDiceChecked} endAnimation={props.endAnimation} shouldShake={props.shakeDiceTwo} />

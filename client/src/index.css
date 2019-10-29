@@ -1,13 +1,13 @@
 body {
   background: #D8D8D8;
   font-family: 'Montserrat', sans-serif;
-  color: #D8D8D8;
+  color: red;
   overflow: hidden;
   margin: 0;
 }
 
 /* Need this guy for the outset */
-.hrModals {
+.outsetBorder {
   border-style: outset;
 }
 
