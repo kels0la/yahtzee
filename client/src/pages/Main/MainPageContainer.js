@@ -1,7 +1,7 @@
 import React from 'react';
 import MainPage from './MainPage';
 
-import { ThemeContext, themes } from '../../components/Themes/ThemeContext';
+import { themes } from '../../components/Themes/ThemeContext';
 
 import diceOneImage from '../../assets/images/diceOne.png';
 import diceTwoImage from '../../assets/images/diceTwo.png';
@@ -66,17 +66,18 @@ class MainPageContainer extends React.Component {
   };
 
   toggleTheme = (event, themeType) => {
-    console.log(themeType);
     event.preventDefault();
     let updatedTheme;
+
     if (themeType === 'matador') {
       updatedTheme = themes.matador
     } else if (themeType === 'listoka') {
       updatedTheme = themes.listoka
+    } else if(themeType === 'light') {
+      updatedTheme = themes.light
     } else updatedTheme = themes.listoka;
-    this.setState({
-      theme: updatedTheme
-    });
+
+    this.setState({theme: updatedTheme});
   };
 
   // Based upon the Radio Button selected, this.state.selectedOption is changed
@@ -787,13 +788,8 @@ class MainPageContainer extends React.Component {
   };
 
   render() {
-
-    let theme = this.context;
-    console.log(theme)
-    console.log(themes)
     return (
       <React.Fragment>
-        <ThemeContext.Provider value={this.state.theme} >
           <MainPage
             {...this.state}
             rollDice={this.rollDice}
@@ -809,11 +805,9 @@ class MainPageContainer extends React.Component {
             displayHowToPlayModal={this.displayHowToPlayModal}
             toggleTheme={this.toggleTheme}
           />
-        </ThemeContext.Provider>
       </React.Fragment>
     )
   }
 }
-MainPageContainer.contextType = ThemeContext;
 
 export default MainPageContainer;
