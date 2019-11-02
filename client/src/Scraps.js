@@ -332,10 +332,10 @@ checkScoreCombinations = (diceValueOne, diceValueTwo, diceValueThree, diceValueF
         <div className='w-1/3'></div>
         <div className='w-1/3 modalTop bg-body-background ml-auto mr-auto p-3 border border-light-gray shadowEffect pin-x absolute rounded-lg mt-32 z-10 mb-3'>
           <h2 className='mb-3 text-center'>Are you sure you want to do that?</h2>
-          <hr className="border-brand-green border hrModals mb-3"></hr>
+          <hr className="border-brand-green border outsetBorder mb-3"></hr>
           <p className='mb-3 text-center'>Click <span className='text-brand-green'>"New Game"</span> to swallow your pride. Or...</p>
           <p className='mb-3 text-center'>Click <span className='text-brand-green'>"Keep Trying"</span> to suck it up and continue on.</p>
-          <hr className="border-brand-green border hrModals mb-3"></hr>
+          <hr className="border-brand-green border outsetBorder mb-3"></hr>
           <div className='justify-between flex'>
             <ResetButton
               classprops='main-button outline-button p-0 inline-block px-1 border-black border rounded text-sm bg-light-gray'

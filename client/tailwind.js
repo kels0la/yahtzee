@@ -60,6 +60,10 @@ let colors = {
   'modal-border': '#444',
   'mack-the-knife': '#444',
   'yahtzee-red': '#cd2d2c',
+  'gold': '#d4af37',
+  'white-gray': '#e8e8e8',
+  'dark-blue': '#000dad',
+  // 'medium-blue': '#0400e0',
 
   'transparent': 'transparent',
 
@@ -75,7 +79,7 @@ let colors = {
 
   'red-darkest': '#3b0d0c',
   'red-darker': '#621b18',
-  'red-dark': '#cc1f1a',
+  'red-dark': '#940400',
   'red': '#e3342f',
   'red-light': '#ef5753',
   'red-lighter': '#f9acaa',
