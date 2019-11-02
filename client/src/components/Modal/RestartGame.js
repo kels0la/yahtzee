@@ -24,6 +24,7 @@ export const RestartGame = props => {
       secondButtonText='Chicken Out'
       resetGame={props.resetGame}
       closeRestartModal={props.closeRestartModal}
+      theme={theme}
     />
   } else showModal = null;
 

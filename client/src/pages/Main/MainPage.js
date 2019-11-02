@@ -6,7 +6,7 @@ import rowData from '../../rowData.json';
 
 const MainPage = props => {
   // props.themes.background. Works. No need for higher order component.
-  let { theme } = (props);
+  let { theme } = props;
 
   return (
     <React.Fragment>

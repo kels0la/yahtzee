@@ -72,6 +72,16 @@ input:checked + label img {
   top: -4rem;
 }
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /* Outline In */
 /* .hvr-outline-in {
   display: inline-block;

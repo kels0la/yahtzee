@@ -31,7 +31,7 @@ export const RunningScoreDisplay = props => {
             <p className={`mb-2 ${theme.standardText}`}><span className={`${theme.specialText}`}>After you take your score:</span> Click the “Roll Dice” button to begin your next turn.</p>
             <p className={`mb-2 ${theme.standardText}`}><span className={`${theme.specialText}`}>For further instructions:</span> Click “How to play” in the navigation bar.</p>
             <hr className={`${theme.darkBorder} border outsetBorder mb-2 mt-px`}></hr>
-            <p className={`mb-1 ${theme.standardText}`}>To purchase boardgame: <Link to={{ pathname: `https://www.amazon.com/Hasbro-Gaming-00950-Yahtzee/dp/B00TLEMRKM/ref=sr_1_1?keywords=yahtzee&qid=1571881733&s=toys-and-games&sr=1-1` }} className={`no-underline ${theme.alternativeText}`} target="_blank">Click here</Link></p>
+            <p className={`mb-1 ${theme.standardText}`}>To purchase boardgame: <Link to={{ pathname: `https://www.amazon.com/Hasbro-Gaming-00950-Yahtzee/dp/B00TLEMRKM/ref=sr_1_1?keywords=yahtzee&qid=1571881733&s=toys-and-games&sr=1-1` }} className={`no-underline ${theme.alternativeText}`} target="_blank" rel='noopener noreferrer'>Click here</Link></p>
           </div>
         </div>
       </div>

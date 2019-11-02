@@ -65,6 +65,7 @@ class MainPageContainer extends React.Component {
     };
   };
 
+  // Theme is toggled based upon the themeType parameter
   toggleTheme = (event, themeType) => {
     event.preventDefault();
     let updatedTheme;
@@ -73,7 +74,7 @@ class MainPageContainer extends React.Component {
       updatedTheme = themes.matador
     } else if (themeType === 'listoka') {
       updatedTheme = themes.listoka
-    } else if(themeType === 'light') {
+    } else if (themeType === 'light') {
       updatedTheme = themes.light
     } else updatedTheme = themes.listoka;
 
