@@ -541,11 +541,17 @@ class MainPageContainer extends React.Component {
           disabledDice: [false, false, false, false, false],
           disabledScores: enableDisabled,
           disabledTakeScoreBtn: false,
-          disabledRollDiceBtn: false
+          disabledRollDiceBtn: true
         });
+        setTimeout(() => {
+          this.setState({ disabledRollDiceBtn: false })
+        }, 1200);
         break
       case 1:
         this.obtainNumbers();
+        setTimeout(() => {
+          this.setState({ disabledRollDiceBtn: false })
+        }, 1200);
         this.setState({ turnNumber: 2 });
         break
       case 2:
@@ -580,7 +586,7 @@ class MainPageContainer extends React.Component {
     let diceThree;
     let diceFour;
     let diceFive;
-
+    this.setState({disabledRollDiceBtn: true})
     // if statement checks to see if the dice is checked. If not, then dice is rolled.
     // 2nd parameter passed in to diceRollDetermination is dice position number.
     if (this.state.diceOneChecked === false) {
@@ -605,32 +611,6 @@ class MainPageContainer extends React.Component {
     if (this.state.diceFiveChecked === false) {
       diceFive = this.rolledNumber();
       this.determineWhichDice(diceFive, 5)
-    }
-  };
-
-  endAnimation = (event) => {
-    event.preventDefault();
-    // I don't think this will work as I'm not clicking on the target name. I'll likely need to pass in an argument
-    // This also may need to be paired with the update, because I want it to do the animation, then change the value.
-    switch (event.target.name) {
-      case 'checkBoxOne':
-        return this.setState({ shakeDiceOne: false });
-      case 'checkBoxTwo':
-        return this.setState({ shakeDiceTwo: false });
-      case 'checkBoxThree':
-        return this.setState({ shakeDiceThree: false });
-      case 'checkBoxFour':
-        return this.setState({ shakeDiceFour: false });
-      case 'checkBoxFive':
-        return this.setState({ shakeDiceTive: false });
-      default:
-        return this.setState({
-          shakeDiceOne: false,
-          shakeDiceTwo: false,
-          shakeDiceThree: false,
-          shakeDiceFour: false,
-          shakeDiceFive: false,
-        });
     }
   };
 
@@ -751,6 +731,32 @@ class MainPageContainer extends React.Component {
       showRestartModal: false,
       showHowToPlayModal: false
     });
+  };
+
+  endAnimation = (event) => {
+    event.preventDefault();
+    // I don't think this will work as I'm not clicking on the target name. I'll likely need to pass in an argument
+    // This also may need to be paired with the update, because I want it to do the animation, then change the value.
+    switch (event.target.name) {
+      case 'checkBoxOne':
+        return this.setState({ shakeDiceOne: false });
+      case 'checkBoxTwo':
+        return this.setState({ shakeDiceTwo: false });
+      case 'checkBoxThree':
+        return this.setState({ shakeDiceThree: false });
+      case 'checkBoxFour':
+        return this.setState({ shakeDiceFour: false });
+      case 'checkBoxFive':
+        return this.setState({ shakeDiceTive: false });
+      default:
+        return this.setState({
+          shakeDiceOne: false,
+          shakeDiceTwo: false,
+          shakeDiceThree: false,
+          shakeDiceFour: false,
+          shakeDiceFive: false,
+        });
+    }
   };
 
   // Displays the EndGameModal
