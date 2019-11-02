@@ -481,20 +481,17 @@ img {
   height: auto;
 }
 
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: inherit;
   opacity: .5;
 }
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   color: inherit;
   opacity: .5;
 }
 
-input::-ms-input-placeholder,
-textarea::-ms-input-placeholder {
+input::-ms-input-placeholder, textarea::-ms-input-placeholder {
   color: inherit;
   opacity: .5;
 }
@@ -643,7 +640,7 @@ input {
 .input:disabled {
   border-color: #2ba228;
   color: #515356;
-}
+};
 
 /*
     |-----------------------------------------------------------------------------

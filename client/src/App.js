@@ -5,7 +5,6 @@ import NoMatch from './pages/NoMatch';
 import MainPageContainer from './pages/Main/MainPageContainer';
 
 class App extends Component {
-
   render() {
     return (
       <Router>
@@ -14,9 +13,8 @@ class App extends Component {
           <Route component={NoMatch} />
         </Switch>
       </Router>
-    )
+    );
   }
-
-};
+}
 
 export default App;

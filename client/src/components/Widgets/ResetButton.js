@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ResetButton = props => {
+export const ResetButton = (props) => {
   return (
     <React.Fragment>
       <button className={props.classprops} {...props} >

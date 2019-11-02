@@ -5,7 +5,7 @@ export const themes = {
     cardBackground: 'bg-darkest-gray',
     darkestBackground: 'bg-body-background',
     specialBackground: 'bg-brand-green',
-    shadowEffect: 'shadowEffect', 
+    shadowEffect: 'shadowEffect',
     standardBorder: 'border-medium-gray',
     specialBorder: 'border-brand-green',
     darkBorder: 'border-darkest-gray',
@@ -21,7 +21,7 @@ export const themes = {
     cardBackground: 'bg-darkest-gray',
     darkestBackground: 'bg-body-background',
     specialBackground: 'bg-gold',
-    shadowEffect: 'shadowEffect', 
+    shadowEffect: 'shadowEffect',
     standardBorder: 'border-medium-gray',
     specialBorder: 'border-yahtzee-red',
     darkBorder: 'border-darkest-gray',
@@ -37,7 +37,7 @@ export const themes = {
     cardBackground: 'bg-light-gray',
     darkestBackground: 'bg-white-gray',
     specialBackground: 'bg-dark-blue',
-    shadowEffect: 'shadowEffect', 
+    shadowEffect: 'shadowEffect',
     standardBorder: 'border-white',
     specialBorder: 'border-white',
     darkBorder: 'border-white',
@@ -47,7 +47,7 @@ export const themes = {
     alternativeText: 'text-red-dark',
     darkText: 'text-light-gray',
   },
-}
+};
 
 // No longer using Context
 // export const ThemeContext = React.createContext(themes.listoka);

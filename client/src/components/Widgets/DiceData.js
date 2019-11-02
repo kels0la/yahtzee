@@ -6,39 +6,38 @@ import diceFive from '../../assets/images/diceFive.png';
 
 export const diceData = [
   {
-    "id": 1,
-    "diceId": "diceOneId",
-    "diceChecked": false,
-    "checkBoxName": "checkBoxOne",
-    "diceImage": diceOne
+    'id': 1,
+    'diceId': 'diceOneId',
+    'diceChecked': false,
+    'checkBoxName': 'checkBoxOne',
+    'diceImage': diceOne,
   },
   {
-    "id": 2,
-    "diceId": "diceTwoId",
-    "diceChecked": false,
-    "checkBoxName": "checkBoxTwo",
-    "diceImage": diceTwo
+    'id': 2,
+    'diceId': 'diceTwoId',
+    'diceChecked': false,
+    'checkBoxName': 'checkBoxTwo',
+    'diceImage': diceTwo,
   },
   {
-    "id": 3,
-    "diceId": "diceThreeId",
-    "diceChecked": false,
-    "checkBoxName": "checkBoxThree",
-    "diceImage": diceThree
-    
+    'id': 3,
+    'diceId': 'diceThreeId',
+    'diceChecked': false,
+    'checkBoxName': 'checkBoxThree',
+    'diceImage': diceThree,
   },
   {
-    "id": 4,
-    "diceId": "diceFourId",
-    "diceChecked": false,
-    "checkBoxName": "checkBoxFour",
-    "diceImage": diceFour
+    'id': 4,
+    'diceId': 'diceFourId',
+    'diceChecked': false,
+    'checkBoxName': 'checkBoxFour',
+    'diceImage': diceFour,
   },
   {
-    "id": 5,
-    "diceId": "diceFiveId",
-    "diceChecked": false,
-    "checkBoxName": "checkBoxFive",
-    "diceImage": diceFive
-  }
-]
+    'id': 5,
+    'diceId': 'diceFiveId',
+    'diceChecked': false,
+    'checkBoxName': 'checkBoxFive',
+    'diceImage': diceFive,
+  },
+];

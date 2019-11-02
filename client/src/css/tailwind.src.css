@@ -92,7 +92,7 @@
 
     .input:disabled {
         @apply border-brand-green text-input-disabled
-    }
+    };
 
     /*
     |-----------------------------------------------------------------------------
