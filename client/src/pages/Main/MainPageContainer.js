@@ -543,6 +543,7 @@ class MainPageContainer extends React.Component {
           disabledTakeScoreBtn: false,
           disabledRollDiceBtn: true
         });
+        // Added to disable roll dice button from being rolled 4 times quickly (bug squash)
         setTimeout(() => {
           this.setState({ disabledRollDiceBtn: false })
         }, 1200);

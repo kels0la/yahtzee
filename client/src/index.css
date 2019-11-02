@@ -202,11 +202,23 @@ input:checked + label img {
   animation-iteration-count: 1;
 }
 
-.shake {
-  animation: shake 1.0s;
+.shakeOne {
+  animation: shakeOne 1.0s;
+}
+.shakeTwo {
+  animation: shakeTwo 1.0s;
+}
+.shakeThree {
+  animation: shakeThree 1.0s;
+}
+.shakeFour {
+  animation: shakeFour 1.0s;
+}
+.shakeFive {
+  animation: shakeFive 1.0s;
 }
 
-@keyframes shake {
+@keyframes shakeOne {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
   20% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -218,4 +230,60 @@ input:checked + label img {
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes shakeTwo {
+  0% { transform: translate(-1px, -1px) rotate(0deg); }
+  10% { transform: translate(1px, 2px) rotate(1deg); }
+  20% { transform: translate(3px, 0px) rotate(-1deg); }
+  30% { transform: translate(-3px, -2px) rotate(0deg); }
+  40% { transform: translate(-1px, 1px) rotate(-1deg); }
+  50% { transform: translate(1px, -2px) rotate(1deg); }
+  60% { transform: translate(3px, -1px) rotate(0deg); }
+  70% { transform: translate(-3px, -1px) rotate(1deg); }
+  80% { transform: translate(1px, 1px) rotate(-1deg); }
+  90% { transform: translate(-1px, -2px) rotate(0deg); }
+  100% { transform: translate(-1px, 2px) rotate(1deg); }
+}
+
+@keyframes shakeThree {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-2px, -1px) rotate(-1deg); }
+  20% { transform: translate(-1px, 0px) rotate(1deg); }
+  30% { transform: translate(2px, 3px) rotate(0deg); }
+  40% { transform: translate(2px, -2px) rotate(1deg); }
+  50% { transform: translate(-2px, 0px) rotate(-1deg); }
+  60% { transform: translate(-2px, -1px) rotate(0deg); }
+  70% { transform: translate(3px, 2px) rotate(-1deg); }
+  80% { transform: translate(-2px, -3px) rotate(1deg); }
+  90% { transform: translate(3px, 1px) rotate(0deg); }
+  100% { transform: translate(2px, -3px) rotate(-1deg); }
+}
+
+@keyframes shakeFour {
+  0% { transform: translate(-3px, -1px) rotate(0deg); }
+  10% { transform: translate(3px, 2px) rotate(1deg); }
+  20% { transform: translate(1px, 0px) rotate(-1deg); }
+  30% { transform: translate(-1px, -2px) rotate(0deg); }
+  40% { transform: translate(-3px, 3px) rotate(-1deg); }
+  50% { transform: translate(3px, -2px) rotate(1deg); }
+  60% { transform: translate(1px, -3px) rotate(0deg); }
+  70% { transform: translate(-1px, -3px) rotate(1deg); }
+  80% { transform: translate(3px, 3px) rotate(-1deg); }
+  90% { transform: translate(-3px, -2px) rotate(0deg); }
+  100% { transform: translate(-3px, 2px) rotate(1deg); }
+}
+
+@keyframes shakeFive {
+  0% { transform: translate(3px, 3px) rotate(0deg); }
+  10% { transform: translate(-3px, -2px) rotate(-1deg); }
+  20% { transform: translate(-1px, 0px) rotate(1deg); }
+  30% { transform: translate(1px, 2px) rotate(0deg); }
+  40% { transform: translate(3px, -3px) rotate(1deg); }
+  50% { transform: translate(-3px, 2px) rotate(-1deg); }
+  60% { transform: translate(-1px, 3px) rotate(0deg); }
+  70% { transform: translate(1px, 3px) rotate(-1deg); }
+  80% { transform: translate(-3px, -3px) rotate(1deg); }
+  90% { transform: translate(3px, 2px) rotate(0deg); }
+  100% { transform: translate(3px, -2px) rotate(-1deg); }
 }
