@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import MainPage from './MainPage';
 
-import {themes} from '../../components/Themes/ThemeContext';
+import { themes } from '../../components/Themes/ThemeContext';
 
 import diceOneImage from '../../assets/images/diceOne.png';
 import diceTwoImage from '../../assets/images/diceTwo.png';
@@ -55,6 +55,11 @@ class MainPageContainer extends React.Component {
         yahtzee: true, yahtzeeHidden: false,
         chance: true, chanceHidden: false,
       },
+      displayedValues: {
+        ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0,
+        threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0,
+        largeStraight: 0, yahtzee: 0, chance: 0,
+      },
       scores: {
         ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0,
         threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0,
@@ -82,7 +87,7 @@ class MainPageContainer extends React.Component {
       updatedTheme = themes.light;
     } else updatedTheme = themes.listoka;
 
-    this.setState({theme: updatedTheme});
+    this.setState({ theme: updatedTheme });
   };
 
   // Based upon the Radio Button selected, this.state.selectedOption is changed
@@ -151,8 +156,8 @@ class MainPageContainer extends React.Component {
   // The following "determineScores" functions pertain to each Yahtzee scoretype
   determineOnesScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue,
-      this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue,
+    this.state.diceFiveValue];
     // This filter function returns a new array with values that only include 1.
     const diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 1;
@@ -186,8 +191,8 @@ class MainPageContainer extends React.Component {
 
   determineTwosScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue,
-      this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue,
+    this.state.diceFiveValue];
     const diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 2;
     });
@@ -214,8 +219,8 @@ class MainPageContainer extends React.Component {
 
   determineThreesScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue,
-      this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue,
+    this.state.diceFiveValue];
     const diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 3;
     });
@@ -241,7 +246,7 @@ class MainPageContainer extends React.Component {
 
   determineFoursScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     const diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 4;
     });
@@ -267,7 +272,7 @@ class MainPageContainer extends React.Component {
 
   determineFivesScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     const diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 5;
     });
@@ -293,7 +298,7 @@ class MainPageContainer extends React.Component {
 
   determineSixesScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     const diceArrayFiltering = diceArray.filter((diceValue) => {
       return diceValue === 6;
     });
@@ -319,7 +324,7 @@ class MainPageContainer extends React.Component {
 
   determineThreeKindScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     let threeKindScore = 0;
     // We sort the array by values
     const arr = diceArray.sort();
@@ -350,12 +355,12 @@ class MainPageContainer extends React.Component {
 
   determineFourKindScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     let fourKindScore;
     const arr = diceArray.sort();
     // The only difference between this and threeKind is we don't use a forloop here.
     if ((arr[0] === arr[1] && arr[0] === arr[2] && arr[0] === arr[3]) ||
-     (arr[1] === arr[2] && arr[1] === arr[3] && arr[1] === arr[4])) {
+      (arr[1] === arr[2] && arr[1] === arr[3] && arr[1] === arr[4])) {
       fourKindScore = arr[0] + arr[1] + arr[2] + arr[3] + arr[4];
     } else fourKindScore = 0;
 
@@ -377,7 +382,7 @@ class MainPageContainer extends React.Component {
 
   determineFullHouseScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     let fullHouseScore;
     const arr = diceArray.sort();
     // Much like 3 and 4 of a kind, the array is sorted.
@@ -405,7 +410,7 @@ class MainPageContainer extends React.Component {
 
   determineSmallStraightScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     let smallStraightScore;
     const arr = diceArray;
     // Using the array.includes() method, we can determine if there is a small straight. There are 3 different scenarios
@@ -434,13 +439,13 @@ class MainPageContainer extends React.Component {
 
   determineLargeStraightScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     let largeStraightScore;
     const arr = diceArray;
 
     if ((arr.includes(1) && arr.includes(2) && arr.includes(3) &&
       arr.includes(4) && arr.includes(5)) || (arr.includes(2) && arr.includes(3) &&
-      arr.includes(4) && arr.includes(5) && arr.includes(6))
+        arr.includes(4) && arr.includes(5) && arr.includes(6))
     ) {
       largeStraightScore = 40;
     } else largeStraightScore = 0;
@@ -463,7 +468,7 @@ class MainPageContainer extends React.Component {
 
   determineYahtzeeScore = () => {
     const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
-      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+    this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
     let yahtzeeScore;
     // Using the array.every() function, we can determine if every dice has the same value
     // If they do, the checkingYahtzeeArray variable returns true. If it does, yahtzeeScore is set to 50.
@@ -544,6 +549,89 @@ class MainPageContainer extends React.Component {
     } else return;
   };
 
+  calculateValues = () => {
+    const diceArray = [this.state.diceOneValue, this.state.diceTwoValue,
+      this.state.diceThreeValue, this.state.diceFourValue, this.state.diceFiveValue];
+
+    const onesFiltering = diceArray.filter((onesValue) => {return onesValue === 1;});
+    const onesScore = onesFiltering.length;
+    console.log(onesScore)
+
+    const twosFiltering = diceArray.filter((twosValue) => {return twosValue === 2;});
+    const twosScore = twosFiltering.length*2;
+
+    const threesFiltering = diceArray.filter((threesValues) => {return threesValues === 3;});
+    const threesScore = threesFiltering.length*3;
+
+    const foursFiltering = diceArray.filter((foursValue) => {return foursValue === 4;});
+    const foursScore = foursFiltering.length*4;
+
+    const fivesFiltering = diceArray.filter((fivesValue) => {return fivesValue === 5;});
+    const fivesScore = fivesFiltering.length*5;
+
+    const sixesFiltering = diceArray.filter((sixesValue) => {return sixesValue === 6;});
+    const sixesScore = sixesFiltering.length*6;
+
+    const threeArr = diceArray.sort();
+    let threeKindScore;
+    if ((threeArr[0] === threeArr[1] && threeArr[0] === threeArr[2]) || (threeArr[1] === threeArr[2] &&
+      threeArr[1] === threeArr[3]) || (threeArr[2] === threeArr[3] && threeArr[2] === threeArr[4])) {
+      threeKindScore = threeArr[0] + threeArr[1] + threeArr[2] + threeArr[3] + threeArr[4];
+    } else threeKindScore = 0;
+
+    let fourKindScore;
+    const fourArr = diceArray.sort();
+    if ((fourArr[0] === fourArr[1] && fourArr[0] === fourArr[2] && fourArr[0] === fourArr[3]) ||
+      (fourArr[1] === fourArr[2] && fourArr[1] === fourArr[3] && fourArr[1] === fourArr[4])) {
+      fourKindScore = fourArr[0] + fourArr[1] + fourArr[2] + fourArr[3] + fourArr[4];
+    } else fourKindScore = 0;
+
+    let fullHouseScore;
+    const houseArr = diceArray.sort();
+    if ((houseArr[0] === houseArr[1] && houseArr[0] === houseArr[2] && houseArr[3] === houseArr[4]) ||
+      (houseArr[0] === houseArr[1] && houseArr[2] === houseArr[3] && houseArr[2] === houseArr[4])) {
+      fullHouseScore = 25;
+    } else fullHouseScore = 0;
+
+    let smallStraightScore;
+    const smallArr = diceArray;
+    // Using the array.includes() method, we can determine if there is a small straight. There are 3 different scenarios
+    if ((smallArr.includes(1) && smallArr.includes(2) && smallArr.includes(3) && smallArr.includes(4)) ||
+      (smallArr.includes(2) && smallArr.includes(3) && smallArr.includes(4) && smallArr.includes(5)) ||
+      (smallArr.includes(3) && smallArr.includes(4) && smallArr.includes(5) && smallArr.includes(6))
+    ) {
+      smallStraightScore = 30;
+    } else smallStraightScore = 0;
+
+    let largeStraightScore;
+    const largeArr = diceArray;
+    if ((largeArr.includes(1) && largeArr.includes(2) && largeArr.includes(3) &&
+      largeArr.includes(4) && largeArr.includes(5)) || (largeArr.includes(2) && largeArr.includes(3) &&
+      largeArr.includes(4) && largeArr.includes(5) && largeArr.includes(6))
+    ) {
+      largeStraightScore = 40;
+    } else largeStraightScore = 0;
+
+    let yahtzeeScore;
+    const checkingYahtzeeArray = diceArray.every((diceValue) => diceValue === diceArray[0]);
+    if (checkingYahtzeeArray === true) {
+      yahtzeeScore = 50;
+    } else yahtzeeScore = 0;
+
+    const chanceScore = this.state.diceOneValue + this.state.diceTwoValue +
+      this.state.diceThreeValue + this.state.diceFourValue + this.state.diceFiveValue;
+
+    this.setState({
+      displayedValues: {
+        ones: onesScore, twos: twosScore, threes: threesScore, fours: foursScore,
+        fives: fivesScore, sixes: sixesScore, threeKind: threeKindScore,
+        fourKind: fourKindScore, fullHouse: fullHouseScore, smallStraight: smallStraightScore,
+        largeStraight: largeStraightScore, yahtzee: yahtzeeScore, chance: chanceScore,
+      }
+    })
+
+  }
+
   // Checks to see if the game is over based upon the overallTurns state. If it is, game is "disabled"
   // and the showEndGameModal() function is called
   checkEndGame = () => {
@@ -565,15 +653,15 @@ class MainPageContainer extends React.Component {
     const diceName = event.target.name;
     switch (diceName) {
       case 'checkBoxOne':
-        return this.setState((prevState) => ({diceOneChecked: !prevState.diceOneChecked}));
+        return this.setState((prevState) => ({ diceOneChecked: !prevState.diceOneChecked }));
       case 'checkBoxTwo':
-        return this.setState((prevState) => ({diceTwoChecked: !prevState.diceTwoChecked}));
+        return this.setState((prevState) => ({ diceTwoChecked: !prevState.diceTwoChecked }));
       case 'checkBoxThree':
-        return this.setState((prevState) => ({diceThreeChecked: !prevState.diceThreeChecked}));
+        return this.setState((prevState) => ({ diceThreeChecked: !prevState.diceThreeChecked }));
       case 'checkBoxFour':
-        return this.setState((prevState) => ({diceFourChecked: !prevState.diceFourChecked}));
+        return this.setState((prevState) => ({ diceFourChecked: !prevState.diceFourChecked }));
       case 'checkBoxFive':
-        return this.setState((prevState) => ({diceFiveChecked: !prevState.diceFiveChecked}));
+        return this.setState((prevState) => ({ diceFiveChecked: !prevState.diceFiveChecked }));
       default:
         return null;
     }
@@ -586,10 +674,12 @@ class MainPageContainer extends React.Component {
     switch (this.state.turnNumber) {
       case 0:
         this.obtainNumbers();
-        enableDisabled = {...this.state.disabledScores, ones: false,
+        enableDisabled = {
+          ...this.state.disabledScores, ones: false,
           twos: false, threes: false, fours: false, fives: false, sixes: false,
           threeKind: false, fourKind: false, fullHouse: false, smallStraight: false,
-          largeStraight: false, yahtzee: false, doubleYahtzee: true, chance: false};
+          largeStraight: false, yahtzee: false, doubleYahtzee: true, chance: false
+        };
         this.setState({
           turnNumber: 1,
           disabledDice: [false, false, false, false, false],
@@ -599,31 +689,35 @@ class MainPageContainer extends React.Component {
         });
         // Added to disable roll dice button from being rolled 4 times quickly (bug squash)
         setTimeout(() => {
-          this.setState({disabledRollDiceBtn: false});
+          this.setState({ disabledRollDiceBtn: false });
+          this.calculateValues();
         }, 1200);
         break;
       case 1:
         this.obtainNumbers();
         setTimeout(() => {
-          this.setState({disabledRollDiceBtn: false});
+          this.calculateValues();
+          this.setState({ disabledRollDiceBtn: false });
         }, 1200);
-        this.setState({turnNumber: 2});
+        this.setState({ turnNumber: 2 });
         break;
       case 2:
+        this.obtainNumbers();
         setTimeout(() => {
-          this.obtainNumbers();
+          setTimeout(() => {this.calculateValues();}, 1200);
           setTimeout(() => {
-            this.setState({disabledRollDiceBtn: true});
+            this.setState({ disabledRollDiceBtn: true });
           }, 100);
         }, 100);
-        this.setState({turnNumber: 3});
+        this.setState({ turnNumber: 3 });
         break;
       case 3:
         setTimeout(() => {
           this.obtainNumbers();
+          setTimeout(() => {this.calculateValues();}, 1200);
         }, 10);
         this.unCheckDice();
-        this.setState({turnNumber: 1});
+        this.setState({ turnNumber: 1 });
         break;
       default: return null;
     }
@@ -641,7 +735,7 @@ class MainPageContainer extends React.Component {
     let diceThree;
     let diceFour;
     let diceFive;
-    this.setState({disabledRollDiceBtn: true});
+    this.setState({ disabledRollDiceBtn: true });
     // if statement checks to see if the dice is checked. If not, then dice is rolled.
     // 2nd parameter passed in to diceRollDetermination is dice position number.
     if (this.state.diceOneChecked === false) {
@@ -667,6 +761,7 @@ class MainPageContainer extends React.Component {
       diceFive = this.rolledNumber();
       this.determineWhichDice(diceFive, 5);
     }
+
   };
 
   // Depending on the dice roll, call a function with the dicePosition
@@ -693,33 +788,33 @@ class MainPageContainer extends React.Component {
     // Updating image state based upon the dice position
     switch (dicePosition) {
       case 1:
-        this.setState({shakeDiceOne: true});
+        this.setState({ shakeDiceOne: true });
         setTimeout(() => {
-          this.setState({diceOneImage: diceNumber, diceOneValue: diceRollNumber});
+          this.setState({ diceOneImage: diceNumber, diceOneValue: diceRollNumber });
         }, 1100);
         break;
       case 2:
-        this.setState({shakeDiceTwo: true});
+        this.setState({ shakeDiceTwo: true });
         setTimeout(() => {
-          this.setState({diceTwoImage: diceNumber, diceTwoValue: diceRollNumber});
+          this.setState({ diceTwoImage: diceNumber, diceTwoValue: diceRollNumber });
         }, 1100);
         break;
       case 3:
-        this.setState({shakeDiceThree: true});
+        this.setState({ shakeDiceThree: true });
         setTimeout(() => {
-          this.setState({diceThreeImage: diceNumber, diceThreeValue: diceRollNumber});
+          this.setState({ diceThreeImage: diceNumber, diceThreeValue: diceRollNumber });
         }, 1100);
         break;
       case 4:
-        this.setState({shakeDiceFour: true});
+        this.setState({ shakeDiceFour: true });
         setTimeout(() => {
-          this.setState({diceFourImage: diceNumber, diceFourValue: diceRollNumber});
+          this.setState({ diceFourImage: diceNumber, diceFourValue: diceRollNumber });
         }, 1100);
         break;
       case 5:
-        this.setState({shakeDiceFive: true});
+        this.setState({ shakeDiceFive: true });
         setTimeout(() => {
-          this.setState({diceFiveImage: diceNumber, diceFiveValue: diceRollNumber});
+          this.setState({ diceFiveImage: diceNumber, diceFiveValue: diceRollNumber });
         }, 1100);
         break;
       default:
@@ -777,6 +872,11 @@ class MainPageContainer extends React.Component {
         yahtzee: true, yahtzeeHidden: false,
         chance: true, chanceHidden: false,
       },
+      displayedValues: {
+        ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0,
+        threeKind: 0, fourKind: 0, fullHouse: 0, smallStraight: 0,
+        largeStraight: 0, yahtzee: 0, chance: 0,
+      },
       scores: {
         ones: 0, twos: 0, threes: 0, fours: 0, fives: 0, sixes: 0, threeKind: 0,
         fourKind: 0, fullHouse: 0, smallStraight: 0, largeStraight: 0,
@@ -795,15 +895,15 @@ class MainPageContainer extends React.Component {
     // This also may need to be paired with the update, because I want it to do the animation, then change the value.
     switch (event.target.name) {
       case 'checkBoxOne':
-        return this.setState({shakeDiceOne: false});
+        return this.setState({ shakeDiceOne: false });
       case 'checkBoxTwo':
-        return this.setState({shakeDiceTwo: false});
+        return this.setState({ shakeDiceTwo: false });
       case 'checkBoxThree':
-        return this.setState({shakeDiceThree: false});
+        return this.setState({ shakeDiceThree: false });
       case 'checkBoxFour':
-        return this.setState({shakeDiceFour: false});
+        return this.setState({ shakeDiceFour: false });
       case 'checkBoxFive':
-        return this.setState({shakeDiceTive: false});
+        return this.setState({ shakeDiceTive: false });
       default:
         return this.setState({
           shakeDiceOne: false,
@@ -817,37 +917,37 @@ class MainPageContainer extends React.Component {
 
   // Displays the EndGameModal
   showEndGameModal = () => {
-    this.setState({showEndGameModal: true});
+    this.setState({ showEndGameModal: true });
   };
 
   // Function for users who want to look at score longer, without starting a new game
   dontReset = (event) => {
     event.preventDefault();
-    this.setState({showEndGameModal: false});
+    this.setState({ showEndGameModal: false });
   };
 
   // Showing the Restart Modal
   displayRestartModal = (event) => {
     event.preventDefault();
-    this.setState({showRestartModal: true});
+    this.setState({ showRestartModal: true });
   };
 
   // Closing the Restart Modal
   closeRestartModal = (event) => {
     event.preventDefault();
-    this.setState({showRestartModal: false});
+    this.setState({ showRestartModal: false });
   };
 
   // Showing the How To Play Modal
   displayHowToPlayModal = (event) => {
     event.preventDefault();
-    this.setState({showHowToPlayModal: true});
+    this.setState({ showHowToPlayModal: true });
   };
 
   // Closing the How To Play Modal
   closeHowToPlayModal = (event) => {
     event.preventDefault();
-    this.setState({showHowToPlayModal: false});
+    this.setState({ showHowToPlayModal: false });
   };
 
   render() {

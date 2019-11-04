@@ -20,9 +20,9 @@ export const RestartGame = (props) => {
   } else if (props.showRestartModal && props.overallTurns === 13) {
     showModal = <ModalRestart
       firstLineText='Would you like to start a new game?'
-      secondLineText={<p className={`border-medium-gray ${theme.standardText}`}>Click <span className=
+      secondLineText={<p className={`border-medium-gray text-center ${theme.standardText}`}>Click <span className=
         {`${theme.specialText}`}>"New Game"</span> to start Yahtzeeing!</p>}
-      thirdLineText={<p className={`border-medium-gray ${theme.standardText}`}>Click <span className=
+      thirdLineText={<p className={`border-medium-gray text-center ${theme.standardText}`}>Click <span className=
         {`${theme.specialText}`}>"Chicken Out"</span> to continue basking at your score.</p>}
       secondButtonText='Chicken Out'
       resetGame={props.resetGame}

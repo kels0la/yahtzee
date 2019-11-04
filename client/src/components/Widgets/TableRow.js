@@ -3,7 +3,7 @@ import { RadioButton, Button2 } from './';
 
 export const TableRow = (props) => {
   let { rowType, radioBtnValue, labelText, bottomFormatting, disabledScores, scores,
-    disabledTakeScoreBtn, selectedOption, theme } = props;
+    disabledTakeScoreBtn, selectedOption, theme, id, displayedValues } = props;
   let rowOneClasses;
   let rowTwoClasses;
   let rowThreeClasses;
@@ -70,88 +70,89 @@ export const TableRow = (props) => {
     switch (props.disabledRadio) {
       case `onesDisabled`:
         scoreDisplay = scores.ones;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.ones}
-          toggleHidden={disabledScores.onesHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection}
-          handleCheckboxChange={props.handleCheckboxChange} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.ones}
+          toggleHidden={disabledScores.onesHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.ones}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}
+          />;
         break;
       case `twosDisabled`:
         scoreDisplay = scores.twos;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.twos}
-          toggleHidden={disabledScores.twosHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.twos}
+          toggleHidden={disabledScores.twosHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.twos}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}
+          />;
         break;
       case `threesDisabled`:
         scoreDisplay = scores.threes;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.threes}
-          toggleHidden={disabledScores.threesHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.threes}
+          toggleHidden={disabledScores.threesHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.threes}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `foursDisabled`:
         scoreDisplay = scores.fours;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.fours}
-          toggleHidden={disabledScores.foursHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.fours}
+          toggleHidden={disabledScores.foursHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.fours}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `fivesDisabled`:
         scoreDisplay = scores.fives;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.fives}
-          toggleHidden={disabledScores.fivesHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.fives}
+          toggleHidden={disabledScores.fivesHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.fives}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `sixesDisabled`:
         scoreDisplay = scores.sixes;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.sixes}
-          toggleHidden={disabledScores.sixesHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.sixes}
+          toggleHidden={disabledScores.sixesHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.sixes}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `threeKindDisabled`:
         scoreDisplay = scores.threeKind;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.threeKind}
-          toggleHidden={disabledScores.threeKindHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.threeKind}
+          toggleHidden={disabledScores.threeKindHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.threeKind}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `fourKindDisabled`:
         scoreDisplay = scores.fourKind;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.fourKind}
-          toggleHidden={disabledScores.fourKindHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.fourKind}
+          toggleHidden={disabledScores.fourKindHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.fourKind}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `fullHouseDisabled`:
         scoreDisplay = scores.fullHouse;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.fullHouse}
-          toggleHidden={disabledScores.fullHouseHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.fullHouse}
+          toggleHidden={disabledScores.fullHouseHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.fullHouse}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `smallStraightDisabled`:
         scoreDisplay = scores.smallStraight;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.smallStraight}
-          toggleHidden={disabledScores.smallStraightHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.smallStraight}
+          toggleHidden={disabledScores.smallStraightHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.smallStraight}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `largeStraightDisabled`:
         scoreDisplay = scores.largeStraight;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.largeStraight}
-          toggleHidden={disabledScores.largeStraightHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.largeStraight}
+          toggleHidden={disabledScores.largeStraightHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.largeStraight}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       case `yahtzeeDisabled`:
         scoreDisplay = scores.yahtzee;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.yahtzee}
-          toggleHidden={disabledScores.yahtzeeHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.yahtzee}
+          toggleHidden={disabledScores.yahtzeeHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.yahtzee}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
-      case `doubleYahtzeeDisabled`:
-        scoreDisplay = scores.doubleYahtzee;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.doubleYahtzee}
-          toggleHidden={disabledScores.doubleYahtzeeHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
-        break;
+      // case `doubleYahtzeeDisabled`:
+      //   scoreDisplay = scores.doubleYahtzee;
+      //   rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.doubleYahtzee}
+      //     toggleHidden={disabledScores.doubleYahtzeeHidden} radioBtnValue={radioBtnValue}
+      //     disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme} />;
+      //   break;
       case `chanceDisabled`:
         scoreDisplay = scores.chance;
-        rowThreeDisplay = <RadioButton disabledScore={disabledScores.chance}
-          toggleHidden={disabledScores.chanceHidden} radioBtnValue={radioBtnValue}
-          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} />;
+        rowThreeDisplay = <RadioButton id={id} disabledScore={disabledScores.chance}
+          toggleHidden={disabledScores.chanceHidden} radioBtnValue={radioBtnValue} displayedValue={displayedValues.chance}
+          disabledRadio={props.disabledRadio} handleChange={props.handleRadioButtonSelection} theme={theme}/>;
         break;
       default: return null;
     }

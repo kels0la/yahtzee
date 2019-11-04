@@ -103,6 +103,7 @@ const MainPage = (props) => {
                       selectedOption={props.selectedOption}
                       toggleHidden={props.toggleHidden}
                       theme={theme}
+                      displayedValues={props.displayedValues}
                     />
                   ))}
                 </div>
