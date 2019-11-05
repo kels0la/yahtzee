@@ -6,4 +6,3 @@ export * from './Dice';
 export * from './DiceData';
 export * from './ResetButton';
 export * from './RunningScoreDisplay';
-export * from './CheckboxRadioButton';

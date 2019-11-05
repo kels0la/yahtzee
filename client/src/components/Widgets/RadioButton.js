@@ -9,10 +9,19 @@ export const RadioButton = (props) => {
         :
         <React.Fragment>
           <div className='text-center'>
-            <input type="radio" id={props.id} name='selectingScore' className={`mb-0 hidden text-center`}
-              disabled={props.disabledScore} value={props.radioBtnValue} onChange={props.handleChange} />
-            <label className='text-center cursor-pointer' htmlFor={props.id} hidden={props.toggleHidden}>
-              {/* <img src={props.diceFiveImage} className='h-4 w-4 cursor-pointer' alt='diceImage'></img> */}
+            <input 
+              type="radio" 
+              id={props.id} 
+              name='selectingScore' 
+              className={`mb-0 hidden text-center`}
+              disabled={props.disabledScore} 
+              value={props.radioBtnValue} 
+              onChange={props.handleChange} 
+              />
+            <label 
+              className='text-center cursor-pointer' 
+              htmlFor={props.id} 
+              hidden={props.toggleHidden}>
               {props.displayedValue === 0
                 ?
                 <span className={`rounded h-3 text-center px-1`}>{props.displayedValue}</span>

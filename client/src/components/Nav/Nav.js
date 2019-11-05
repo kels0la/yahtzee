@@ -20,9 +20,12 @@ export const Nav = (props) => {
             theme={theme}
           /></div>
         <div className='pt-2'>
-          <HowToPlayModal showHowToPlayModal={props.showHowToPlayModal}
-            displayHowToPlayModal={props.displayHowToPlayModal} closeHowToPlayModal={props.closeHowToPlayModal}
-            theme={theme} />
+          <HowToPlayModal
+            showHowToPlayModal={props.showHowToPlayModal}
+            displayHowToPlayModal={props.displayHowToPlayModal}
+            closeHowToPlayModal={props.closeHowToPlayModal}
+            theme={theme}
+          />
         </div>
         <div className='pt-2'><span className={`text-light-gray cursor-pointer`}>Account/MB</span></div>
         <div className='dropdown overflow-hidden'>
