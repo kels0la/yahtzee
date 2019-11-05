@@ -1,7 +1,6 @@
 import React from 'react';
 
 export const RadioButton = (props) => {
-  // Now I pass in the values to display as the amount they would take. With this, the game is complete.
   return (
     <React.Fragment>
       {props.toggleHidden === true
@@ -24,7 +23,6 @@ export const RadioButton = (props) => {
           </div>
         </React.Fragment>
       }
-
     </React.Fragment>
   );
 };
