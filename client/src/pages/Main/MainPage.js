@@ -41,43 +41,75 @@ const MainPage = (props) => {
                 <h3 className={`${theme.standardText} font-header`}>Dice Den</h3>
                 <hr className={`${theme.specialBorder} border outsetBorder mb-3`}></hr>
                 <div className='mb-3'>
-                  <Dice diceId={'diceOneId'} shakeNumber={'shakeOne'}
-                    disabled={props.disabledDice[0]} checkboxName={'checkBoxOne'}
-                    diceImage={props.diceOneImage} diceChecked={props.diceOneChecked}
-                    onChange={props.handleDiceChecked} endAnimation={props.endAnimation}
+                  <Dice
+                    diceId={'diceOneId'}
+                    shakeNumber={'shakeOne'}
+                    disabled={props.disabledDice[0]}
+                    checkboxName={'checkBoxOne'}
+                    diceImage={props.diceOneImage}
+                    diceChecked={props.diceOneChecked}
+                    onChange={props.handleDiceChecked}
+                    endAnimation={props.endAnimation}
                     shouldShake={props.shakeDiceOne} />
-                  <Dice diceId={'diceTwoId'} shakeNumber={'shakeTwo'}
-                    disabled={props.disabledDice[1]} checkboxName={'checkBoxTwo'}
-                    diceImage={props.diceTwoImage} diceChecked={props.diceTwoChecked}
-                    onChange={props.handleDiceChecked} endAnimation={props.endAnimation}
-                    shouldShake={props.shakeDiceTwo} />
-                  <Dice diceId={'diceThreeId'} shakeNumber={'shakeThree'}
-                    disabled={props.disabledDice[2]} checkboxName={'checkBoxThree'}
-                    diceImage={props.diceThreeImage} diceChecked={props.diceThreeChecked}
-                    onChange={props.handleDiceChecked} endAnimation={props.endAnimation}
-                    shouldShake={props.shakeDiceThree} />
-                  <Dice diceId={'diceFourId'} shakeNumber={'shakeFour'}
-                    disabled={props.disabledDice[3]} checkboxName={'checkBoxFour'}
-                    diceImage={props.diceFourImage} diceChecked={props.diceFourChecked}
-                    onChange={props.handleDiceChecked} endAnimation={props.endAnimation}
-                    shouldShake={props.shakeDiceFour} />
-                  <Dice diceId={'diceFiveId'} shakeNumber={'shakeFive'}
-                    disabled={props.disabledDice[4]} checkboxName={'checkBoxFive'}
-                    diceImage={props.diceFiveImage} diceChecked={props.diceFiveChecked}
-                    onChange={props.handleDiceChecked} endAnimation={props.endAnimation}
-                    shouldShake={props.shakeDiceFive} />
+                  <Dice
+                    diceId={'diceTwoId'}
+                    shakeNumber={'shakeTwo'}
+                    disabled={props.disabledDice[1]}
+                    checkboxName={'checkBoxTwo'}
+                    diceImage={props.diceTwoImage}
+                    diceChecked={props.diceTwoChecked}
+                    onChange={props.handleDiceChecked}
+                    endAnimation={props.endAnimation}
+                    shouldShake={props.shakeDiceTwo}
+                  />
+                  <Dice diceId={'diceThreeId'}
+                    shakeNumber={'shakeThree'}
+                    disabled={props.disabledDice[2]}
+                    checkboxName={'checkBoxThree'}
+                    diceImage={props.diceThreeImage}
+                    diceChecked={props.diceThreeChecked}
+                    onChange={props.handleDiceChecked}
+                    endAnimation={props.endAnimation}
+                    shouldShake={props.shakeDiceThree}
+                  />
+                  <Dice
+                    diceId={'diceFourId'}
+                    shakeNumber={'shakeFour'}
+                    disabled={props.disabledDice[3]}
+                    checkboxName={'checkBoxFour'}
+                    diceImage={props.diceFourImage}
+                    diceChecked={props.diceFourChecked}
+                    onChange={props.handleDiceChecked}
+                    endAnimation={props.endAnimation}
+                    shouldShake={props.shakeDiceFour}
+                  />
+                  <Dice
+                    diceId={'diceFiveId'}
+                    shakeNumber={'shakeFive'}
+                    disabled={props.disabledDice[4]}
+                    checkboxName={'checkBoxFive'}
+                    diceImage={props.diceFiveImage}
+                    diceChecked={props.diceFiveChecked}
+                    onChange={props.handleDiceChecked}
+                    endAnimation={props.endAnimation}
+                    shouldShake={props.shakeDiceFive}
+                  />
                 </div>
                 <div className='flex w-full justify-between'>
                   <div id="gameTurnNumberStatus" className={`text-sm ${theme.standardText}`}>
                     {props.turnNumber === 0 ? <div className='pt-1 h-8 ml-1'>Roll the dice!</div> :
-                    <div className='pt-1 h-8 mt-1px ml-2'>Roll Number: {props.turnNumber}</div>}
+                      <div className='pt-1 h-8 mt-1px ml-2'>Roll Number: {props.turnNumber}</div>}
                   </div>
                   {/* This button rolls the dice */}
-                  <Button classprops={`main-button outline-button p-0 inline-block px-1 
-                  ${theme.darkestBorder} border rounded text-sm ${theme.lightBackground} 
-                  hvr-wobble-skew h-6 mr-2`} disabledrolldicebtn={props.disabledRollDiceBtn ? 1 : 0}
-                  text='Roll Dice' styles={`${theme.darkText} font-bold`}
-                  onClick={(event) => props.rollDice(event)}></Button>
+                  <Button 
+                    classprops={`main-button outline-button p-0 inline-block px-1 
+                    ${theme.darkestBorder} border rounded text-sm ${theme.lightBackground} 
+                    hvr-wobble-skew h-6 mr-2`}
+                    disabledrolldicebtn={props.disabledRollDiceBtn ? 1 : 0}
+                    text='Roll Dice'
+                    styles={`${theme.darkText} font-bold`}
+                    onClick={(event) => props.rollDice(event)}>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -103,6 +135,7 @@ const MainPage = (props) => {
                       selectedOption={props.selectedOption}
                       toggleHidden={props.toggleHidden}
                       theme={theme}
+                      displayedValues={props.displayedValues}
                     />
                   ))}
                 </div>
