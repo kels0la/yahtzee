@@ -579,7 +579,6 @@ class MainPageContainer extends React.Component {
 
     const onesFiltering = diceArray.filter((onesValue) => {return onesValue === 1;});
     const onesScore = onesFiltering.length;
-    console.log(onesScore)
 
     const twosFiltering = diceArray.filter((twosValue) => {return twosValue === 2;});
     const twosScore = twosFiltering.length*2;

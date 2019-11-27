@@ -5,7 +5,7 @@ import { HowToPlayModal, RestartGame } from '../Modal';
 export const Nav = (props) => {
   const { theme } = props;
 
-  return (
+  return (    
     <React.Fragment>
       <nav className={`bg-body-background p-2 h-screen w-32 shadowRight font-header block`}>
         <div className='text-center pt-1'><img src={YahtzeeImg} className='h-16 w-28' alt='yahtzee' /></div>
