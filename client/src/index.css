@@ -42,7 +42,7 @@ input:checked + label img {
   box-shadow: 0 0px 10px 0 #2BA228;   
 }
 input:checked + label span {
-  box-shadow: 0 0px 4px 1px #030303;
+  box-shadow: 0 0px 4px 1px #2BA228;
 }
 
 .shadowEffectRed {
